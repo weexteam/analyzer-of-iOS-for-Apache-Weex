@@ -1,0 +1,758 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		417AB65C1DC4768D002BA6E4 /* WeexAnalyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417AB6521DC4768D002BA6E4 /* WeexAnalyzer.framework */; };
+		417AB6611DC4768D002BA6E4 /* WeexAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6601DC4768D002BA6E4 /* WeexAnalyzerTests.m */; };
+		417AB66D1DC4784A002BA6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417AB66C1DC4784A002BA6E4 /* UIKit.framework */; };
+		417AB66F1DC47851002BA6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417AB66E1DC47851002BA6E4 /* Foundation.framework */; };
+		417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB67D1DC4C934002BA6E4 /* WXALogFilterModel.h */; };
+		417AB6B41DC4C934002BA6E4 /* WXALogFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB67E1DC4C934002BA6E4 /* WXALogFilterModel.m */; };
+		417AB6B51DC4C934002BA6E4 /* WXALogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB67F1DC4C934002BA6E4 /* WXALogModel.h */; };
+		417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6801DC4C934002BA6E4 /* WXALogModel.m */; };
+		417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6811DC4C934002BA6E4 /* WXALogSettingsModel.h */; };
+		417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6821DC4C934002BA6E4 /* WXALogSettingsModel.m */; };
+		417AB6B91DC4C934002BA6E4 /* WXALogFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6841DC4C934002BA6E4 /* WXALogFilter.h */; };
+		417AB6BA1DC4C934002BA6E4 /* WXALogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6851DC4C934002BA6E4 /* WXALogFilter.m */; };
+		417AB6BB1DC4C934002BA6E4 /* WXALogWindowSelect.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */; };
+		417AB6BC1DC4C934002BA6E4 /* WXALogWindowSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */; };
+		417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6891DC4C934002BA6E4 /* WXALogContainer.h */; };
+		417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */; };
+		417AB6BF1DC4C934002BA6E4 /* WXALogFilterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */; };
+		417AB6C01DC4C934002BA6E4 /* WXALogFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB68C1DC4C934002BA6E4 /* WXALogFilterView.m */; };
+		417AB6C11DC4C934002BA6E4 /* WXALogFlagView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB68D1DC4C934002BA6E4 /* WXALogFlagView.h */; };
+		417AB6C21DC4C934002BA6E4 /* WXALogFlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB68E1DC4C934002BA6E4 /* WXALogFlagView.m */; };
+		417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB68F1DC4C934002BA6E4 /* WXALogLevelView.h */; };
+		417AB6C41DC4C934002BA6E4 /* WXALogLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6901DC4C934002BA6E4 /* WXALogLevelView.m */; };
+		417AB6C51DC4C934002BA6E4 /* WXALogResultCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6911DC4C934002BA6E4 /* WXALogResultCell.h */; };
+		417AB6C61DC4C934002BA6E4 /* WXALogResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6921DC4C934002BA6E4 /* WXALogResultCell.m */; };
+		417AB6C71DC4C934002BA6E4 /* WXALogResultView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6931DC4C934002BA6E4 /* WXALogResultView.h */; };
+		417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6941DC4C934002BA6E4 /* WXALogResultView.m */; };
+		417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */; };
+		417AB6CA1DC4C934002BA6E4 /* WXALogSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */; };
+		417AB6CB1DC4C934002BA6E4 /* WXALogSortBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */; };
+		417AB6CC1DC4C934002BA6E4 /* WXALogSortBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */; };
+		417AB6CD1DC4C934002BA6E4 /* WXALogTipsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */; };
+		417AB6CE1DC4C934002BA6E4 /* WXALogTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */; };
+		417AB6CF1DC4C934002BA6E4 /* WXAExternalLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB69B1DC4C934002BA6E4 /* WXAExternalLogger.h */; };
+		417AB6D01DC4C934002BA6E4 /* WXAExternalLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB69C1DC4C934002BA6E4 /* WXAExternalLogger.m */; };
+		417AB6D11DC4C934002BA6E4 /* WXALogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB69D1DC4C934002BA6E4 /* WXALogManager.h */; };
+		417AB6D21DC4C934002BA6E4 /* WXALogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB69E1DC4C934002BA6E4 /* WXALogManager.m */; };
+		417AB6D31DC4C934002BA6E4 /* WXAMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6A01DC4C934002BA6E4 /* WXAMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		417AB6D41DC4C934002BA6E4 /* WXAMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6A11DC4C934002BA6E4 /* WXAMenuItem.m */; };
+		417AB6D51DC4C934002BA6E4 /* WXAMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6A21DC4C934002BA6E4 /* WXAMenuView.h */; };
+		417AB6D61DC4C934002BA6E4 /* WXAMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6A31DC4C934002BA6E4 /* WXAMenuView.m */; };
+		417AB6D71DC4C934002BA6E4 /* WXAPerformanceView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6A51DC4C934002BA6E4 /* WXAPerformanceView.h */; };
+		417AB6D81DC4C934002BA6E4 /* WXAPerformanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6A61DC4C934002BA6E4 /* WXAPerformanceView.m */; };
+		417AB6D91DC4C934002BA6E4 /* UIView+WXAPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6A81DC4C934002BA6E4 /* UIView+WXAPopover.h */; };
+		417AB6DA1DC4C934002BA6E4 /* UIView+WXAPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6A91DC4C934002BA6E4 /* UIView+WXAPopover.m */; };
+		417AB6DB1DC4C934002BA6E4 /* WXAUIBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6AA1DC4C934002BA6E4 /* WXAUIBuilder.h */; };
+		417AB6DC1DC4C934002BA6E4 /* WXAUIBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6AB1DC4C934002BA6E4 /* WXAUIBuilder.m */; };
+		417AB6DD1DC4C934002BA6E4 /* WXAUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6AC1DC4C934002BA6E4 /* WXAUtility.h */; };
+		417AB6DE1DC4C934002BA6E4 /* WXAUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6AD1DC4C934002BA6E4 /* WXAUtility.m */; };
+		417AB6DF1DC4C934002BA6E4 /* WXAViewControllerUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6AE1DC4C934002BA6E4 /* WXAViewControllerUtil.h */; };
+		417AB6E01DC4C934002BA6E4 /* WXAViewControllerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6AF1DC4C934002BA6E4 /* WXAViewControllerUtil.m */; };
+		417AB6E11DC4C934002BA6E4 /* WeexAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6B01DC4C934002BA6E4 /* WeexAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		417AB6E21DC4C934002BA6E4 /* WeexAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6B11DC4C934002BA6E4 /* WeexAnalyzer.m */; };
+		417AB6E31DC4C934002BA6E4 /* WeexAnalyzerDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6B21DC4C934002BA6E4 /* WeexAnalyzerDefine.h */; };
+		FDC40F23CA26762BB795851C /* libPods-WeexAnalyzer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		417AB65D1DC4768D002BA6E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 417AB6491DC4768D002BA6E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 417AB6511DC4768D002BA6E4;
+			remoteInfo = WeexAnalyzer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		33C347F8DCE0F60F69318AF1 /* Pods-WeexAnalyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexAnalyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer.release.xcconfig"; sourceTree = "<group>"; };
+		417AB6521DC4768D002BA6E4 /* WeexAnalyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexAnalyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		417AB6561DC4768D002BA6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		417AB65B1DC4768D002BA6E4 /* WeexAnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeexAnalyzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		417AB6601DC4768D002BA6E4 /* WeexAnalyzerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeexAnalyzerTests.m; sourceTree = "<group>"; };
+		417AB6621DC4768D002BA6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		417AB66C1DC4784A002BA6E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		417AB66E1DC47851002BA6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		417AB67D1DC4C934002BA6E4 /* WXALogFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFilterModel.h; sourceTree = "<group>"; };
+		417AB67E1DC4C934002BA6E4 /* WXALogFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogFilterModel.m; sourceTree = "<group>"; };
+		417AB67F1DC4C934002BA6E4 /* WXALogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogModel.h; sourceTree = "<group>"; };
+		417AB6801DC4C934002BA6E4 /* WXALogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogModel.m; sourceTree = "<group>"; };
+		417AB6811DC4C934002BA6E4 /* WXALogSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSettingsModel.h; sourceTree = "<group>"; };
+		417AB6821DC4C934002BA6E4 /* WXALogSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSettingsModel.m; sourceTree = "<group>"; };
+		417AB6841DC4C934002BA6E4 /* WXALogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFilter.h; sourceTree = "<group>"; };
+		417AB6851DC4C934002BA6E4 /* WXALogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogFilter.m; sourceTree = "<group>"; };
+		417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogWindowSelect.h; sourceTree = "<group>"; };
+		417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogWindowSelect.m; sourceTree = "<group>"; };
+		417AB6891DC4C934002BA6E4 /* WXALogContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogContainer.h; sourceTree = "<group>"; };
+		417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogContainer.m; sourceTree = "<group>"; };
+		417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFilterView.h; sourceTree = "<group>"; };
+		417AB68C1DC4C934002BA6E4 /* WXALogFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogFilterView.m; sourceTree = "<group>"; };
+		417AB68D1DC4C934002BA6E4 /* WXALogFlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFlagView.h; sourceTree = "<group>"; };
+		417AB68E1DC4C934002BA6E4 /* WXALogFlagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogFlagView.m; sourceTree = "<group>"; };
+		417AB68F1DC4C934002BA6E4 /* WXALogLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogLevelView.h; sourceTree = "<group>"; };
+		417AB6901DC4C934002BA6E4 /* WXALogLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogLevelView.m; sourceTree = "<group>"; };
+		417AB6911DC4C934002BA6E4 /* WXALogResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogResultCell.h; sourceTree = "<group>"; };
+		417AB6921DC4C934002BA6E4 /* WXALogResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogResultCell.m; sourceTree = "<group>"; };
+		417AB6931DC4C934002BA6E4 /* WXALogResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogResultView.h; sourceTree = "<group>"; };
+		417AB6941DC4C934002BA6E4 /* WXALogResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogResultView.m; sourceTree = "<group>"; };
+		417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSelectItemView.h; sourceTree = "<group>"; };
+		417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSelectItemView.m; sourceTree = "<group>"; };
+		417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSortBar.h; sourceTree = "<group>"; };
+		417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSortBar.m; sourceTree = "<group>"; };
+		417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogTipsView.h; sourceTree = "<group>"; };
+		417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogTipsView.m; sourceTree = "<group>"; };
+		417AB69B1DC4C934002BA6E4 /* WXAExternalLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAExternalLogger.h; sourceTree = "<group>"; };
+		417AB69C1DC4C934002BA6E4 /* WXAExternalLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAExternalLogger.m; sourceTree = "<group>"; };
+		417AB69D1DC4C934002BA6E4 /* WXALogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogManager.h; sourceTree = "<group>"; };
+		417AB69E1DC4C934002BA6E4 /* WXALogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogManager.m; sourceTree = "<group>"; };
+		417AB6A01DC4C934002BA6E4 /* WXAMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMenuItem.h; sourceTree = "<group>"; };
+		417AB6A11DC4C934002BA6E4 /* WXAMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMenuItem.m; sourceTree = "<group>"; };
+		417AB6A21DC4C934002BA6E4 /* WXAMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMenuView.h; sourceTree = "<group>"; };
+		417AB6A31DC4C934002BA6E4 /* WXAMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMenuView.m; sourceTree = "<group>"; };
+		417AB6A51DC4C934002BA6E4 /* WXAPerformanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAPerformanceView.h; sourceTree = "<group>"; };
+		417AB6A61DC4C934002BA6E4 /* WXAPerformanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAPerformanceView.m; sourceTree = "<group>"; };
+		417AB6A81DC4C934002BA6E4 /* UIView+WXAPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WXAPopover.h"; sourceTree = "<group>"; };
+		417AB6A91DC4C934002BA6E4 /* UIView+WXAPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WXAPopover.m"; sourceTree = "<group>"; };
+		417AB6AA1DC4C934002BA6E4 /* WXAUIBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAUIBuilder.h; sourceTree = "<group>"; };
+		417AB6AB1DC4C934002BA6E4 /* WXAUIBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAUIBuilder.m; sourceTree = "<group>"; };
+		417AB6AC1DC4C934002BA6E4 /* WXAUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAUtility.h; sourceTree = "<group>"; };
+		417AB6AD1DC4C934002BA6E4 /* WXAUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAUtility.m; sourceTree = "<group>"; };
+		417AB6AE1DC4C934002BA6E4 /* WXAViewControllerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAViewControllerUtil.h; sourceTree = "<group>"; };
+		417AB6AF1DC4C934002BA6E4 /* WXAViewControllerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAViewControllerUtil.m; sourceTree = "<group>"; };
+		417AB6B01DC4C934002BA6E4 /* WeexAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeexAnalyzer.h; sourceTree = "<group>"; };
+		417AB6B11DC4C934002BA6E4 /* WeexAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeexAnalyzer.m; sourceTree = "<group>"; };
+		417AB6B21DC4C934002BA6E4 /* WeexAnalyzerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeexAnalyzerDefine.h; sourceTree = "<group>"; };
+		A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexAnalyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer.debug.xcconfig"; sourceTree = "<group>"; };
+		AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexAnalyzer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		417AB64E1DC4768D002BA6E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417AB66F1DC47851002BA6E4 /* Foundation.framework in Frameworks */,
+				417AB66D1DC4784A002BA6E4 /* UIKit.framework in Frameworks */,
+				FDC40F23CA26762BB795851C /* libPods-WeexAnalyzer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417AB6581DC4768D002BA6E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417AB65C1DC4768D002BA6E4 /* WeexAnalyzer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34C09382EAC2AAAFEE338480 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				417AB66E1DC47851002BA6E4 /* Foundation.framework */,
+				417AB66C1DC4784A002BA6E4 /* UIKit.framework */,
+				AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		417AB6481DC4768D002BA6E4 = {
+			isa = PBXGroup;
+			children = (
+				417AB6541DC4768D002BA6E4 /* WeexAnalyzer */,
+				417AB65F1DC4768D002BA6E4 /* WeexAnalyzerTests */,
+				417AB6531DC4768D002BA6E4 /* Products */,
+				465F0DD9C6537C513E693AEA /* Pods */,
+				34C09382EAC2AAAFEE338480 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		417AB6531DC4768D002BA6E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6521DC4768D002BA6E4 /* WeexAnalyzer.framework */,
+				417AB65B1DC4768D002BA6E4 /* WeexAnalyzerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		417AB6541DC4768D002BA6E4 /* WeexAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				417AB67A1DC4C934002BA6E4 /* Source */,
+				417AB6561DC4768D002BA6E4 /* Info.plist */,
+			);
+			path = WeexAnalyzer;
+			sourceTree = "<group>";
+		};
+		417AB65F1DC4768D002BA6E4 /* WeexAnalyzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6601DC4768D002BA6E4 /* WeexAnalyzerTests.m */,
+				417AB6621DC4768D002BA6E4 /* Info.plist */,
+			);
+			path = WeexAnalyzerTests;
+			sourceTree = "<group>";
+		};
+		417AB67A1DC4C934002BA6E4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				417AB67B1DC4C934002BA6E4 /* Log */,
+				417AB69F1DC4C934002BA6E4 /* Menu */,
+				417AB6A41DC4C934002BA6E4 /* Performance */,
+				417AB6A71DC4C934002BA6E4 /* Utils */,
+				417AB6B01DC4C934002BA6E4 /* WeexAnalyzer.h */,
+				417AB6B11DC4C934002BA6E4 /* WeexAnalyzer.m */,
+				417AB6B21DC4C934002BA6E4 /* WeexAnalyzerDefine.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		417AB67B1DC4C934002BA6E4 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				417AB67C1DC4C934002BA6E4 /* Model */,
+				417AB6831DC4C934002BA6E4 /* Presenter */,
+				417AB6881DC4C934002BA6E4 /* View */,
+				417AB69B1DC4C934002BA6E4 /* WXAExternalLogger.h */,
+				417AB69C1DC4C934002BA6E4 /* WXAExternalLogger.m */,
+				417AB69D1DC4C934002BA6E4 /* WXALogManager.h */,
+				417AB69E1DC4C934002BA6E4 /* WXALogManager.m */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		417AB67C1DC4C934002BA6E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				417AB67D1DC4C934002BA6E4 /* WXALogFilterModel.h */,
+				417AB67E1DC4C934002BA6E4 /* WXALogFilterModel.m */,
+				417AB67F1DC4C934002BA6E4 /* WXALogModel.h */,
+				417AB6801DC4C934002BA6E4 /* WXALogModel.m */,
+				417AB6811DC4C934002BA6E4 /* WXALogSettingsModel.h */,
+				417AB6821DC4C934002BA6E4 /* WXALogSettingsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		417AB6831DC4C934002BA6E4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6841DC4C934002BA6E4 /* WXALogFilter.h */,
+				417AB6851DC4C934002BA6E4 /* WXALogFilter.m */,
+				417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */,
+				417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		417AB6881DC4C934002BA6E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6891DC4C934002BA6E4 /* WXALogContainer.h */,
+				417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */,
+				417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */,
+				417AB68C1DC4C934002BA6E4 /* WXALogFilterView.m */,
+				417AB68D1DC4C934002BA6E4 /* WXALogFlagView.h */,
+				417AB68E1DC4C934002BA6E4 /* WXALogFlagView.m */,
+				417AB68F1DC4C934002BA6E4 /* WXALogLevelView.h */,
+				417AB6901DC4C934002BA6E4 /* WXALogLevelView.m */,
+				417AB6911DC4C934002BA6E4 /* WXALogResultCell.h */,
+				417AB6921DC4C934002BA6E4 /* WXALogResultCell.m */,
+				417AB6931DC4C934002BA6E4 /* WXALogResultView.h */,
+				417AB6941DC4C934002BA6E4 /* WXALogResultView.m */,
+				417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */,
+				417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */,
+				417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */,
+				417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */,
+				417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */,
+				417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		417AB69F1DC4C934002BA6E4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6A01DC4C934002BA6E4 /* WXAMenuItem.h */,
+				417AB6A11DC4C934002BA6E4 /* WXAMenuItem.m */,
+				417AB6A21DC4C934002BA6E4 /* WXAMenuView.h */,
+				417AB6A31DC4C934002BA6E4 /* WXAMenuView.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		417AB6A41DC4C934002BA6E4 /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6A51DC4C934002BA6E4 /* WXAPerformanceView.h */,
+				417AB6A61DC4C934002BA6E4 /* WXAPerformanceView.m */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
+		417AB6A71DC4C934002BA6E4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				417AB6A81DC4C934002BA6E4 /* UIView+WXAPopover.h */,
+				417AB6A91DC4C934002BA6E4 /* UIView+WXAPopover.m */,
+				417AB6AA1DC4C934002BA6E4 /* WXAUIBuilder.h */,
+				417AB6AB1DC4C934002BA6E4 /* WXAUIBuilder.m */,
+				417AB6AC1DC4C934002BA6E4 /* WXAUtility.h */,
+				417AB6AD1DC4C934002BA6E4 /* WXAUtility.m */,
+				417AB6AE1DC4C934002BA6E4 /* WXAViewControllerUtil.h */,
+				417AB6AF1DC4C934002BA6E4 /* WXAViewControllerUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		465F0DD9C6537C513E693AEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */,
+				33C347F8DCE0F60F69318AF1 /* Pods-WeexAnalyzer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		417AB64F1DC4768D002BA6E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417AB6E11DC4C934002BA6E4 /* WeexAnalyzer.h in Headers */,
+				417AB6D31DC4C934002BA6E4 /* WXAMenuItem.h in Headers */,
+				417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */,
+				417AB6BB1DC4C934002BA6E4 /* WXALogWindowSelect.h in Headers */,
+				417AB6DB1DC4C934002BA6E4 /* WXAUIBuilder.h in Headers */,
+				417AB6D11DC4C934002BA6E4 /* WXALogManager.h in Headers */,
+				417AB6E31DC4C934002BA6E4 /* WeexAnalyzerDefine.h in Headers */,
+				417AB6B91DC4C934002BA6E4 /* WXALogFilter.h in Headers */,
+				417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */,
+				417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */,
+				417AB6CF1DC4C934002BA6E4 /* WXAExternalLogger.h in Headers */,
+				417AB6BF1DC4C934002BA6E4 /* WXALogFilterView.h in Headers */,
+				417AB6B51DC4C934002BA6E4 /* WXALogModel.h in Headers */,
+				417AB6C11DC4C934002BA6E4 /* WXALogFlagView.h in Headers */,
+				417AB6DD1DC4C934002BA6E4 /* WXAUtility.h in Headers */,
+				417AB6D51DC4C934002BA6E4 /* WXAMenuView.h in Headers */,
+				417AB6D91DC4C934002BA6E4 /* UIView+WXAPopover.h in Headers */,
+				417AB6DF1DC4C934002BA6E4 /* WXAViewControllerUtil.h in Headers */,
+				417AB6CB1DC4C934002BA6E4 /* WXALogSortBar.h in Headers */,
+				417AB6C51DC4C934002BA6E4 /* WXALogResultCell.h in Headers */,
+				417AB6C71DC4C934002BA6E4 /* WXALogResultView.h in Headers */,
+				417AB6D71DC4C934002BA6E4 /* WXAPerformanceView.h in Headers */,
+				417AB6CD1DC4C934002BA6E4 /* WXALogTipsView.h in Headers */,
+				417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */,
+				417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		417AB6511DC4768D002BA6E4 /* WeexAnalyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 417AB6661DC4768D002BA6E4 /* Build configuration list for PBXNativeTarget "WeexAnalyzer" */;
+			buildPhases = (
+				E5140BF9891753F490E11CE7 /* [CP] Check Pods Manifest.lock */,
+				417AB64D1DC4768D002BA6E4 /* Sources */,
+				417AB64E1DC4768D002BA6E4 /* Frameworks */,
+				417AB64F1DC4768D002BA6E4 /* Headers */,
+				417AB6501DC4768D002BA6E4 /* Resources */,
+				11E3E5A296CD3D0269807005 /* [CP] Copy Pods Resources */,
+				417AB6701DC479FE002BA6E4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeexAnalyzer;
+			productName = WeexAnalyzer;
+			productReference = 417AB6521DC4768D002BA6E4 /* WeexAnalyzer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		417AB65A1DC4768D002BA6E4 /* WeexAnalyzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 417AB6691DC4768D002BA6E4 /* Build configuration list for PBXNativeTarget "WeexAnalyzerTests" */;
+			buildPhases = (
+				417AB6571DC4768D002BA6E4 /* Sources */,
+				417AB6581DC4768D002BA6E4 /* Frameworks */,
+				417AB6591DC4768D002BA6E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				417AB65E1DC4768D002BA6E4 /* PBXTargetDependency */,
+			);
+			name = WeexAnalyzerTests;
+			productName = WeexAnalyzerTests;
+			productReference = 417AB65B1DC4768D002BA6E4 /* WeexAnalyzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		417AB6491DC4768D002BA6E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Taobao;
+				TargetAttributes = {
+					417AB6511DC4768D002BA6E4 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					417AB65A1DC4768D002BA6E4 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 417AB64C1DC4768D002BA6E4 /* Build configuration list for PBXProject "WeexAnalyzer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 417AB6481DC4768D002BA6E4;
+			productRefGroup = 417AB6531DC4768D002BA6E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				417AB6511DC4768D002BA6E4 /* WeexAnalyzer */,
+				417AB65A1DC4768D002BA6E4 /* WeexAnalyzerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		417AB6501DC4768D002BA6E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417AB6591DC4768D002BA6E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11E3E5A296CD3D0269807005 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		417AB6701DC479FE002BA6E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nFMK_NAME=${PROJECT_NAME}\n\nINSTALL_DIR=${BUILD_DIR}/Release-iphoneos/${FMK_NAME}.framework\n\nMAIN=\"main\"\n\nMAIN_JS=${INSTALL_DIR}/${MAIN}.js\n\nif [ -e \"$MAIN_JS\" ]; then\n    rm \"$MAIN_JS\"\nfi\n\nRESOURCE=\"Resources\"\nRESOURCE_DIR=${INSTALL_DIR}/$RESOURCE\nif [ -d \"$RESOURCE_DIR\" ]; then\n    rm -rf \"$RESOURCE_DIR\"\nfi\n\nfor pngFile in ${INSTALL_DIR}/*; do\n                              if [[ $pngFile =~ (.*)png ]]; then\n                              rm \"$pngFile\"\n                              break;\n                              fi\n                              done\n";
+		};
+		E5140BF9891753F490E11CE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		417AB64D1DC4768D002BA6E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417AB6E21DC4C934002BA6E4 /* WeexAnalyzer.m in Sources */,
+				417AB6BC1DC4C934002BA6E4 /* WXALogWindowSelect.m in Sources */,
+				417AB6CC1DC4C934002BA6E4 /* WXALogSortBar.m in Sources */,
+				417AB6D81DC4C934002BA6E4 /* WXAPerformanceView.m in Sources */,
+				417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */,
+				417AB6C61DC4C934002BA6E4 /* WXALogResultCell.m in Sources */,
+				417AB6C21DC4C934002BA6E4 /* WXALogFlagView.m in Sources */,
+				417AB6DC1DC4C934002BA6E4 /* WXAUIBuilder.m in Sources */,
+				417AB6E01DC4C934002BA6E4 /* WXAViewControllerUtil.m in Sources */,
+				417AB6D01DC4C934002BA6E4 /* WXAExternalLogger.m in Sources */,
+				417AB6C41DC4C934002BA6E4 /* WXALogLevelView.m in Sources */,
+				417AB6D21DC4C934002BA6E4 /* WXALogManager.m in Sources */,
+				417AB6D61DC4C934002BA6E4 /* WXAMenuView.m in Sources */,
+				417AB6CA1DC4C934002BA6E4 /* WXALogSelectItemView.m in Sources */,
+				417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */,
+				417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */,
+				417AB6BA1DC4C934002BA6E4 /* WXALogFilter.m in Sources */,
+				417AB6DE1DC4C934002BA6E4 /* WXAUtility.m in Sources */,
+				417AB6B41DC4C934002BA6E4 /* WXALogFilterModel.m in Sources */,
+				417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */,
+				417AB6CE1DC4C934002BA6E4 /* WXALogTipsView.m in Sources */,
+				417AB6DA1DC4C934002BA6E4 /* UIView+WXAPopover.m in Sources */,
+				417AB6D41DC4C934002BA6E4 /* WXAMenuItem.m in Sources */,
+				417AB6C01DC4C934002BA6E4 /* WXALogFilterView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417AB6571DC4768D002BA6E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417AB6611DC4768D002BA6E4 /* WeexAnalyzerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		417AB65E1DC4768D002BA6E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 417AB6511DC4768D002BA6E4 /* WeexAnalyzer */;
+			targetProxy = 417AB65D1DC4768D002BA6E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		417AB6641DC4768D002BA6E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		417AB6651DC4768D002BA6E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		417AB6671DC4768D002BA6E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_IDENTITY = "";
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				INFOPLIST_FILE = WeexAnalyzer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+			};
+			name = Debug;
+		};
+		417AB6681DC4768D002BA6E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33C347F8DCE0F60F69318AF1 /* Pods-WeexAnalyzer.release.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_IDENTITY = "";
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				INFOPLIST_FILE = WeexAnalyzer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+			};
+			name = Release;
+		};
+		417AB66A1DC4768D002BA6E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WeexAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		417AB66B1DC4768D002BA6E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WeexAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		417AB64C1DC4768D002BA6E4 /* Build configuration list for PBXProject "WeexAnalyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				417AB6641DC4768D002BA6E4 /* Debug */,
+				417AB6651DC4768D002BA6E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		417AB6661DC4768D002BA6E4 /* Build configuration list for PBXNativeTarget "WeexAnalyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				417AB6671DC4768D002BA6E4 /* Debug */,
+				417AB6681DC4768D002BA6E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		417AB6691DC4768D002BA6E4 /* Build configuration list for PBXNativeTarget "WeexAnalyzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				417AB66A1DC4768D002BA6E4 /* Debug */,
+				417AB66B1DC4768D002BA6E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 417AB6491DC4768D002BA6E4 /* Project object */;
+}
