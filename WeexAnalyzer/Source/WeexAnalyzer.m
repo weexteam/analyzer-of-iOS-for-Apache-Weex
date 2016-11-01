@@ -63,7 +63,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         WXAMenuItem *item3 = [WXAMenuItem new];
         item3.title = @"Weex-Storage";
         
-        _items = @[item1, _manager.mItem, item3];
+        _items = @[_manager.mItem];//@[item1, _manager.mItem, item3];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
