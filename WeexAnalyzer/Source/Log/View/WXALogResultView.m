@@ -82,8 +82,10 @@
 - (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
     if (action == @selector(copy:)) {//如果操作为复制
         WXALogModel *log = _data[indexPath.row];
-        UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];//黏贴板
-        [pasteBoard setString:log.message];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];//黏贴板
+            [pasteBoard setString:log.message];
+        });
     }
 }
 

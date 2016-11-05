@@ -11,6 +11,7 @@
 #import <WeexSDK/WXSDKManager.h>
 #import "WXAUtility.h"
 #import "WXALogManager.h"
+#import "WXAStorageManager.h"
 #import "WeexAnalyzerDefine.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
@@ -31,7 +32,8 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) WXALogManager *manager;
+@property (nonatomic, strong) WXALogManager *logManager;
+@property (nonatomic, strong) WXAStorageManager *storageManager;
 
 @end
 
@@ -58,12 +60,10 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         };
         item1.title = @"实时性能";
         
-        _manager = [[WXALogManager alloc] init];
+        _logManager = [[WXALogManager alloc] init];
+        _storageManager = [[WXAStorageManager alloc] init];
         
-        WXAMenuItem *item3 = [WXAMenuItem new];
-        item3.title = @"Weex-Storage";
-        
-        _items = @[_manager.mItem];//@[item1, _manager.mItem, item3];
+        _items = @[_logManager.mItem, _storageManager.mItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
@@ -121,8 +121,11 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 #ifdef WXADevMode
     _items = nil;
     
-    [_manager free];
-    _manager = nil;
+    [_logManager free];
+    _logManager = nil;
+    
+    [_storageManager free];
+    _storageManager = nil;
 #endif
 }
 
