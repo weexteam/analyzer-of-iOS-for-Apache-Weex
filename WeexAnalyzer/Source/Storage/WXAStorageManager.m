@@ -64,8 +64,7 @@
 #pragma mark - Setters
 - (WXAStorageContainer *)container {
     if (!_container) {
-        _container = [[WXAStorageContainer alloc] initWithFrame:CGRectMake(0,64,WXA_SCREEN_WIDTH,WXA_SCREEN_HEIGHT-64)];
-        _container.backgroundColor = [UIColor whiteColor];
+        _container = [[WXAStorageContainer alloc] initWithWindowType:WXALogWindowTypeMedium];
         _container.delegate = self;
     }
     return _container;

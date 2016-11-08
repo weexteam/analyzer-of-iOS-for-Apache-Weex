@@ -2,7 +2,7 @@
 //  WXABaseContentView.m
 //  WeexAnalyzer
 //
-//  Created by xiayun on 16/11/5.
+//  Created by xiayun on 16/11/8.
 //  Copyright © 2016年 Taobao. All rights reserved.
 //
 
@@ -10,12 +10,12 @@
 
 @implementation WXABaseContentView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    
+    if (self.onContentSizeChanged) {
+        self.onContentSizeChanged(self.frame);
+    }
 }
-*/
 
 @end

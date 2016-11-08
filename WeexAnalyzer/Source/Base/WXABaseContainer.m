@@ -17,16 +17,22 @@
 
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) WXAOptionBaseView *optionView;
+@property (nonatomic, strong) UIButton *sticker;
+@property (nonatomic, assign) WXALogWindowType windowType;
 
 @end
 
 @implementation WXABaseContainer
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithWindowType:(WXALogWindowType)windowType {
+    CGRect frame = [WXABaseContainer frameForWindowType:windowType];
     if (self = [super initWithFrame:frame]) {
+        self.windowType = WXALogWindowTypeMedium;
         self.backgroundColor = [UIColor whiteColor];
+
         [self addSubview:self.optionBar];
         [self addSubview:self.contentView];
+        [self addSubview:self.sticker];
     }
     return self;
 }
@@ -94,7 +100,22 @@
 }
 
 - (void)switchSize:(WXALogWindowType)windowType {
+    self.optionBar.hidden = (windowType == WXALogWindowTypeSmall);
+    self.contentView.hidden = (windowType == WXALogWindowTypeSmall);
+    self.sticker.hidden = !(windowType == WXALogWindowTypeSmall);
     
+    CGRect frame = [WXABaseContainer frameForWindowType:windowType];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.frame = frame;
+    } completion:^(BOOL finished) {
+        self.contentView.frame = CGRectMake(0, WXA_OPTIONBAR_HEIGHT, WXA_SCREEN_WIDTH, frame.size.height-WXA_OPTIONBAR_HEIGHT);
+    }];
+}
+
+- (void)expandAction:(UIButton *)sender {
+    _windowType = WXALogWindowTypeMedium;
+    [self switchSize:_windowType];
 }
 
 #pragma mark - WXABaseOptionBarDelegate
@@ -110,9 +131,9 @@
     }
     
     __weak typeof(self) welf = self;
-    WXASwitchSizeOptionView *optionView = [[WXASwitchSizeOptionView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, 0, 0, 0)
+    WXASwitchSizeOptionView *optionView = [[WXASwitchSizeOptionView alloc] initWithFrame:CGRectMake(sender.frame.origin.x, _contentView.frame.origin.y, 0, 0)
                                                                               hostOption:sender
-                                                                              windowType:WXALogWindowTypeMedium
+                                                                              windowType:_windowType
                                                                                  handler:^(WXALogWindowType windowType) {
                                                                                      [welf closeOptionView:YES];
                                                                                      [welf switchSize:windowType];
@@ -150,6 +171,21 @@
         [_maskView addGestureRecognizer:tapGesture];
     }
     return _maskView;
+}
+
+- (UIButton *)sticker {
+    if (!_sticker) {
+        _sticker = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sticker.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
+        CGRect frame = [WXABaseContainer frameForWindowType:WXALogWindowTypeSmall];
+        _sticker.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        [_sticker setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        _sticker.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_sticker setTitle:@"WeexAnalyzer" forState:UIControlStateNormal];
+        _sticker.hidden = YES;
+        [_sticker addTarget:self action:@selector(expandAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sticker;
 }
 
 + (CGRect)frameForWindowType:(WXALogWindowType)windowType {

@@ -31,12 +31,15 @@
         _windowType = windowType;
         _windowSizes = @[@"浮窗",@"半屏",@"全屏"];
         _handler = handler;
+        
+        [self initSubviews];
     }
     return self;
 }
 
 - (void)initSubviews {
     self.backgroundColor = [UIColor whiteColor];
+    self.clipsToBounds = YES;
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:_windowSizes.count];
     for (NSInteger i = 0; i < _windowSizes.count; i++) {

@@ -31,6 +31,10 @@
     return self;
 }
 
+#pragma mark - WXABaseContainerDelegate
+- (void)onWindowSizeChanged {
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _data.count;

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WXABaseOptionBar.h"
-#import "WXABaseContentView.h"
 #import "WXAOptionBaseView.h"
+#import "WXABaseContentView.h"
+#import "WXALogSettingsModel.h"
 
 @protocol WXABaseContainerDelegate <NSObject>
 
@@ -23,10 +24,14 @@
 @property (nonatomic, strong) WXABaseContentView *contentView;
 @property (nonatomic, weak) id<WXABaseContainerDelegate> delegate;
 
+- (instancetype)initWithWindowType:(WXALogWindowType)windowType;
+
 - (void)show;
 - (void)hide;
 
 - (void)showOptionView:(WXAOptionBaseView *)optionView;
 - (void)closeOptionView:(BOOL)animated;
+
++ (CGRect)frameForWindowType:(WXALogWindowType)windowType;
 
 @end

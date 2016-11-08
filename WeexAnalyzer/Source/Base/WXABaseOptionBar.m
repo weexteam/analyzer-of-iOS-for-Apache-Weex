@@ -21,6 +21,8 @@
         _optionList = [NSMutableArray array];
         _autoAdjustOptionWidth = YES;
         _padding = 0;
+        self.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
+        self.clipsToBounds = YES;
         
         UIView *topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 0.5)];
         topLine.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1];

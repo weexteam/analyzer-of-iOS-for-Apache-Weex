@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		410A61451DD221E500EB22A7 /* WXAOptionBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 410A61431DD221E500EB22A7 /* WXAOptionBaseView.h */; };
 		410A61461DD221E500EB22A7 /* WXAOptionBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 410A61441DD221E500EB22A7 /* WXAOptionBaseView.m */; };
+		410A61491DD22A2800EB22A7 /* WXABaseContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 410A61471DD22A2800EB22A7 /* WXABaseContentView.h */; };
+		410A614A1DD22A2800EB22A7 /* WXABaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 410A61481DD22A2800EB22A7 /* WXABaseContentView.m */; };
 		412CC65C1DC9784F00A71167 /* WXAStorageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 412CC65A1DC9784F00A71167 /* WXAStorageManager.h */; };
 		412CC65D1DC9784F00A71167 /* WXAStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 412CC65B1DC9784F00A71167 /* WXAStorageManager.m */; };
 		412CC6611DC979A900A71167 /* WXAStorageContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 412CC65F1DC979A900A71167 /* WXAStorageContainer.h */; };
@@ -25,8 +27,6 @@
 		412DAF031DCE0C7C00D42DC3 /* WXABaseContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAF011DCE0C7C00D42DC3 /* WXABaseContainer.m */; };
 		412DAF061DCE0C9100D42DC3 /* WXABaseOptionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAF041DCE0C9100D42DC3 /* WXABaseOptionBar.h */; };
 		412DAF071DCE0C9100D42DC3 /* WXABaseOptionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAF051DCE0C9100D42DC3 /* WXABaseOptionBar.m */; };
-		412DAF0A1DCE0CA900D42DC3 /* WXABaseContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAF081DCE0CA900D42DC3 /* WXABaseContentView.h */; };
-		412DAF0B1DCE0CA900D42DC3 /* WXABaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAF091DCE0CA900D42DC3 /* WXABaseContentView.m */; };
 		412DAF0E1DCE0FAA00D42DC3 /* WXAOptionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAF0C1DCE0FAA00D42DC3 /* WXAOptionButton.h */; };
 		412DAF0F1DCE0FAA00D42DC3 /* WXAOptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAF0D1DCE0FAA00D42DC3 /* WXAOptionButton.m */; };
 		412DAF121DCE2C6C00D42DC3 /* WXAStorageTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAF101DCE2C6C00D42DC3 /* WXAStorageTableView.h */; };
@@ -109,6 +109,8 @@
 		33C347F8DCE0F60F69318AF1 /* Pods-WeexAnalyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexAnalyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer.release.xcconfig"; sourceTree = "<group>"; };
 		410A61431DD221E500EB22A7 /* WXAOptionBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAOptionBaseView.h; sourceTree = "<group>"; };
 		410A61441DD221E500EB22A7 /* WXAOptionBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAOptionBaseView.m; sourceTree = "<group>"; };
+		410A61471DD22A2800EB22A7 /* WXABaseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXABaseContentView.h; sourceTree = "<group>"; };
+		410A61481DD22A2800EB22A7 /* WXABaseContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseContentView.m; sourceTree = "<group>"; };
 		412CC65A1DC9784F00A71167 /* WXAStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAStorageManager.h; sourceTree = "<group>"; };
 		412CC65B1DC9784F00A71167 /* WXAStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAStorageManager.m; sourceTree = "<group>"; };
 		412CC65F1DC979A900A71167 /* WXAStorageContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAStorageContainer.h; sourceTree = "<group>"; };
@@ -125,8 +127,6 @@
 		412DAF011DCE0C7C00D42DC3 /* WXABaseContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseContainer.m; sourceTree = "<group>"; };
 		412DAF041DCE0C9100D42DC3 /* WXABaseOptionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXABaseOptionBar.h; sourceTree = "<group>"; };
 		412DAF051DCE0C9100D42DC3 /* WXABaseOptionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseOptionBar.m; sourceTree = "<group>"; };
-		412DAF081DCE0CA900D42DC3 /* WXABaseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXABaseContentView.h; sourceTree = "<group>"; };
-		412DAF091DCE0CA900D42DC3 /* WXABaseContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseContentView.m; sourceTree = "<group>"; };
 		412DAF0C1DCE0FAA00D42DC3 /* WXAOptionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAOptionButton.h; sourceTree = "<group>"; };
 		412DAF0D1DCE0FAA00D42DC3 /* WXAOptionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAOptionButton.m; sourceTree = "<group>"; };
 		412DAF101DCE2C6C00D42DC3 /* WXAStorageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAStorageTableView.h; sourceTree = "<group>"; };
@@ -279,10 +279,10 @@
 			children = (
 				412DAF001DCE0C7C00D42DC3 /* WXABaseContainer.h */,
 				412DAF011DCE0C7C00D42DC3 /* WXABaseContainer.m */,
+				410A61471DD22A2800EB22A7 /* WXABaseContentView.h */,
+				410A61481DD22A2800EB22A7 /* WXABaseContentView.m */,
 				412DAF041DCE0C9100D42DC3 /* WXABaseOptionBar.h */,
 				412DAF051DCE0C9100D42DC3 /* WXABaseOptionBar.m */,
-				412DAF081DCE0CA900D42DC3 /* WXABaseContentView.h */,
-				412DAF091DCE0CA900D42DC3 /* WXABaseContentView.m */,
 				412DAF0C1DCE0FAA00D42DC3 /* WXAOptionButton.h */,
 				412DAF0D1DCE0FAA00D42DC3 /* WXAOptionButton.m */,
 				410A61431DD221E500EB22A7 /* WXAOptionBaseView.h */,
@@ -466,7 +466,6 @@
 				417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */,
 				41B249591DCB744C001C415B /* WXAStorageTableHeader.h in Headers */,
 				41B249461DCA0E3C001C415B /* WXAStorageInfoCell.h in Headers */,
-				412DAF0A1DCE0CA900D42DC3 /* WXABaseContentView.h in Headers */,
 				417AB6BB1DC4C934002BA6E4 /* WXALogWindowSelect.h in Headers */,
 				412CC6611DC979A900A71167 /* WXAStorageContainer.h in Headers */,
 				412DAF061DCE0C9100D42DC3 /* WXABaseOptionBar.h in Headers */,
@@ -474,6 +473,7 @@
 				417AB6DB1DC4C934002BA6E4 /* WXAUIBuilder.h in Headers */,
 				412CC65C1DC9784F00A71167 /* WXAStorageManager.h in Headers */,
 				417AB6D11DC4C934002BA6E4 /* WXALogManager.h in Headers */,
+				410A61491DD22A2800EB22A7 /* WXABaseContentView.h in Headers */,
 				412DAEFD1DCE0C3500D42DC3 /* WXAMenuView.h in Headers */,
 				417AB6E31DC4C934002BA6E4 /* WeexAnalyzerDefine.h in Headers */,
 				417AB6B91DC4C934002BA6E4 /* WXALogFilter.h in Headers */,
@@ -660,6 +660,7 @@
 				417AB6D81DC4C934002BA6E4 /* WXAPerformanceView.m in Sources */,
 				417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */,
 				4189EEB91DCF809600C3DA01 /* WXASwitchSizeOptionView.m in Sources */,
+				410A614A1DD22A2800EB22A7 /* WXABaseContentView.m in Sources */,
 				417AB6C61DC4C934002BA6E4 /* WXALogResultCell.m in Sources */,
 				412DAF131DCE2C6C00D42DC3 /* WXAStorageTableView.m in Sources */,
 				417AB6C21DC4C934002BA6E4 /* WXALogFlagView.m in Sources */,
@@ -687,7 +688,6 @@
 				417AB6DA1DC4C934002BA6E4 /* UIView+WXAPopover.m in Sources */,
 				41B2495A1DCB744C001C415B /* WXAStorageTableHeader.m in Sources */,
 				412DAF0F1DCE0FAA00D42DC3 /* WXAOptionButton.m in Sources */,
-				412DAF0B1DCE0CA900D42DC3 /* WXABaseContentView.m in Sources */,
 				41B249431DCA0796001C415B /* WXAStorageInfoModel.m in Sources */,
 				412DAEF11DCDB69900D42DC3 /* WXAStorageInsertView.m in Sources */,
 				412DAEFC1DCE0C3500D42DC3 /* WXAMenuItem.m in Sources */,
