@@ -15,7 +15,7 @@
 
 - (void)getItem:(NSString *)key callback:(void(^)(BOOL success, NSString * result))callback;
 
-- (void)setItem:(NSString *)key value:(NSString *)value callback:(void(^)(BOOL success))callback;
+- (void)setItem:(NSString *)key value:(NSString *)value persistent:(BOOL)persistent callback:(void(^)(BOOL success))callback;
 
 - (void)removeItem:(NSString *)key callback:(void(^)(BOOL success))callback;
 

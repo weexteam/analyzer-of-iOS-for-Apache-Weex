@@ -12,7 +12,7 @@
 #import "WXAStorageContainer.h"
 #import "WXAUtility.h"
 
-@interface WXAStorageManager () <WXAStorageContainerDelegate>
+@interface WXAStorageManager () <WXABaseContainerDelegate>
 
 @property (nonatomic, strong) WXAStorageContainer *container;
 
@@ -38,22 +38,16 @@
 
 #pragma mark - public methods
 - (void)free {
-    
+    [self hide];
 }
 
 - (void)show {
-    __weak typeof(self) welf = self;
-    [self.container WeexAnalyzer_popover:^{
-        welf.container.transform = CGAffineTransformMakeTranslation(0, welf.container.frame.size.height);
-        [UIView animateWithDuration:0.3 animations:^{
-            welf.container.transform = CGAffineTransformIdentity;
-        }];
-    }];
+    [self.container show];
     [self showStorageList];
 }
 
 - (void)hide {
-    [_container removeFromSuperview];
+    [_container hide];
     _container = nil;
 }
 
@@ -62,7 +56,7 @@
     [self.container refreshData];
 }
 
-#pragma mark - WXAStorageContainerDelegate
+#pragma mark - WXABaseContainerDelegate
 - (void)onCloseWindow {
     [self hide];
 }
@@ -70,7 +64,7 @@
 #pragma mark - Setters
 - (WXAStorageContainer *)container {
     if (!_container) {
-        _container = [[WXAStorageContainer alloc] initWithFrame:CGRectMake(0,20,WXA_SCREEN_WIDTH,WXA_SCREEN_HEIGHT-20)];
+        _container = [[WXAStorageContainer alloc] initWithFrame:CGRectMake(0,64,WXA_SCREEN_WIDTH,WXA_SCREEN_HEIGHT-64)];
         _container.backgroundColor = [UIColor whiteColor];
         _container.delegate = self;
     }

@@ -41,12 +41,27 @@
             [array addObject:model];
         }
     }
-    return [array copy];
+    
+    NSArray *sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(WXAStorageInfoModel *model1, WXAStorageInfoModel *model2) {
+        if (model1.lastUpdateTime > model2.lastUpdateTime) {
+            return NSOrderedAscending;
+        } else if (model1.lastUpdateTime == model2.lastUpdateTime) {
+            return NSOrderedSame;
+        } else {
+            return NSOrderedDescending;
+        }
+    }];
+    return sortedArray;
 }
 
-- (void)setItem:(NSString *)key value:(NSString *)value callback:(void(^)(BOOL success))callback {
+- (void)setItem:(NSString *)key value:(NSString *)value persistent:(BOOL)persistent callback:(void(^)(BOOL success))callback {
     // get setItem method
-    SEL setItemSel = NSSelectorFromString(@"setItem:value:callback:");
+    SEL setItemSel;
+    if (!persistent) {
+        setItemSel = NSSelectorFromString(@"setItem:value:callback:");
+    } else {
+        setItemSel = NSSelectorFromString(@"setItemPersistent:value:callback:");
+    }
     if (![self.storageInstance respondsToSelector:setItemSel]) {
         if (callback) {
             callback(NO);

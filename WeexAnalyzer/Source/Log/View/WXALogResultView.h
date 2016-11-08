@@ -14,6 +14,5 @@
 @property (nonatomic, assign) BOOL autoScroll;
 
 - (void)reloadResults;
-- (void)insertLastRow:(BOOL)animated;
 
 @end

@@ -9,21 +9,20 @@
 #import "WXAStorageContainer.h"
 #import "WXAStorageResolver.h"
 #import "WXAStorageInfoCell.h"
-#import "WXAStorageBar.h"
 #import "WXAUtility.h"
 #import "WXAStorageTableHeader.h"
 #import "WXAStorageDetailView.h"
 #import "UIView+WXAPopover.h"
+#import "WXAStorageTableView.h"
+#import "WXAStorageInsertView.h"
 
-#define WXALOG_SORTBAR_HEIGHT   40
+#define WXALOG_SORTBAR_HEIGHT           40
+#define WXASTORAGE_OPTIONS_VIEW_HEIGHT  250
 
-@interface WXAStorageContainer () <UITableViewDataSource, UITableViewDelegate, WXAStorageBarDelegate, WXAStorageDetailViewDelegate>
+@interface WXAStorageContainer () <WXAStorageTableViewDelegate>
 
-@property (nonatomic, strong) WXAStorageBar *bar;
-@property (nonatomic, strong) WXAStorageTableHeader *header;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) WXAStorageTableView *tableView;
 @property (nonatomic, strong) NSArray<WXAStorageInfoModel *> *data;
-@property (nonatomic, strong) WXAStorageDetailView *detailView;
 
 @property (nonatomic, strong) WXAStorageResolver *resolver;
 
@@ -36,135 +35,123 @@
         self.layer.borderColor = [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1].CGColor;
         self.layer.borderWidth = 0.5;
         
-        [self addSubview:self.bar];
+        [self initOptions];
         [self addSubview:self.tableView];
     }
     return self;
 }
 
-- (void)refreshData {
-    self.data = [self.resolver getStorageInfoList];
-    [self.tableView reloadData];
+- (void)initOptions {
+    __weak typeof(self) welf = self;
+    
+    [self.optionBar addOption:[[WXAOptionButton alloc] initWithTitle:@"刷新"
+                                                        clickHandler:^(UIButton *button) {
+                                                            [welf refreshData];
+                                                        }]];
+    
+    [self.optionBar addOption:[[WXAOptionButton alloc] initWithTitle:@"添加 ↓"
+                                                       selectedTitle:@"添加 ↑"
+                                                        clickHandler:^(UIButton *button) {
+                                                            [welf showAddItem:button];
+                                                        }]];
+
+    [self.optionBar addOption:[[WXAOptionButton alloc] initWithTitle:@"清空"
+                                                        clickHandler:^(UIButton *button) {
+                                                            [welf clearAll];
+                                                        }]];
+    
+    [self.optionBar addDefaultOption:WXADefaultOptionTypeDrag];
+    [self.optionBar addDefaultOption:WXADefaultOptionTypeSwitchSize];
+    [self.optionBar addDefaultOption:WXADefaultOptionTypeCloseWindow];
 }
 
-- (void)showDetail:(WXAStorageInfoModel *)model {
+#pragma mark - actions
+- (void)refreshData {
+    self.data = [self.resolver getStorageInfoList];
+    self.tableView.data = self.data;
+    
+    __weak typeof(self) welf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [welf.tableView reloadData];
+    });
+}
+
+- (void)showAddItem:(UIButton *)sender {
+    if (sender.selected) {
+        [self closeOptionView:YES];
+        return;
+    }
+    
+    CGRect frame = self.contentView.frame;
+    __weak typeof(self) welf = self;
+    WXAStorageInsertView *optionView =
+        [[WXAStorageInsertView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, WXASTORAGE_OPTIONS_VIEW_HEIGHT)
+                                         hostOption:(WXAOptionButton *)sender
+                                            handler:^(WXAStorageItemModel *item) {
+                                                [welf closeOptionView:YES];
+                                                [welf addItem:item];
+                                            }];
+    [self showOptionView:optionView];
+}
+
+- (void)clearAll {
+    dispatch_group_t removeGroup = dispatch_group_create();
+    
+    for (WXAStorageInfoModel *model in self.data) {
+        dispatch_group_enter(removeGroup);
+        [_resolver removeItem:model.key callback:^(BOOL success) {
+            dispatch_group_leave(removeGroup);
+        }];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_group_notify(removeGroup, dispatch_get_main_queue(), ^{
+        [weakSelf refreshData];
+    });
+}
+
+- (void)addItem:(WXAStorageItemModel *)item {
+    __weak typeof(self) weakSelf = self;
+    [_resolver setItem:item.key value:item.value persistent:item.persistent callback:^(BOOL success) {
+        [weakSelf refreshData];
+    }];
+}
+
+#pragma mark - WXAStorageTableViewDelegate
+- (void)onShowItemDetail:(WXAStorageInfoModel *)model {
     __weak typeof(self) welf = self;
     [_resolver getItem:model.key callback:^(BOOL success, NSString *result) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                welf.detailView.itemValue = result;
-                [welf.detailView showInView:welf];
+                WXAStorageDetailView *detailView = [[WXAStorageDetailView alloc] initWithFrame:self.bounds];
+                detailView.itemValue = result;
+                [detailView showInView:welf];
             });
         }
     }];
 }
 
-#pragma mark - WXAStorageBarDelegate
-- (void)onCloseWindow {
-    [self.delegate onCloseWindow];
-}
-
-- (void)clearAll {
-    for (WXAStorageInfoModel *model in self.data) {
-        [_resolver removeItem:model.key callback:nil];
-    }
-    [self refreshData];
-}
-
-- (void)refreshAll {
-    [self refreshData];
-}
-
-#pragma mark - WXAStorageDetailViewDelegate
-- (void)onCloseDetailWindow {
-    [_detailView removeFromSuperview];
-    _detailView = nil;
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WXAStorageInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"infocell" forIndexPath:indexPath];
-    cell.model = _data[indexPath.row];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    WXAStorageInfoModel *model = _data[indexPath.row];
-    [self showDetail:model];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        WXAStorageInfoModel *model = _data[indexPath.row];
-        [self.resolver removeItem:model.key callback:nil];
-        
-        self.data = [self.resolver getStorageInfoList];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return self.header;
+- (void)onRemoveItem:(WXAStorageInfoModel *)model {
+    __weak typeof(self) welf = self;
+    [self.resolver removeItem:model.key callback:^(BOOL success) {
+        [welf refreshData];
+    }];
 }
 
 #pragma mark - Setters
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, WXALOG_SORTBAR_HEIGHT, WXA_SCREEN_WIDTH, self.frame.size.height-WXALOG_SORTBAR_HEIGHT) style:UITableViewStylePlain];
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-        _tableView.rowHeight = 50;
-        _tableView.sectionHeaderHeight = 40;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[WXAStorageInfoCell class] forCellReuseIdentifier:@"infocell"];
+        _tableView = [[WXAStorageTableView alloc] initWithFrame:CGRectMake(0, WXALOG_SORTBAR_HEIGHT, WXA_SCREEN_WIDTH, self.frame.size.height-WXALOG_SORTBAR_HEIGHT) style:UITableViewStylePlain];
+        _tableView.bizDelegate = self;
     }
     return _tableView;
-}
-
-- (WXAStorageBar *)bar {
-    if (!_bar) {
-        _bar = [[WXAStorageBar alloc] initWithFrame:CGRectMake(0, 0, WXA_SCREEN_WIDTH, WXALOG_SORTBAR_HEIGHT) hostView:self];
-        _bar.delegate = self;
-    }
-    return _bar;
-}
-
-- (WXAStorageDetailView *)detailView {
-    if (!_detailView) {
-        _detailView = [[WXAStorageDetailView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _detailView.delegate = self;
-    }
-    return _detailView;
 }
 
 - (WXAStorageResolver *)resolver {
     if (!_resolver) {
         _resolver = [[WXAStorageResolver alloc] init];
-        
-        /*
-        [_resolver setItem:@"key1" value:@"1234" callback:^(BOOL success) {
-            NSLog(@"---%@",@(success));
-        }];
-        [_resolver setItem:@"key2" value:@"56789" callback:^(BOOL success) {
-            NSLog(@"---%@",@(success));
-        }];*/
     }
     return _resolver;
-}
-
-- (UIView *)header {
-    if (!_header) {
-        _header = [[WXAStorageTableHeader alloc] initWithFrame:CGRectMake(0, 0, WXA_SCREEN_WIDTH, 40)];
-    }
-    return _header;
 }
 
 @end

@@ -7,16 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXABaseContainer.h"
 
-@protocol WXAStorageContainerDelegate <NSObject>
-
-- (void)onCloseWindow;
-
-@end
-
-@interface WXAStorageContainer : UIView
-
-@property (nonatomic, weak) id<WXAStorageContainerDelegate> delegate;
+@interface WXAStorageContainer : WXABaseContainer
 
 - (void)refreshData;
 

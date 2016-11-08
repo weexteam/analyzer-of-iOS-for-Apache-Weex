@@ -76,6 +76,7 @@
 }
 
 - (void)closeWindow:(id)sender {
+    [self removeFromSuperview];
     [self.delegate onCloseDetailWindow];
 }
 
