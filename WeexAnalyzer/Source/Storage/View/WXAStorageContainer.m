@@ -20,7 +20,7 @@
 
 @interface WXAStorageContainer () <WXAStorageTableViewDelegate>
 
-@property (nonatomic, strong) WXAStorageTableView<WXABaseContainerDelegate> *tableView;
+@property (nonatomic, strong) WXAStorageTableView *tableView;
 @property (nonatomic, strong) NSArray<WXAStorageInfoModel *> *data;
 
 @property (nonatomic, strong) WXAStorageResolver *resolver;
