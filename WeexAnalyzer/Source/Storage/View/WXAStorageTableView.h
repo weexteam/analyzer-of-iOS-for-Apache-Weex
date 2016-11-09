@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WXAStorageInfoModel.h"
-#import "WXABaseContainer.h"
 
 @protocol WXAStorageTableViewDelegate <NSObject>
 
@@ -17,7 +16,7 @@
 
 @end
 
-@interface WXAStorageTableView : UITableView <WXABaseContainerDelegate>
+@interface WXAStorageTableView : UITableView
 
 @property (nonatomic, strong) NSArray<WXAStorageInfoModel *> *data;
 @property (nonatomic, weak) id<WXAStorageTableViewDelegate> bizDelegate;
