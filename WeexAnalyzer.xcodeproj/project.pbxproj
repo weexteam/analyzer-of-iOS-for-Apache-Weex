@@ -19,7 +19,7 @@
 		412DAEF11DCDB69900D42DC3 /* WXAStorageInsertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAEEF1DCDB69900D42DC3 /* WXAStorageInsertView.m */; };
 		412DAEF41DCDFA2B00D42DC3 /* WXAStorageItemModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAEF21DCDFA2B00D42DC3 /* WXAStorageItemModel.h */; };
 		412DAEF51DCDFA2B00D42DC3 /* WXAStorageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAEF31DCDFA2B00D42DC3 /* WXAStorageItemModel.m */; };
-		412DAEFB1DCE0C3500D42DC3 /* WXAMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAEF71DCE0C3500D42DC3 /* WXAMenuItem.h */; };
+		412DAEFB1DCE0C3500D42DC3 /* WXAMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAEF71DCE0C3500D42DC3 /* WXAMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		412DAEFC1DCE0C3500D42DC3 /* WXAMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAEF81DCE0C3500D42DC3 /* WXAMenuItem.m */; };
 		412DAEFD1DCE0C3500D42DC3 /* WXAMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 412DAEF91DCE0C3500D42DC3 /* WXAMenuView.h */; };
 		412DAEFE1DCE0C3500D42DC3 /* WXAMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 412DAEFA1DCE0C3500D42DC3 /* WXAMenuView.m */; };
@@ -462,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				410A61451DD221E500EB22A7 /* WXAOptionBaseView.h in Headers */,
+				412DAEFB1DCE0C3500D42DC3 /* WXAMenuItem.h in Headers */,
 				417AB6E11DC4C934002BA6E4 /* WeexAnalyzer.h in Headers */,
 				417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */,
 				41B249591DCB744C001C415B /* WXAStorageTableHeader.h in Headers */,
@@ -492,7 +493,6 @@
 				412DAEF01DCDB69900D42DC3 /* WXAStorageInsertView.h in Headers */,
 				412DAF0E1DCE0FAA00D42DC3 /* WXAOptionButton.h in Headers */,
 				417AB6D91DC4C934002BA6E4 /* UIView+WXAPopover.h in Headers */,
-				412DAEFB1DCE0C3500D42DC3 /* WXAMenuItem.h in Headers */,
 				417AB6DF1DC4C934002BA6E4 /* WXAViewControllerUtil.h in Headers */,
 				417AB6CB1DC4C934002BA6E4 /* WXALogSortBar.h in Headers */,
 				417AB6C51DC4C934002BA6E4 /* WXALogResultCell.h in Headers */,
