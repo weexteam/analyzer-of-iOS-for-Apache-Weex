@@ -16,7 +16,7 @@
 #import "WXAStorageTableView.h"
 #import "WXAStorageInsertView.h"
 
-#define WXASTORAGE_OPTIONS_VIEW_HEIGHT  250
+#define WXASTORAGE_OPTIONS_VIEW_HEIGHT  170
 
 @interface WXAStorageContainer () <WXAStorageTableViewDelegate>
 

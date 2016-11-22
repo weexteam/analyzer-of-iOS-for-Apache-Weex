@@ -11,7 +11,8 @@
 #import "UIView+WXAPopover.h"
 #import "WXASwitchSizeOptionView.h"
 
-#define WXA_OPTIONBAR_HEIGHT   40
+#define WXA_OPTIONBAR_HEIGHT        40
+#define WXA_KEYBOARD_HELPER_HEIGHT  40
 
 @interface WXABaseContainer () <WXABaseOptionBarDelegate>
 
@@ -57,6 +58,11 @@
     
     self.optionView = optionView;
     self.optionView.hostOption.selected = YES;
+    
+    self.optionView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
+    [self.optionView addGestureRecognizer:tap];
+    
     CGRect frame = optionView.frame;
     optionView.frame = CGRectMake(frame.origin.x, _contentView.frame.origin.y, frame.size.width, 0);
     
@@ -100,6 +106,8 @@
 }
 
 - (void)switchSize:(WXALogWindowType)windowType {
+    _windowType = windowType;
+    
     self.optionBar.hidden = (windowType == WXALogWindowTypeSmall);
     self.contentView.hidden = (windowType == WXALogWindowTypeSmall);
     self.sticker.hidden = !(windowType == WXALogWindowTypeSmall);
@@ -114,8 +122,11 @@
 }
 
 - (void)expandAction:(UIButton *)sender {
-    _windowType = WXALogWindowTypeMedium;
-    [self switchSize:_windowType];
+    [self switchSize:WXALogWindowTypeMedium];
+}
+
+- (void)hideKeyboard:(id)sender {
+    [self endEditing:YES];
 }
 
 #pragma mark - WXABaseOptionBarDelegate
