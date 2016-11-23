@@ -13,6 +13,8 @@
 #import "WXALogManager.h"
 #import "WXAStorageManager.h"
 #import "WeexAnalyzerDefine.h"
+#import "WXAWXExternalLogger.h"
+#import "WXALogMenuItem.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -32,7 +34,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) WXALogManager *logManager;
 @property (nonatomic, strong) WXAStorageManager *storageManager;
 
 @end
@@ -53,17 +54,11 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 #ifdef WXADevMode
         _items = [NSArray array];
         
-        WXAMenuItem *item1 = [WXAMenuItem new];
-        item1.handler = ^(BOOL selected) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"123" message:@"aaa" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
-        };
-        item1.title = @"实时性能";
+        WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志" logger:[WXAWXExternalLogger new]];
         
-        _logManager = [[WXALogManager alloc] init];
         _storageManager = [[WXAStorageManager alloc] init];
         
-        _items = @[_logManager.mItem, _storageManager.mItem];
+        _items = @[wxLogItem, _storageManager.mItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
@@ -120,9 +115,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 - (void)free {
 #ifdef WXADevMode
     _items = nil;
-    
-    [_logManager free];
-    _logManager = nil;
     
     [_storageManager free];
     _storageManager = nil;

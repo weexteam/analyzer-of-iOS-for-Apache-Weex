@@ -9,16 +9,15 @@
 #import "WXALogManager.h"
 #import "UIView+WXAPopover.h"
 #import <WeexSDK/WeexSDK.h>
-#import "WXAExternalLogger.h"
 #import "WXAUtility.h"
 #import "WXALogContainer.h"
 
 #define WXALOG_SETTINGS_KEY                 @"wxalog_settings_key"
 
-@interface WXALogManager () <WXAExternalLogDelegate, WXALogContainerDelegate, WXABaseContainerDelegate>
+@interface WXALogManager () <WXALogContainerDelegate, WXABaseContainerDelegate, WXALoggerDelegate>
 
 @property (nonatomic, strong) WXALogContainer *container;
-@property (nonatomic, strong) WXAExternalLogger *logger;
+@property (nonatomic, strong) id <WXALogProtocol> logger;
 @property (nonatomic, strong) WXALogSettingsModel *settings;
 
 @property (nonatomic, strong) NSArray *sortedLogs;
@@ -27,27 +26,11 @@
 
 @implementation WXALogManager
 
-- (instancetype)init {
-    if (self = [super init]) {
-        _sortedLogs = [NSArray array];
-    }
-    return self;
-}
-
-- (WXAMenuItem *)mItem {
-    if (!_mItem) {
-        _mItem = [[WXAMenuItem alloc] init];
-        _mItem.title = @"JS日志";
-        __weak typeof(self) welf = self;
-        _mItem.handler = ^(BOOL selected) {
-            if (selected) {
-                [welf show];
-            } else {
-                [welf hide];
-            }
-        };
-    }
-    return _mItem;
+#pragma mark - public methods
+- (void)registerLogger:(id<WXALogProtocol>)logger {
+    _logger = logger;
+    _logger.logManager = self;
+    [_logger onChangeLogLevel:self.settings.filter.logLevel logFlag:self.settings.filter.logFlag];
 }
 
 - (void)hide {
@@ -67,61 +50,18 @@
 }
 
 - (void)free {
-    [self stopLogging];
-    
+    [self hide];
     _container = nil;
 }
 
+#pragma mark - private methods
 - (void)startLogging {
-    [WXLog registerExternalLog:self.logger];
+    [_logger onStartLog];
 }
 
 - (void)stopLogging {
-    [_logger stopLog];
-    _logger = nil;
-    _sortedLogs = nil;
-    
+    [_logger onStopLog];
     [_container removeFromSuperview];
-}
-
-#pragma mark - actions
-- (void)sortLogsByFilter {
-    NSMutableArray *array = [NSMutableArray array];
-    for (WXALogModel *model in self.logger.totalLogs) {
-        if (model.flag & self.settings.filter.logFlag) {
-            [array addObject:model];
-        }
-    }
-    self.sortedLogs = [array copy];
-}
-
-#pragma mark - WXAExternalLogDelegate
-- (void)newLogsReceived {
-    [self sortLogsByFilter];
-    [self.container refreshData:self.sortedLogs];
-}
-
-#pragma mark - WXALogContainerDelegate
-- (void)onClearLog {
-    [self.logger clearLogs];
-    [self sortLogsByFilter];
-    [self.container refreshData:self.sortedLogs];
-}
-
-- (void)onLogFilterChanged:(WXALogFilterModel *)filterModel {
-    self.settings.filter = filterModel;
-    [self.logger setLogLevel:filterModel.logLevel];
-    
-    [self sortLogsByFilter];
-    [self.container refreshData:self.sortedLogs];
-    [self.container setLogFilter:filterModel];
-    
-    [self saveLogSettings];
-}
-
-#pragma mark - WXABaseContainerDelegate
-- (void)onCloseWindow {
-    [self hide];
 }
 
 - (void)saveLogSettings {
@@ -129,7 +69,46 @@
     [[NSUserDefaults standardUserDefaults] setObject:dic forKey:WXALOG_SETTINGS_KEY];
 }
 
-#pragma mark - Setters
+#pragma mark - WXALoggerDelegate
+- (void)onLogsChanged {
+    [self.container refreshData:_logger.logs];
+}
+
+#pragma mark - WXALogContainerDelegate
+- (void)onClearLog {
+    [self.logger onClearLog];
+}
+
+- (void)onLogFilterChanged:(WXALogFilterModel *)filterModel {
+    self.settings.filter = filterModel;
+    [self saveLogSettings];
+    
+    [self.logger onChangeLogLevel:filterModel.logLevel logFlag:filterModel.logFlag];
+    [self.container setLogFilter:filterModel];
+}
+
+#pragma mark - WXABaseContainerDelegate
+- (void)onCloseWindow {
+    [self hide];
+}
+
+#pragma mark - Getters
+- (WXAMenuItem *)mItem {
+    if (!_mItem) {
+        _mItem = [[WXAMenuItem alloc] init];
+        _mItem.title = @"JS日志";
+        __weak typeof(self) welf = self;
+        _mItem.handler = ^(BOOL selected) {
+            if (selected) {
+                [welf show];
+            } else {
+                [welf hide];
+            }
+        };
+    }
+    return _mItem;
+}
+
 - (WXALogContainer *)container {
     if (!_container) {
         _container = [[WXALogContainer alloc] initWithWindowType:WXALogWindowTypeMedium];
@@ -146,15 +125,6 @@
         _settings = [[WXALogSettingsModel alloc] initWithDictionary:dic];
     }
     return _settings;
-}
-
-- (WXAExternalLogger *)logger {
-    if (!_logger) {
-        _logger = [[WXAExternalLogger alloc] init];
-        _logger.delegate = self;
-        [_logger setLogLevel:self.settings.filter.logLevel];
-    }
-    return _logger;
 }
 
 @end

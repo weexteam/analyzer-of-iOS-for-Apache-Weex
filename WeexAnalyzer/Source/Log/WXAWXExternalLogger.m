@@ -1,44 +1,64 @@
 //
-//  WXAExternalLogger.m
+//  WXAWXExternalLogger.m
 //  WeexAnalyzer
 //
-//  Created by xiayun on 16/10/24.
-//  Copyright © 2016年 alibaba. All rights reserved.
+//  Created by xiayun on 16/11/23.
+//  Copyright © 2016年 Taobao. All rights reserved.
 //
 
-#import "WXAExternalLogger.h"
+#import "WXAWXExternalLogger.h"
+#import <WeexSDK/WeexSDK.h>
 
 #define WXALOG_LOGGER_THROTTLE  500.0
 
-@implementation WXAExternalLogger {
+@interface WXAWXExternalLogger () <WXLogProtocol>
+
+@end
+
+@implementation WXAWXExternalLogger {
     WXLogLevel _logLevel;
+    WXLogFlag _logFlag;
+    NSArray *_totalLogs;
     NSDateFormatter *_dateFormatter;
     
     NSTimeInterval _lastSendTime;
     NSTimer *_timer;
 }
 
+@synthesize logManager;
+@synthesize logs;
+
 - (instancetype)init {
     if (self = [super init]) {
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
         _totalLogs = [NSArray array];
+        logs = [NSArray array];
         _lastSendTime = [[NSDate date] timeIntervalSince1970] * 1000;
+        _logLevel = WXLogLevelLog;
     }
     return self;
 }
 
-- (void)setLogLevel:(WXLogLevel)logLevel {
-    _logLevel = logLevel;
+#pragma mark - WXALogProtocol
+- (void)onStartLog {
+    [WXLog registerExternalLog:self];
 }
 
-- (void)clearLogs {
-    self.totalLogs = [NSArray array];
-}
-
-- (void)stopLog {
+- (void)onStopLog {
     [self cancelCheckTask];
-    [self clearLogs];
+    [self onClearLog];
+}
+
+- (void)onClearLog {
+    _totalLogs = [NSArray array];
+    [self sortLogs];
+}
+
+- (void)onChangeLogLevel:(NSInteger)level logFlag:(NSInteger)flag {
+    _logLevel = (WXLogLevel)level;
+    _logFlag = (WXLogFlag)flag;
+    [self sortLogs];
 }
 
 #pragma mark - WXLogProtocol
@@ -54,37 +74,49 @@
     NSString *timeStr = [_dateFormatter stringFromDate:[NSDate date]];
     model.message = [NSString stringWithFormat:@"%@: %@",timeStr,message];
     
-    NSMutableArray *array = [self.totalLogs mutableCopy];
+    NSMutableArray *array = [_totalLogs mutableCopy];
     [array addObject:model];
-    self.totalLogs = [array copy];
+    _totalLogs = [array copy];
     
     NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970] * 1000;
     if (nowTime - _lastSendTime >= WXALOG_LOGGER_THROTTLE) {
         _lastSendTime = nowTime;
         __weak typeof(self) welf = self;
-        NSLog(@"---a:msg send");
         dispatch_async(dispatch_get_main_queue(), ^{
-            [welf.delegate newLogsReceived];
+            [welf sortLogs];
         });
     } else {
         [self startCheckTask];
     }
 }
 
+#pragma mark - private methods
+- (void)sortLogs {
+    NSMutableArray *array = [NSMutableArray array];
+    for (WXALogModel *model in _totalLogs) {
+        if (model.flag & _logFlag) {
+            [array addObject:model];
+        }
+    }
+    logs = [array copy];
+    
+    __weak typeof(self) welf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [welf.logManager onLogsChanged];
+    });
+}
+
 - (void)startCheckTask {
-    NSLog(@"---a:start task");
     _timer = [NSTimer scheduledTimerWithTimeInterval:WXALOG_LOGGER_THROTTLE*2/1000 target:self selector:@selector(invokeTask) userInfo:nil repeats:NO];
 }
 
 - (void)cancelCheckTask {
-    NSLog(@"---a:cancel task");
     [_timer invalidate];
     _timer = nil;
 }
 
 - (void)invokeTask {
-    NSLog(@"---a:execute task");
-    [self.delegate newLogsReceived];
+    [self sortLogs];
 }
 
 @end

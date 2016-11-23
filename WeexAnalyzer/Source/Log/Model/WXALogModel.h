@@ -11,7 +11,7 @@
 
 @interface WXALogModel : NSObject
 
-@property (nonatomic, assign) WXLogFlag flag;
+@property (nonatomic, assign) NSInteger flag;
 @property (nonatomic, copy) NSString *message;
 
 @end
