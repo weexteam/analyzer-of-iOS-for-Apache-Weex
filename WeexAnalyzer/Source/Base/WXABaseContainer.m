@@ -30,6 +30,8 @@
     if (self = [super initWithFrame:frame]) {
         self.windowType = WXALogWindowTypeMedium;
         self.backgroundColor = [UIColor whiteColor];
+        self.layer.borderColor = [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1].CGColor;
+        self.layer.borderWidth = 0.5;
 
         [self addSubview:self.optionBar];
         [self addSubview:self.contentView];

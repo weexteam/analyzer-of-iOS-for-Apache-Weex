@@ -31,11 +31,9 @@
 
 - (instancetype)initWithWindowType:(WXALogWindowType)windowType {
     if (self = [super initWithWindowType:windowType]) {
-        self.layer.borderColor = [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1].CGColor;
-        self.layer.borderWidth = 0.5;
-        
         [self initOptions];
         [self.contentView addSubview:self.tableView];
+        
         __weak typeof(self) welf = self;
         self.contentView.onContentSizeChanged = ^(CGRect frame) {
             welf.tableView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -141,7 +139,7 @@
     }];
 }
 
-#pragma mark - Setters
+#pragma mark - Getters
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[WXAStorageTableView alloc] initWithFrame:CGRectMake(0, 0, WXA_SCREEN_WIDTH, self.contentView.frame.size.height) style:UITableViewStylePlain];

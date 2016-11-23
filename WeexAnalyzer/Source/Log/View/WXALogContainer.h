@@ -7,22 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXABaseContainer.h"
 #import "WXALogSettingsModel.h"
 
 @protocol WXALogContainerDelegate <NSObject>
 
-- (void)onContainerSizeChanged;
+- (void)onClearLog;
+- (void)onLogFilterChanged:(WXALogFilterModel *)filterModel;
 
 @end
 
-@interface WXALogContainer : UIView
+@interface WXALogContainer : WXABaseContainer
 
-@property (nonatomic, weak) id<WXALogContainerDelegate> delegate;
+@property (nonatomic, weak) id<WXALogContainerDelegate> logDelegate;
 
-- (instancetype)initWithFrame:(CGRect)frame windowType:(WXALogWindowType)windowType;
-
-- (void)changedWindowType:(WXALogWindowType)windowType;
-
-+ (CGRect)frameForWindowType:(WXALogWindowType)windowType;
+- (void)refreshData:(NSArray *)data;
+- (void)setLogFilter:(WXALogFilterModel *)filterModel;
 
 @end

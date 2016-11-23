@@ -41,10 +41,6 @@
 		417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6801DC4C934002BA6E4 /* WXALogModel.m */; };
 		417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6811DC4C934002BA6E4 /* WXALogSettingsModel.h */; };
 		417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6821DC4C934002BA6E4 /* WXALogSettingsModel.m */; };
-		417AB6B91DC4C934002BA6E4 /* WXALogFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6841DC4C934002BA6E4 /* WXALogFilter.h */; };
-		417AB6BA1DC4C934002BA6E4 /* WXALogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6851DC4C934002BA6E4 /* WXALogFilter.m */; };
-		417AB6BB1DC4C934002BA6E4 /* WXALogWindowSelect.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */; };
-		417AB6BC1DC4C934002BA6E4 /* WXALogWindowSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */; };
 		417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6891DC4C934002BA6E4 /* WXALogContainer.h */; };
 		417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */; };
 		417AB6BF1DC4C934002BA6E4 /* WXALogFilterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */; };
@@ -59,10 +55,6 @@
 		417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6941DC4C934002BA6E4 /* WXALogResultView.m */; };
 		417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */; };
 		417AB6CA1DC4C934002BA6E4 /* WXALogSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */; };
-		417AB6CB1DC4C934002BA6E4 /* WXALogSortBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */; };
-		417AB6CC1DC4C934002BA6E4 /* WXALogSortBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */; };
-		417AB6CD1DC4C934002BA6E4 /* WXALogTipsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */; };
-		417AB6CE1DC4C934002BA6E4 /* WXALogTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */; };
 		417AB6CF1DC4C934002BA6E4 /* WXAExternalLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB69B1DC4C934002BA6E4 /* WXAExternalLogger.h */; };
 		417AB6D01DC4C934002BA6E4 /* WXAExternalLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB69C1DC4C934002BA6E4 /* WXAExternalLogger.m */; };
 		417AB6D11DC4C934002BA6E4 /* WXALogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB69D1DC4C934002BA6E4 /* WXALogManager.h */; };
@@ -144,10 +136,6 @@
 		417AB6801DC4C934002BA6E4 /* WXALogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogModel.m; sourceTree = "<group>"; };
 		417AB6811DC4C934002BA6E4 /* WXALogSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSettingsModel.h; sourceTree = "<group>"; };
 		417AB6821DC4C934002BA6E4 /* WXALogSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSettingsModel.m; sourceTree = "<group>"; };
-		417AB6841DC4C934002BA6E4 /* WXALogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFilter.h; sourceTree = "<group>"; };
-		417AB6851DC4C934002BA6E4 /* WXALogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogFilter.m; sourceTree = "<group>"; };
-		417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogWindowSelect.h; sourceTree = "<group>"; };
-		417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogWindowSelect.m; sourceTree = "<group>"; };
 		417AB6891DC4C934002BA6E4 /* WXALogContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogContainer.h; sourceTree = "<group>"; };
 		417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogContainer.m; sourceTree = "<group>"; };
 		417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogFilterView.h; sourceTree = "<group>"; };
@@ -162,10 +150,6 @@
 		417AB6941DC4C934002BA6E4 /* WXALogResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogResultView.m; sourceTree = "<group>"; };
 		417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSelectItemView.h; sourceTree = "<group>"; };
 		417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSelectItemView.m; sourceTree = "<group>"; };
-		417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogSortBar.h; sourceTree = "<group>"; };
-		417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogSortBar.m; sourceTree = "<group>"; };
-		417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogTipsView.h; sourceTree = "<group>"; };
-		417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXALogTipsView.m; sourceTree = "<group>"; };
 		417AB69B1DC4C934002BA6E4 /* WXAExternalLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAExternalLogger.h; sourceTree = "<group>"; };
 		417AB69C1DC4C934002BA6E4 /* WXAExternalLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAExternalLogger.m; sourceTree = "<group>"; };
 		417AB69D1DC4C934002BA6E4 /* WXALogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXALogManager.h; sourceTree = "<group>"; };
@@ -351,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				417AB67C1DC4C934002BA6E4 /* Model */,
-				417AB6831DC4C934002BA6E4 /* Presenter */,
 				417AB6881DC4C934002BA6E4 /* View */,
 				417AB69D1DC4C934002BA6E4 /* WXALogManager.h */,
 				417AB69E1DC4C934002BA6E4 /* WXALogManager.m */,
@@ -374,38 +357,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		417AB6831DC4C934002BA6E4 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				417AB6841DC4C934002BA6E4 /* WXALogFilter.h */,
-				417AB6851DC4C934002BA6E4 /* WXALogFilter.m */,
-				417AB6861DC4C934002BA6E4 /* WXALogWindowSelect.h */,
-				417AB6871DC4C934002BA6E4 /* WXALogWindowSelect.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		417AB6881DC4C934002BA6E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				417AB6891DC4C934002BA6E4 /* WXALogContainer.h */,
 				417AB68A1DC4C934002BA6E4 /* WXALogContainer.m */,
+				417AB6931DC4C934002BA6E4 /* WXALogResultView.h */,
+				417AB6941DC4C934002BA6E4 /* WXALogResultView.m */,
+				417AB6911DC4C934002BA6E4 /* WXALogResultCell.h */,
+				417AB6921DC4C934002BA6E4 /* WXALogResultCell.m */,
 				417AB68B1DC4C934002BA6E4 /* WXALogFilterView.h */,
 				417AB68C1DC4C934002BA6E4 /* WXALogFilterView.m */,
 				417AB68D1DC4C934002BA6E4 /* WXALogFlagView.h */,
 				417AB68E1DC4C934002BA6E4 /* WXALogFlagView.m */,
 				417AB68F1DC4C934002BA6E4 /* WXALogLevelView.h */,
 				417AB6901DC4C934002BA6E4 /* WXALogLevelView.m */,
-				417AB6911DC4C934002BA6E4 /* WXALogResultCell.h */,
-				417AB6921DC4C934002BA6E4 /* WXALogResultCell.m */,
-				417AB6931DC4C934002BA6E4 /* WXALogResultView.h */,
-				417AB6941DC4C934002BA6E4 /* WXALogResultView.m */,
 				417AB6951DC4C934002BA6E4 /* WXALogSelectItemView.h */,
 				417AB6961DC4C934002BA6E4 /* WXALogSelectItemView.m */,
-				417AB6971DC4C934002BA6E4 /* WXALogSortBar.h */,
-				417AB6981DC4C934002BA6E4 /* WXALogSortBar.m */,
-				417AB6991DC4C934002BA6E4 /* WXALogTipsView.h */,
-				417AB69A1DC4C934002BA6E4 /* WXALogTipsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,7 +435,6 @@
 				417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */,
 				41B249591DCB744C001C415B /* WXAStorageTableHeader.h in Headers */,
 				41B249461DCA0E3C001C415B /* WXAStorageInfoCell.h in Headers */,
-				417AB6BB1DC4C934002BA6E4 /* WXALogWindowSelect.h in Headers */,
 				412CC6611DC979A900A71167 /* WXAStorageContainer.h in Headers */,
 				412DAF061DCE0C9100D42DC3 /* WXABaseOptionBar.h in Headers */,
 				41B2493D1DCA0352001C415B /* WXAStorageResolver.h in Headers */,
@@ -477,7 +444,6 @@
 				410A61491DD22A2800EB22A7 /* WXABaseContentView.h in Headers */,
 				412DAEFD1DCE0C3500D42DC3 /* WXAMenuView.h in Headers */,
 				417AB6E31DC4C934002BA6E4 /* WeexAnalyzerDefine.h in Headers */,
-				417AB6B91DC4C934002BA6E4 /* WXALogFilter.h in Headers */,
 				417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */,
 				4189EEB81DCF809600C3DA01 /* WXASwitchSizeOptionView.h in Headers */,
 				417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */,
@@ -494,12 +460,10 @@
 				412DAF0E1DCE0FAA00D42DC3 /* WXAOptionButton.h in Headers */,
 				417AB6D91DC4C934002BA6E4 /* UIView+WXAPopover.h in Headers */,
 				417AB6DF1DC4C934002BA6E4 /* WXAViewControllerUtil.h in Headers */,
-				417AB6CB1DC4C934002BA6E4 /* WXALogSortBar.h in Headers */,
 				417AB6C51DC4C934002BA6E4 /* WXALogResultCell.h in Headers */,
 				417AB6C71DC4C934002BA6E4 /* WXALogResultView.h in Headers */,
 				41B249421DCA0796001C415B /* WXAStorageInfoModel.h in Headers */,
 				417AB6D71DC4C934002BA6E4 /* WXAPerformanceView.h in Headers */,
-				417AB6CD1DC4C934002BA6E4 /* WXALogTipsView.h in Headers */,
 				417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */,
 				417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */,
 			);
@@ -653,9 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				417AB6E21DC4C934002BA6E4 /* WeexAnalyzer.m in Sources */,
-				417AB6BC1DC4C934002BA6E4 /* WXALogWindowSelect.m in Sources */,
 				412CC65D1DC9784F00A71167 /* WXAStorageManager.m in Sources */,
-				417AB6CC1DC4C934002BA6E4 /* WXALogSortBar.m in Sources */,
 				41B2495E1DCB811F001C415B /* WXAStorageDetailView.m in Sources */,
 				417AB6D81DC4C934002BA6E4 /* WXAPerformanceView.m in Sources */,
 				417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */,
@@ -677,13 +639,11 @@
 				410A61461DD221E500EB22A7 /* WXAOptionBaseView.m in Sources */,
 				417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */,
 				417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */,
-				417AB6BA1DC4C934002BA6E4 /* WXALogFilter.m in Sources */,
 				412DAF071DCE0C9100D42DC3 /* WXABaseOptionBar.m in Sources */,
 				412CC6621DC979A900A71167 /* WXAStorageContainer.m in Sources */,
 				417AB6DE1DC4C934002BA6E4 /* WXAUtility.m in Sources */,
 				417AB6B41DC4C934002BA6E4 /* WXALogFilterModel.m in Sources */,
 				417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */,
-				417AB6CE1DC4C934002BA6E4 /* WXALogTipsView.m in Sources */,
 				412DAEF51DCDFA2B00D42DC3 /* WXAStorageItemModel.m in Sources */,
 				417AB6DA1DC4C934002BA6E4 /* UIView+WXAPopover.m in Sources */,
 				41B2495A1DCB744C001C415B /* WXAStorageTableHeader.m in Sources */,

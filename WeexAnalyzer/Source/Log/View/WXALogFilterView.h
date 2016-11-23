@@ -9,20 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "WXALogLevelView.h"
 #import "WXALogFlagView.h"
+#import "WXALogFilterModel.h"
+#import "WXAOptionBaseView.h"
 
-@protocol WXALogFilterViewDelegate <NSObject>
+@interface WXALogFilterView : WXAOptionBaseView
 
-- (void)onLogFilterChanged:(WXLogFlag)logFlag :(WXLogLevel)logLevel;
+- (instancetype)initWithFrame:(CGRect)frame
+                   hostOption:(WXAOptionButton *)hostOption
+                      handler:(void (^)(WXALogFilterModel *))handler;
 
-@end
-
-@interface WXALogFilterView : UIView
-
-@property (nonatomic, strong) UIScrollView *container;
-@property (nonatomic, strong) WXALogLevelView *logLevelView;
-@property (nonatomic, strong) WXALogFlagView *logFlagView;
-@property (nonatomic, weak) id<WXALogFilterViewDelegate> delegate;
-
-- (void)setLogFilter:(WXLogFlag)logFlag :(WXLogLevel)logLevel;
+- (void)setLogFilter:(WXALogFilterModel *)filterModel;
 
 @end

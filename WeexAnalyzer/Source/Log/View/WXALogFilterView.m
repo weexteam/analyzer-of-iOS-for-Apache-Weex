@@ -12,14 +12,25 @@
 
 @interface WXALogFilterView () <UIScrollViewDelegate>
 
+@property (nonatomic, strong) UIScrollView *container;
+@property (nonatomic, strong) WXALogLevelView *logLevelView;
+@property (nonatomic, strong) WXALogFlagView *logFlagView;
 @property (nonatomic, strong) UIButton *confirmBtn;
+
+@property (nonatomic, copy) void(^handler)(WXALogFilterModel *filterModel);
 
 @end
 
 @implementation WXALogFilterView
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+- (instancetype)initWithFrame:(CGRect)frame
+                   hostOption:(WXAOptionButton *)hostOption
+                      handler:(void (^)(WXALogFilterModel *))handler {
+    if (self = [super initWithFrame:frame hostOption:hostOption]) {
+        _handler = handler;
+        
+        self.backgroundColor = [UIColor whiteColor];
+        self.clipsToBounds = YES;
         [self addSubview:self.container];
         [self.container addSubview:self.logFlagView];
         [self.container addSubview:self.logLevelView];
@@ -29,6 +40,28 @@
     return self;
 }
 
+#pragma mark - public methods
+- (void)setLogFilter:(WXALogFilterModel *)filterModel {
+    [self.logFlagView setLogFlag:filterModel.logFlag];
+    [self.logLevelView setLogLevel:filterModel.logLevel];
+}
+
+#pragma mark - actions
+- (void)confirmAction:(id)sender {
+    if (_handler) {
+        WXALogFilterModel *filterModel = [[WXALogFilterModel alloc] init];
+        filterModel.logFlag = self.logFlagView.logFlag;
+        filterModel.logLevel = self.logLevelView.logLevel;
+        _handler(filterModel);
+    }
+}
+
+- (void)adjustSubviews {
+    _logLevelView.frame = CGRectMake(10, _logFlagView.frame.origin.y+_logFlagView.frame.size.height, _logLevelView.frame.size.width, _logLevelView.frame.size.height);
+    _container.contentSize = CGSizeMake(_container.frame.size.width, _logLevelView.frame.origin.y+_logLevelView.frame.size.height);
+}
+
+#pragma mark - Getters
 - (UIScrollView *)container {
     if (!_container) {
         _container = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-WXALOG_LOGFILTER_BOTTOM_HEIGHT)];
@@ -70,23 +103,6 @@
         [_confirmBtn addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
-}
-
-- (void)adjustSubviews {
-    _logLevelView.frame = CGRectMake(10, _logFlagView.frame.origin.y+_logFlagView.frame.size.height, _logLevelView.frame.size.width, _logLevelView.frame.size.height);
-    _container.contentSize = CGSizeMake(_container.frame.size.width, _logLevelView.frame.origin.y+_logLevelView.frame.size.height);
-}
-
-- (void)setLogFilter:(WXLogFlag)logFlag :(WXLogLevel)logLevel {
-    [self.logFlagView setLogFlag:logFlag];
-    [self.logLevelView setLogLevel:logLevel];
-}
-
-#pragma mark - actions
-- (void)confirmAction:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onLogFilterChanged::)]) {
-        [self.delegate onLogFilterChanged:self.logFlagView.logFlag :self.logLevelView.logLevel];
-    }
 }
 
 @end

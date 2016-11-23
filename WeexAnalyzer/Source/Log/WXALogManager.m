@@ -11,24 +11,13 @@
 #import <WeexSDK/WeexSDK.h>
 #import "WXAExternalLogger.h"
 #import "WXAUtility.h"
-#import "WXALogFilter.h"
-#import "WXALogSortBar.h"
-#import "WXALogResultCell.h"
-#import "WXALogWindowSelect.h"
-#import "WXALogResultView.h"
-#import "WXALogSortBar.h"
 #import "WXALogContainer.h"
 
-#define WXALOG_SORTBAR_HEIGHT               40
 #define WXALOG_SETTINGS_KEY                 @"wxalog_settings_key"
 
-@interface WXALogManager () <WXAExternalLogDelegate, WXALogContainerDelegate, WXALogSortBarDelegate>
+@interface WXALogManager () <WXAExternalLogDelegate, WXALogContainerDelegate, WXABaseContainerDelegate>
 
 @property (nonatomic, strong) WXALogContainer *container;
-@property (nonatomic, strong) WXALogResultView *logTableView;
-@property (nonatomic, strong) WXALogSortBar *sortBar;
-@property (nonatomic, strong) UIButton *tipButton;
-
 @property (nonatomic, strong) WXAExternalLogger *logger;
 @property (nonatomic, strong) WXALogSettingsModel *settings;
 
@@ -80,12 +69,6 @@
 - (void)free {
     [self stopLogging];
     
-    [_sortBar removeFromSuperview];
-    _sortBar = nil;
-    [_logTableView removeFromSuperview];
-    _logTableView = nil;
-    [_tipButton removeFromSuperview];
-    _tipButton = nil;
     _container = nil;
 }
 
@@ -112,58 +95,33 @@
     self.sortedLogs = [array copy];
 }
 
-- (void)changeWindowType:(WXALogWindowType)windowType {
-    self.sortBar.hidden = (windowType == WXALogWindowTypeSmall);
-    self.logTableView.hidden = (windowType == WXALogWindowTypeSmall);
-    self.tipButton.hidden = !(windowType == WXALogWindowTypeSmall);
-    
-    [self.container changedWindowType:windowType];
-}
-
-- (void)expandAction:(UIButton *)sender {
-    [self.sortBar.windowFilter setWindowType:WXALogWindowTypeMedium];
-    [self onWindowTypeChanged:WXALogWindowTypeMedium];
-}
-
 #pragma mark - WXAExternalLogDelegate
 - (void)newLogsReceived {
     [self sortLogsByFilter];
-    self.logTableView.data = self.sortedLogs;
-    [self.logTableView reloadResults];
+    [self.container refreshData:self.sortedLogs];
 }
 
-#pragma mark - WXALogSortBarDelegate
+#pragma mark - WXALogContainerDelegate
 - (void)onClearLog {
     [self.logger clearLogs];
-    self.sortedLogs = [NSArray array];
-    self.logTableView.data = self.sortedLogs;
-    [self.logTableView reloadResults];
+    [self sortLogsByFilter];
+    [self.container refreshData:self.sortedLogs];
 }
 
-- (void)onLockLog {
-    _logTableView.autoScroll = !_logTableView.autoScroll;
-}
-
-- (void)onCloseLog {
-    [self hide];
-}
-
-- (void)onFilterChanged:(WXALogFilterModel *)filterModel {
+- (void)onLogFilterChanged:(WXALogFilterModel *)filterModel {
     self.settings.filter = filterModel;
     [self.logger setLogLevel:filterModel.logLevel];
     
     [self sortLogsByFilter];
-    self.logTableView.data = self.sortedLogs;
-    [self.logTableView reloadResults];
+    [self.container refreshData:self.sortedLogs];
+    [self.container setLogFilter:filterModel];
     
     [self saveLogSettings];
 }
 
-- (void)onWindowTypeChanged:(WXALogWindowType)windowType {
-    self.settings.windowType = windowType;
-    [self changeWindowType:windowType];
-    
-    [self saveLogSettings];
+#pragma mark - WXABaseContainerDelegate
+- (void)onCloseWindow {
+    [self hide];
 }
 
 - (void)saveLogSettings {
@@ -171,53 +129,15 @@
     [[NSUserDefaults standardUserDefaults] setObject:dic forKey:WXALOG_SETTINGS_KEY];
 }
 
-#pragma mark - WXALogContainerDelegate
-- (void)onContainerSizeChanged {
-    self.logTableView.frame = CGRectMake(0, WXALOG_SORTBAR_HEIGHT, WXA_SCREEN_WIDTH, self.container.frame.size.height-WXALOG_SORTBAR_HEIGHT);
-    [self.sortBar onHostViewSizeChanged];
-}
-
 #pragma mark - Setters
 - (WXALogContainer *)container {
     if (!_container) {
-        _container = [[WXALogContainer alloc] initWithFrame:CGRectZero
-                                                 windowType:self.settings.windowType];
+        _container = [[WXALogContainer alloc] initWithWindowType:WXALogWindowTypeMedium];
+        [_container setLogFilter:self.settings.filter];
         _container.delegate = self;
-        [_container addSubview:self.sortBar];
-        [_container addSubview:self.logTableView];
-        [_container addSubview:self.tipButton];
+        _container.logDelegate = self;
     }
     return _container;
-}
-
-- (UITableView *)logTableView {
-    if (!_logTableView) {
-        _logTableView = [[WXALogResultView alloc] initWithFrame:CGRectMake(0, WXALOG_SORTBAR_HEIGHT, WXA_SCREEN_WIDTH, self.container.frame.size.height-WXALOG_SORTBAR_HEIGHT)];
-    }
-    return _logTableView;
-}
-
-- (UIButton *)tipButton {
-    if (!_tipButton) {
-        _tipButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _tipButton.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
-        CGRect frame = [WXALogContainer frameForWindowType:WXALogWindowTypeSmall];
-        _tipButton.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        [_tipButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        _tipButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_tipButton setTitle:@"WeexAnalyzer" forState:UIControlStateNormal];
-        _tipButton.hidden = YES;
-        [_tipButton addTarget:self action:@selector(expandAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _tipButton;
-}
-
-- (WXALogSortBar *)sortBar {
-    if (!_sortBar) {
-        _sortBar = [[WXALogSortBar alloc] initWithFrame:CGRectMake(0, 0, WXA_SCREEN_WIDTH, WXALOG_SORTBAR_HEIGHT) hostView:_container settings:self.settings];
-        _sortBar.delegate = self;
-    }
-    return _sortBar;
 }
 
 - (WXALogSettingsModel *)settings {
