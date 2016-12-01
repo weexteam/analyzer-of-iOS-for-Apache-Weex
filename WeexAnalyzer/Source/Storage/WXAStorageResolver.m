@@ -126,6 +126,19 @@
     methodInstance(self.storageInstance, removeItemSel, key, wxCallback);    
 }
 
+- (dispatch_queue_t)storageQueue {
+    // get removeItem method
+    SEL targetQueueSel = NSSelectorFromString(@"targetExecuteQueue");
+    if (![self.storageInstance respondsToSelector:targetQueueSel]) {
+        return dispatch_get_main_queue();
+    }
+    
+    // storageQueue
+    typedef dispatch_queue_t (*send_type)(id, SEL);
+    send_type methodInstance = (send_type)[self.StorageModuleClass instanceMethodForSelector:targetQueueSel];
+    return methodInstance(self.storageInstance, targetQueueSel);
+}
+
 #pragma mark - Setters
 - (Class)StorageModuleClass {
     if (!_StorageModuleClass) {

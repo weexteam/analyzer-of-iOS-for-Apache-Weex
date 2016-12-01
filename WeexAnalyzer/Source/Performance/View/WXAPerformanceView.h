@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WeexSDK/WXSDKInstance.h>
+#import "WXAPerformanceModel.h"
 
 @interface WXAPerformanceView : UIView
 
-//- (instancetype)initWithInstance:(WXSDKInstance *)instance;
+@property (nonatomic, strong) NSArray<NSArray<WXAPerformanceModel *> *> *data;
 
-//- (void)showInView:(UIView *)parentView;
+- (void)show;
+- (void)hide;
 
 @end

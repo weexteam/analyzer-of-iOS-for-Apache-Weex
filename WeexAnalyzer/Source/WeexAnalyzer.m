@@ -10,11 +10,11 @@
 #import "WXAMenuView.h"
 #import <WeexSDK/WXSDKManager.h>
 #import "WXAUtility.h"
-#import "WXALogManager.h"
-#import "WXAStorageManager.h"
 #import "WeexAnalyzerDefine.h"
 #import "WXAWXExternalLogger.h"
 #import "WXALogMenuItem.h"
+#import "WXAPerformanceMenuItem.h"
+#import "WXAStorageMenuItem.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -34,7 +34,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) WXAStorageManager *storageManager;
+@property (nonatomic, strong) WXSDKInstance *wxInstance;
 
 @end
 
@@ -55,10 +55,10 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         _items = [NSArray array];
         
         WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志" logger:[WXAWXExternalLogger new]];
+        WXAPerformanceMenuItem *perfItem = [WXAPerformanceMenuItem new];
+        WXAStorageMenuItem *storageItem = [WXAStorageMenuItem new];
         
-        _storageManager = [[WXAStorageManager alloc] init];
-        
-        _items = @[wxLogItem, _storageManager.mItem];
+        _items = @[wxLogItem, perfItem, storageItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
@@ -81,6 +81,18 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 + (void)disableDebugMode {
 #ifdef WXADevMode
     [[WeexAnalyzer sharedInstance] free];
+#endif
+}
+
++ (void)bindWXInstance:(WXSDKInstance *)wxInstance {
+#ifdef WXADevMode
+    [WeexAnalyzer sharedInstance].wxInstance = wxInstance;
+#endif
+}
+
++ (void)unbindWXInstance:(WXSDKInstance *)wxInstance {
+#ifdef WXADevMode
+    [WeexAnalyzer sharedInstance].wxInstance = nil;
 #endif
 }
 
@@ -109,15 +121,26 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
     NSMutableArray *array = [_items mutableCopy];
     [array addObject:item];
     _items = [array copy];
+    
+    item.wxInstance = self.wxInstance;
 #endif
 }
 
 - (void)free {
 #ifdef WXADevMode
     _items = nil;
+    _wxInstance = nil;
+#endif
+}
+
+#pragma mark - Setters
+- (void)setWxInstance:(WXSDKInstance *)wxInstance {
+#ifdef WXADevMode
+    _wxInstance = wxInstance;
     
-    [_storageManager free];
-    _storageManager = nil;
+    for (WXAMenuItem *item in self.items) {
+        item.wxInstance = wxInstance;
+    }
 #endif
 }
 

@@ -20,22 +20,6 @@
 
 @implementation WXAStorageManager
 
-- (WXAMenuItem *)mItem {
-    if (!_mItem) {
-        _mItem = [[WXAMenuItem alloc] init];
-        _mItem.title = @"Weex-Storage管理";
-        __weak typeof(self) welf = self;
-        _mItem.handler = ^(BOOL selected) {
-            if (selected) {
-                [welf show];
-            } else {
-                [welf hide];
-            }
-        };
-    }
-    return _mItem;
-}
-
 #pragma mark - public methods
 - (void)free {
     [self hide];

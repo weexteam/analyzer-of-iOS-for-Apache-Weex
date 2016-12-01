@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WXAMenuItem.h"
 
 @interface WXAStorageManager : NSObject
 
-@property (nonatomic, strong) WXAMenuItem *mItem;
-
+- (void)show;
+- (void)hide;
 - (void)free;
 
 @end
