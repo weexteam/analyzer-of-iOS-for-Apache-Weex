@@ -350,6 +350,7 @@
 		417AB67A1DC4C934002BA6E4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				41C0502B1DF041BB004F3BB7 /* Indicator */,
 				412DAEFF1DCE0C6300D42DC3 /* Base */,
 				412DAEF61DCE0C3500D42DC3 /* Menu */,
 				412CC6591DC9784000A71167 /* Storage */,
@@ -451,6 +452,13 @@
 				412DAEF31DCDFA2B00D42DC3 /* WXAStorageItemModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		41C0502B1DF041BB004F3BB7 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Indicator;
 			sourceTree = "<group>";
 		};
 		41FB158C1DED52DB004BC3DA /* Model */ = {

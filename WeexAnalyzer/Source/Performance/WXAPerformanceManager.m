@@ -18,7 +18,10 @@
 
 @end
 
-@implementation WXAPerformanceManager
+@implementation WXAPerformanceManager {
+    BOOL _refresh;
+    NSUInteger _componentsCount;
+}
 
 #pragma mark - public methods
 - (void)show {
@@ -51,22 +54,32 @@
     if (self.wxInstance) {
         [array addObject:[self modelForTitle:@"Page Name" value:self.wxInstance.pageName category:WXAPerformanceCategoryBasic]];
         [array addObject:[self modelForTitle:@"Template Url" value:self.wxInstance.scriptURL.absoluteString category:WXAPerformanceCategoryBasic]];
-    }
-    
-    /*[array addObject:[self modelForTitle:@"Total Components"
-                                   value:[NSString stringWithFormat:@"%ld",self.wxInstance.numberOfComponents]
-                                category:WXAPerformanceCategoryBasic]];*/
-    
-    if (self.wxInstance.userInfo[@"weex_bundlejs_connectionType"]) {
-        [array addObject:[self modelForTitle:@"weex_bundlejs_connectionType"
-                                       value:self.wxInstance.userInfo[@"weex_bundlejs_connectionType"]
+        
+        [array addObject:[self modelForTitle:@"Total Components"
+                                       value:[NSString stringWithFormat:@"%ld",_componentsCount]
                                     category:WXAPerformanceCategoryBasic]];
-    }
-    
-    if (self.wxInstance.userInfo[@"weex_bundlejs_requestType"]) {
-        [array addObject:[self modelForTitle:@"weex_bundlejs_requestType"
-                                       value:self.wxInstance.userInfo[@"weex_bundlejs_requestType"]
-                                    category:WXAPerformanceCategoryBasic]];
+        
+        if (!_refresh) {
+            _refresh = YES;
+            __weak typeof(self) welf = self;
+            WXPerformBlockOnComponentThread(^{
+                _componentsCount = welf.wxInstance.numberOfComponents;
+                [welf refreshData];
+                _refresh = NO;
+            });
+        }
+        
+        if (self.wxInstance.userInfo[@"weex_bundlejs_connectionType"]) {
+            [array addObject:[self modelForTitle:@"weex_bundlejs_connectionType"
+                                           value:self.wxInstance.userInfo[@"weex_bundlejs_connectionType"]
+                                        category:WXAPerformanceCategoryBasic]];
+        }
+        
+        if (self.wxInstance.userInfo[@"weex_bundlejs_requestType"]) {
+            [array addObject:[self modelForTitle:@"weex_bundlejs_requestType"
+                                           value:self.wxInstance.userInfo[@"weex_bundlejs_requestType"]
+                                        category:WXAPerformanceCategoryBasic]];
+        }
     }
     
     return [array copy];
