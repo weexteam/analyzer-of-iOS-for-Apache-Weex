@@ -19,7 +19,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"Weex性能指标";
+        self.title = @"Weex 性能指标";
         
         __weak typeof(self) welf = self;
         self.handler = ^(BOOL selected) {
