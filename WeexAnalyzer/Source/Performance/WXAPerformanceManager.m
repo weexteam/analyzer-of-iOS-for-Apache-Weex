@@ -56,7 +56,7 @@
         [array addObject:[self modelForTitle:@"Template Url" value:self.wxInstance.scriptURL.absoluteString category:WXAPerformanceCategoryBasic]];
         
         [array addObject:[self modelForTitle:@"Total Components"
-                                       value:[NSString stringWithFormat:@"%ld",_componentsCount]
+                                       value:[NSString stringWithFormat:@"%@",@(_componentsCount)]
                                     category:WXAPerformanceCategoryBasic]];
         
         if (!_refresh) {
