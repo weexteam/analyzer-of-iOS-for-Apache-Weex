@@ -90,7 +90,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 #endif
 }
 
-+ (void)unbindWXInstance:(WXSDKInstance *)wxInstance {
++ (void)unbindWXInstance {
 #ifdef WXADevMode
     [WeexAnalyzer sharedInstance].wxInstance = nil;
 #endif

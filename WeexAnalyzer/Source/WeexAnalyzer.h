@@ -16,7 +16,7 @@
 + (void)disableDebugMode;
 
 + (void)bindWXInstance:(WXSDKInstance *)wxInstance;
-+ (void)unbindWXInstance:(WXSDKInstance *)wxInstance;
++ (void)unbindWXInstance;
 
 + (void)addMenuItem:(WXAMenuItem *)item;
 
