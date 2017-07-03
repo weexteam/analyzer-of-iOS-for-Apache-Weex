@@ -8,6 +8,7 @@
 
 #import "WXAWXExternalLogger.h"
 #import <WeexSDK/WeexSDK.h>
+#import <pthread/pthread.h>
 
 #define WXALOG_LOGGER_THROTTLE  500.0
 
@@ -18,11 +19,13 @@
 @implementation WXAWXExternalLogger {
     WXLogLevel _logLevel;
     WXLogFlag _logFlag;
-    NSArray *_totalLogs;
+    NSMutableArray *_totalLogs;
     NSDateFormatter *_dateFormatter;
     
     NSTimeInterval _lastSendTime;
     NSTimer *_timer;
+    
+    pthread_mutex_t mutex;
 }
 
 @synthesize logManager;
@@ -32,12 +35,17 @@
     if (self = [super init]) {
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-        _totalLogs = [NSArray array];
+        _totalLogs = [NSMutableArray array];
         logs = [NSArray array];
         _lastSendTime = [[NSDate date] timeIntervalSince1970] * 1000;
         _logLevel = WXLogLevelLog;
+        pthread_mutex_init(&mutex, NULL);
     }
     return self;
+}
+    
+- (void)dealloc {
+    pthread_mutex_destroy(&mutex);
 }
 
 #pragma mark - WXALogProtocol
@@ -51,7 +59,9 @@
 }
 
 - (void)onClearLog {
-    _totalLogs = [NSArray array];
+    pthread_mutex_lock(&mutex);
+    _totalLogs = [NSMutableArray array];
+    pthread_mutex_unlock(&mutex);
     [self sortLogs];
 }
 
@@ -74,9 +84,9 @@
     NSString *timeStr = [_dateFormatter stringFromDate:[NSDate date]];
     model.message = [NSString stringWithFormat:@"%@: %@",timeStr,message];
     
-    NSMutableArray *array = [_totalLogs mutableCopy];
-    [array addObject:model];
-    _totalLogs = [array copy];
+    pthread_mutex_lock(&mutex);
+    [_totalLogs addObject:model];
+    pthread_mutex_unlock(&mutex);
     
     NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970] * 1000;
     if (nowTime - _lastSendTime >= WXALOG_LOGGER_THROTTLE) {
@@ -92,6 +102,7 @@
 
 #pragma mark - private methods
 - (void)sortLogs {
+    pthread_mutex_lock(&mutex);
     NSMutableArray *array = [NSMutableArray array];
     for (WXALogModel *model in _totalLogs) {
         if (model.flag & _logFlag) {
@@ -99,6 +110,7 @@
         }
     }
     logs = [array copy];
+    pthread_mutex_unlock(&mutex);
     
     __weak typeof(self) welf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
