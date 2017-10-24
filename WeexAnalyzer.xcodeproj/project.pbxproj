@@ -101,7 +101,7 @@
 		41FB159E1DEDAAD7004BC3DA /* WXAPerformanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FB159C1DEDAAD7004BC3DA /* WXAPerformanceHelper.m */; };
 		D94C9E2F1F9F25880011F662 /* WXAMenuDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */; };
 		D94C9E301F9F25880011F662 /* WXAMenuDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */; };
-		D94C9E311F9F25880011F662 /* WXAMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2E1F9F25880011F662 /* WXAMenuProtocol.h */; };
+		D94C9E311F9F25880011F662 /* WXAMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2E1F9F25880011F662 /* WXAMenuProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDC40F23CA26762BB795851C /* libPods-WeexAnalyzer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */; };
 /* End PBXBuildFile section */
 
