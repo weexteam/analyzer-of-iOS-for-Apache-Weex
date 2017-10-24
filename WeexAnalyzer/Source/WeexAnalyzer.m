@@ -15,6 +15,7 @@
 #import "WXALogMenuItem.h"
 #import "WXAPerformanceMenuItem.h"
 #import "WXAStorageMenuItem.h"
+#import "WXAMenuDefaultImpl.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -66,6 +67,8 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
                                                  selector:@selector(shakeAction:)
                                                      name:WXAShowDevMenuNotification
                                                    object:nil];
+        
+        [WXSDKEngine registerHandler:[WXAMenuDefaultImpl new] withProtocol:@protocol(WXAMenuProtocol)];
 #endif
     }
     return self;
@@ -141,6 +144,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
     for (WXAMenuItem *item in self.items) {
         item.wxInstance = wxInstance;
     }
+    [[WXSDKEngine handlerForProtocol:@protocol(WXAMenuProtocol)] setWxInstance:wxInstance];
 #endif
 }
 

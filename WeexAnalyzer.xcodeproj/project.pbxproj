@@ -99,6 +99,9 @@
 		41FB15991DED735D004BC3DA /* WXAPerformanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FB15971DED735D004BC3DA /* WXAPerformanceView.m */; };
 		41FB159D1DEDAAD7004BC3DA /* WXAPerformanceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 41FB159B1DEDAAD7004BC3DA /* WXAPerformanceHelper.h */; };
 		41FB159E1DEDAAD7004BC3DA /* WXAPerformanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FB159C1DEDAAD7004BC3DA /* WXAPerformanceHelper.m */; };
+		D94C9E2F1F9F25880011F662 /* WXAMenuDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */; };
+		D94C9E301F9F25880011F662 /* WXAMenuDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */; };
+		D94C9E311F9F25880011F662 /* WXAMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2E1F9F25880011F662 /* WXAMenuProtocol.h */; };
 		FDC40F23CA26762BB795851C /* libPods-WeexAnalyzer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +214,9 @@
 		41FB159C1DEDAAD7004BC3DA /* WXAPerformanceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAPerformanceHelper.m; sourceTree = "<group>"; };
 		A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexAnalyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3BE9937A5381F553F0FA5C /* libPods-WeexAnalyzer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexAnalyzer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMenuDefaultImpl.h; sourceTree = "<group>"; };
+		D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMenuDefaultImpl.m; sourceTree = "<group>"; };
+		D94C9E2E1F9F25880011F662 /* WXAMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMenuProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,12 +356,13 @@
 		417AB67A1DC4C934002BA6E4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				41C0502B1DF041BB004F3BB7 /* Indicator */,
 				412DAEFF1DCE0C6300D42DC3 /* Base */,
+				D94C9E2A1F9F25880011F662 /* Handler */,
 				412DAEF61DCE0C3500D42DC3 /* Menu */,
 				412CC6591DC9784000A71167 /* Storage */,
 				417AB67B1DC4C934002BA6E4 /* Log */,
 				417AB6A41DC4C934002BA6E4 /* Performance */,
+				D94C9E2D1F9F25880011F662 /* Protocol */,
 				417AB6A71DC4C934002BA6E4 /* Utils */,
 				417AB6B01DC4C934002BA6E4 /* WeexAnalyzer.h */,
 				417AB6B11DC4C934002BA6E4 /* WeexAnalyzer.m */,
@@ -454,13 +461,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		41C0502B1DF041BB004F3BB7 /* Indicator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Indicator;
-			sourceTree = "<group>";
-		};
 		41FB158C1DED52DB004BC3DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +499,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D94C9E2A1F9F25880011F662 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */,
+				D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		D94C9E2D1F9F25880011F662 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D94C9E2E1F9F25880011F662 /* WXAMenuProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -530,6 +547,7 @@
 				412DAEFD1DCE0C3500D42DC3 /* WXAMenuView.h in Headers */,
 				417AB6E31DC4C934002BA6E4 /* WeexAnalyzerDefine.h in Headers */,
 				417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */,
+				D94C9E311F9F25880011F662 /* WXAMenuProtocol.h in Headers */,
 				41FB15821DED2BB1004BC3DA /* WXAPerformanceMenuItem.h in Headers */,
 				4189EEB81DCF809600C3DA01 /* WXASwitchSizeOptionView.h in Headers */,
 				417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */,
@@ -548,6 +566,7 @@
 				41FB158A1DED3360004BC3DA /* WXAStorageMenuItem.h in Headers */,
 				417AB6C51DC4C934002BA6E4 /* WXALogResultCell.h in Headers */,
 				417AB6C71DC4C934002BA6E4 /* WXALogResultView.h in Headers */,
+				D94C9E2F1F9F25880011F662 /* WXAMenuDefaultImpl.h in Headers */,
 				41B249421DCA0796001C415B /* WXAStorageInfoModel.h in Headers */,
 				417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */,
 				417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */,
@@ -657,9 +676,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer-resources.sh",
+				"${PODS_ROOT}/WeexSDK/WeexSDK.framework/native-bundle-main.js",
+				"${PODS_ROOT}/WeexSDK/WeexSDK.framework/wx_load_error@3x.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -685,13 +708,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeexAnalyzer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -724,6 +750,7 @@
 				417AB6D21DC4C934002BA6E4 /* WXALogManager.m in Sources */,
 				417AB6CA1DC4C934002BA6E4 /* WXALogSelectItemView.m in Sources */,
 				41FB15991DED735D004BC3DA /* WXAPerformanceView.m in Sources */,
+				D94C9E301F9F25880011F662 /* WXAMenuDefaultImpl.m in Sources */,
 				410A61461DD221E500EB22A7 /* WXAOptionBaseView.m in Sources */,
 				417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */,
 				417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */,
