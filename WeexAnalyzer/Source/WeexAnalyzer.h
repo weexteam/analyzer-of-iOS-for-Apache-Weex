@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WeexSDK.h>
 #import "WXAMenuItem.h"
+#import "WXALogModel.h"
+#import "WXALogProtocol.h"
+#import "WXALogMenuItem.h"
 
 @interface WeexAnalyzer : NSObject
 
