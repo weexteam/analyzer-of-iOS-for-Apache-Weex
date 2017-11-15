@@ -118,6 +118,25 @@
     return label;
 }
 
+//允许 Menu菜单
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+//每个cell都会点击出现Menu菜单
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    return action == @selector(copy:);
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    if (action == @selector(copy:)) {
+        [UIPasteboard generalPasteboard].string = self.data[indexPath.section][indexPath.row].value;
+    }
+}
+
 #pragma mark - Setters
 - (void)setData:(NSArray<NSArray<WXAPerformanceModel *> *> *)data {
     _data = data;
