@@ -62,7 +62,9 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         _items = @[wxLogItem, perfItem, storageItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
-        [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
+        WXPerformBlockOnMainThread(^{
+            [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
+        });
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(shakeAction:)
                                                      name:WXAShowDevMenuNotification
@@ -144,7 +146,10 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
     for (WXAMenuItem *item in self.items) {
         item.wxInstance = wxInstance;
     }
-    [[WXSDKEngine handlerForProtocol:@protocol(WXAMenuProtocol)] setWxInstance:wxInstance];
+    id<WXAMenuProtocol> menu = [WXSDKEngine handlerForProtocol:@protocol(WXAMenuProtocol)];
+    if ([menu respondsToSelector:@selector(setWxInstance:)]) {
+        [menu setWxInstance:wxInstance];
+    }
 #endif
 }
 
