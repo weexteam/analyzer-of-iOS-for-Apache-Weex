@@ -9,12 +9,14 @@
 #define WXALOG_LOGFILTER_BOTTOM_HEIGHT  40
 
 #import "WXALogFilterView.h"
+#import "WXACellView.h"
 
 @interface WXALogFilterView () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *container;
 @property (nonatomic, strong) WXALogLevelView *logLevelView;
 @property (nonatomic, strong) WXALogFlagView *logFlagView;
+@property (nonatomic, strong) WXACellView *logTypeView;
 @property (nonatomic, strong) UIButton *confirmBtn;
 
 @property (nonatomic, copy) void(^handler)(WXALogFilterModel *filterModel);
@@ -34,6 +36,7 @@
         [self addSubview:self.container];
         [self.container addSubview:self.logFlagView];
         [self.container addSubview:self.logLevelView];
+        [self.container addSubview:self.logTypeView];
         [self addSubview:self.confirmBtn];
         [self adjustSubviews];
     }
@@ -44,6 +47,7 @@
 - (void)setLogFilter:(WXALogFilterModel *)filterModel {
     [self.logFlagView setLogFlag:filterModel.logFlag];
     [self.logLevelView setLogLevel:filterModel.logLevel];
+    [self.logTypeView setResult:@[@(filterModel.logType)]];
 }
 
 #pragma mark - actions
@@ -52,13 +56,15 @@
         WXALogFilterModel *filterModel = [[WXALogFilterModel alloc] init];
         filterModel.logFlag = self.logFlagView.logFlag;
         filterModel.logLevel = self.logLevelView.logLevel;
+        filterModel.logType = [self.logTypeView.result[0] intValue];
         _handler(filterModel);
     }
 }
 
 - (void)adjustSubviews {
     _logLevelView.frame = CGRectMake(10, _logFlagView.frame.origin.y+_logFlagView.frame.size.height, _logLevelView.frame.size.width, _logLevelView.frame.size.height);
-    _container.contentSize = CGSizeMake(_container.frame.size.width, _logLevelView.frame.origin.y+_logLevelView.frame.size.height);
+    _logTypeView.frame = CGRectMake(10, _logLevelView.frame.origin.y+_logLevelView.frame.size.height, _logTypeView.frame.size.width, _logTypeView.frame.size.height);
+    _container.contentSize = CGSizeMake(_container.frame.size.width, _logLevelView.frame.origin.y+_logLevelView.frame.size.height+_logTypeView.frame.size.height);
 }
 
 #pragma mark - Getters
@@ -88,6 +94,24 @@
         _logFlagView.backgroundColor = [UIColor whiteColor];
     }
     return _logFlagView;
+}
+
+- (WXACellView *)logTypeView {
+    if (!_logTypeView) {
+        WXACellModel *model = [WXACellModel new];
+        model.title = @"日志类型";
+        model.keys = @[@(WXLogTypeNative),@(WXLogTypeJS),@(WXLogTypeAll)];
+        model.dictionary = @{
+                             @(WXLogTypeNative) : @"Native",
+                             @(WXLogTypeJS) : @"JS",
+                             @(WXLogTypeAll) : @"All",
+                             };
+        model.isSingle = YES;
+        _logTypeView = [[WXACellView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 0)
+                                                    model:model];
+        _logTypeView.backgroundColor = [UIColor whiteColor];
+    }
+    return _logTypeView;
 }
 
 - (UIButton *)confirmBtn {

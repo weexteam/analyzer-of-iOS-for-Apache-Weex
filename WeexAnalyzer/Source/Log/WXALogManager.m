@@ -30,7 +30,9 @@
 - (void)registerLogger:(id<WXALogProtocol>)logger {
     _logger = logger;
     _logger.logManager = self;
-    [_logger onChangeLogLevel:self.settings.filter.logLevel logFlag:self.settings.filter.logFlag];
+    [_logger onChangeLogLevel:self.settings.filter.logLevel
+                      logFlag:self.settings.filter.logFlag
+                      logType:self.settings.filter.logType];
 }
 
 - (void)hide {
@@ -83,7 +85,9 @@
     self.settings.filter = filterModel;
     [self saveLogSettings];
     
-    [self.logger onChangeLogLevel:filterModel.logLevel logFlag:filterModel.logFlag];
+    [self.logger onChangeLogLevel:filterModel.logLevel
+                          logFlag:filterModel.logFlag
+                          logType:filterModel.logType];
     [self.container setLogFilter:filterModel];
 }
 

@@ -9,6 +9,7 @@
 #import "WXAWXExternalLogger.h"
 #import <WeexSDK/WeexSDK.h>
 #import <pthread/pthread.h>
+#import "WXALogFilterModel.h"
 
 #define WXALOG_LOGGER_THROTTLE  500.0
 
@@ -19,6 +20,7 @@
 @implementation WXAWXExternalLogger {
     WXLogLevel _logLevel;
     WXLogFlag _logFlag;
+    WXLogType _logType;
     NSMutableArray *_totalLogs;
     NSDateFormatter *_dateFormatter;
     
@@ -65,9 +67,12 @@
     [self sortLogs];
 }
 
-- (void)onChangeLogLevel:(NSInteger)level logFlag:(NSInteger)flag {
+- (void)onChangeLogLevel:(NSInteger)level
+                 logFlag:(NSInteger)flag
+                 logType:(NSInteger)type {
     _logLevel = (WXLogLevel)level;
     _logFlag = (WXLogFlag)flag;
+    _logType = (WXLogType)type;
     [self sortLogs];
 }
 
@@ -106,7 +111,20 @@
     NSMutableArray *array = [NSMutableArray array];
     for (WXALogModel *model in _totalLogs) {
         if (model.flag & _logFlag) {
-            [array addObject:model];
+            
+            BOOL typeRight = NO;
+            if ([model.message containsString:@"jsLog:"]) {
+                if (_logType==WXLogTypeJS || _logType == WXLogTypeAll) {
+                    typeRight = YES;
+                }
+            } else {
+                if (_logType==WXLogTypeNative || _logType == WXLogTypeAll) {
+                    typeRight = YES;
+                }
+            }
+            if (typeRight) {
+                [array addObject:model];
+            }
         }
     }
     logs = [array copy];

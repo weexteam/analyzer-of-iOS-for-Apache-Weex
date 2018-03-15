@@ -23,6 +23,8 @@
 - (void)onStartLog;
 - (void)onStopLog;
 - (void)onClearLog;
-- (void)onChangeLogLevel:(NSInteger)level logFlag:(NSInteger)flag;
+- (void)onChangeLogLevel:(NSInteger)level
+                 logFlag:(NSInteger)flag
+                 logType:(NSInteger)type;
 
 @end
