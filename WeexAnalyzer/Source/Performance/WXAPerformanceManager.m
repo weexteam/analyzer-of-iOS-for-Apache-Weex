@@ -11,6 +11,7 @@
 #import "WXAPerformanceModel.h"
 #import "WXAPerformanceHelper.h"
 #import <objc/message.h>
+#import "WXAMonitorHandler.h"
 
 @interface WXAPerformanceManager ()
 
@@ -39,11 +40,14 @@
 
 #pragma mark - private methods
 - (void)refreshData {
-    NSArray *basicData = [self getBasicData];
-    NSArray *performanceData = [self getPerformanceData];
-    NSArray *globalData = [self getGlobalPerformanceData];
-    
-    self.container.data = @[basicData, performanceData, globalData];
+    NSMutableArray *array = [NSMutableArray array];
+    NSDictionary *dictionary = [WXAMonitorHandler sharedInstance].monitorDictionary[self.wxInstance.instanceId];
+    if (dictionary) {
+        for (NSString *key in dictionary) {
+            [array addObject:[self modelForTitle:key value:dictionary[key] category:WXAPerformanceCategoryBasic]];
+        }
+    }
+    self.container.data = @[array];
 }
 
 - (NSArray *)getBasicData {

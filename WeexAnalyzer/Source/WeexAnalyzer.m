@@ -9,6 +9,7 @@
 #import "WeexAnalyzer.h"
 #import "WXAMenuView.h"
 #import <WeexSDK/WXSDKManager.h>
+#import <WeexSDK/WXHandlerFactory.h>
 #import "WXAUtility.h"
 #import "WeexAnalyzerDefine.h"
 #import "WXAWXExternalLogger.h"
@@ -16,6 +17,7 @@
 #import "WXAPerformanceMenuItem.h"
 #import "WXAStorageMenuItem.h"
 #import "WXAMenuDefaultImpl.h"
+#import "WXAMonitorHandler.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -82,6 +84,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 + (void)enableDebugMode {
 #ifdef WXADevMode
     [WeexAnalyzer sharedInstance];
+    [WXHandlerFactory addWxAnalyzer:[WXAMonitorHandler sharedInstance]];
 #endif
 }
 
