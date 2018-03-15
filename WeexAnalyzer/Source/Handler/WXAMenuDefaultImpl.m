@@ -19,7 +19,7 @@
 - (UIView *)headerView
 {
     if (!_headerView) {
-        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.headerHeight)];
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.headerHeight)];
         header.backgroundColor = [UIColor whiteColor];
         UILabel *label = [[UILabel alloc] initWithFrame:header.bounds];
         label.text = @"Weex Analyzer";

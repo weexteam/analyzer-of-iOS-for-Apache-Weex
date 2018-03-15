@@ -10,13 +10,19 @@
 #import "UIView+WXAPopover.h"
 #import "WXAUtility.h"
 #import "WXAMenuProtocol.h"
+#import "WXAMenuCell.h"
 
-@interface WXAMenuView () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+#define WXAMenuCellID @"WXACell"
+#define WXAMenuHeaderID @"WXAHeader"
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIView *maskView;
-@property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) id<WXAMenuProtocol> menu;
+@interface WXAMenuView () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+
+@property(nonatomic, strong) UIView *wrapView;
+@property(nonatomic, strong) UICollectionView *collectionView;
+@property(nonatomic, strong) UIView *maskView;
+@property(nonatomic, strong) NSArray<WXAMenuItem *> *items;
+@property(nonatomic, strong) id<WXAMenuProtocol> menu;
+@property(nonatomic, assign) NSInteger showCount;
 
 @end
 
@@ -37,32 +43,64 @@
     self.frame = frame;
     
     _maskView = [[UIView alloc] initWithFrame:frame];
-    _maskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    _maskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
     [self addSubview:_maskView];
     
-    _tableView = [[UITableView alloc] initWithFrame:_menu.frame style:UITableViewStylePlain];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.layer.cornerRadius = 10.0f;
-    _tableView.rowHeight = 44;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.clipsToBounds = YES;
-    _tableView.sectionHeaderHeight = _menu.headerHeight;
-    [self addSubview:_tableView];
+    _wrapView = [[UIView alloc] initWithFrame:_menu.frame];
+    _wrapView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _wrapView.layer.shadowOffset = CGSizeMake(0,0);
+    _wrapView.layer.shadowOpacity = 0.8;
+    _wrapView.layer.shadowRadius = 5;
+    _wrapView.layer.backgroundColor = UIColor.whiteColor.CGColor;
+    [self addSubview:_wrapView];
     
+    [_wrapView addSubview:_menu.headerView];
+    
+    CGRect collectionViewframe = _wrapView.bounds;
+    CGFloat spacing = 1/UIScreen.mainScreen.scale;
+    CGFloat realItemWidth = [self fixSlitWith:collectionViewframe.size.width colCount:3 space:spacing];
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.itemSize = CGSizeMake(realItemWidth, realItemWidth);
+    layout.minimumLineSpacing = spacing;
+    layout.minimumInteritemSpacing = spacing;
+    CGFloat realWidth = 3 * realItemWidth + 2 * spacing;
+    collectionViewframe.origin.x = (collectionViewframe.size.width - realWidth)/2;
+    collectionViewframe.origin.y = _menu.headerHeight;
+    collectionViewframe.size.width = 3 * realItemWidth + 2 * spacing;
+    collectionViewframe.size.height = collectionViewframe.size.height - _menu.headerHeight;
+    _collectionView = [[UICollectionView alloc] initWithFrame:collectionViewframe collectionViewLayout:layout];
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    _collectionView.layer.cornerRadius = 2;
+    _collectionView.backgroundColor = UIColor.lightGrayColor;
+    [_collectionView registerClass:WXAMenuCell.class forCellWithReuseIdentifier:WXAMenuCellID];
+    [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:WXAMenuHeaderID];
+    [_wrapView addSubview:_collectionView];
+    _showCount = 3 * 3 * ceil(collectionViewframe.size.height / collectionViewframe.size.width);
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
     tap.delegate = self;
     [_maskView addGestureRecognizer:tap];
 }
 
+- (CGFloat)fixSlitWith:(CGFloat)width colCount:(CGFloat)colCount space:(CGFloat)space {
+    CGFloat totalSpace = (colCount - 1) * space;
+    CGFloat itemWidth = (width - totalSpace) / colCount;
+    CGFloat fixValue = 1 / [UIScreen mainScreen].scale;
+    CGFloat realItemWidth = floor(itemWidth) + fixValue;
+    if (realItemWidth < itemWidth) {
+        realItemWidth += fixValue;
+    }
+    return realItemWidth;
+}
+
 - (void)showMenu {
     __weak typeof(self) welf = self;
     [self WeexAnalyzer_popover:^{
         welf.maskView.alpha = 0;
-        welf.tableView.frame = CGRectMake(welf.tableView.frame.origin.x, WXA_SCREEN_HEIGHT, welf.tableView.frame.size.width, welf.tableView.frame.size.height);
+        welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, WXA_SCREEN_HEIGHT, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.65 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            welf.tableView.frame = CGRectMake(welf.tableView.frame.origin.x, (WXA_SCREEN_HEIGHT - 300) / 2, welf.tableView.frame.size.width, welf.tableView.frame.size.height);
+            welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, (WXA_SCREEN_HEIGHT - 300) / 2, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
             welf.maskView.alpha = 0.5;
         }                completion:nil];
     }];
@@ -74,35 +112,32 @@
     }
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _items.count;
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _showCount > _items.count ? _showCount : _items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WXAMenuItem *item = _items[indexPath.row];
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menucell"];
-    cell.textLabel.text = item.title;
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
-    cell.textLabel.textColor = [UIColor darkGrayColor];
-    
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43.5, _tableView.frame.size.width, 0.5)];
-    lineView.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1];
-    [cell.contentView addSubview:lineView];
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    WXAMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:WXAMenuCellID forIndexPath:indexPath];
+    if (cell) {
+        if (indexPath.row < _items.count) {
+            WXAMenuItem *item = _items[indexPath.row];
+            cell.label.text = item.title;
+            [cell.icon setImage:item.iconImage];
+        } else {
+            cell.label.text = @"";
+            [cell.icon setImage:nil];
+        }
+    }
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     WXAMenuItem *item = _items[indexPath.row];
     if (item.handler) {
         item.handler(YES);
     }
     [self closeMenu:nil];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return _menu.headerView;
 }
 
 #pragma mark - UIGestureRecognizerDelegate

@@ -19,8 +19,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"Weex 性能指标";
-        
+        self.title = @"性能指标";
+        self.iconImage = [UIImage imageNamed:@"wxt_icon_performance"];
         __weak typeof(self) welf = self;
         self.handler = ^(BOOL selected) {
             if (selected) {

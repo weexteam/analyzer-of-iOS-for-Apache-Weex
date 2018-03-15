@@ -19,7 +19,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"Weex Storage";
+        self.title = @"Storage";
+        self.iconImage = [UIImage imageNamed:@"wxt_icon_storage"];
         
         __weak typeof(self) welf = self;
         self.handler = ^(BOOL selected) {

@@ -11,6 +11,8 @@
 
 @interface WXALogMenuItem : WXAMenuItem
 
-- (instancetype)initWithTitle:(NSString *)title logger:(id<WXALogProtocol>)logger;
+- (instancetype)initWithTitle:(NSString *)title
+                iconImageName:(NSString *)iconImageName
+                       logger:(id<WXALogProtocol>)logger;
 
 @end

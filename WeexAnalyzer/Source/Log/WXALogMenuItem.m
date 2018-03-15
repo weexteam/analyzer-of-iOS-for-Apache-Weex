@@ -19,9 +19,14 @@
 
 @implementation WXALogMenuItem
 
-- (instancetype)initWithTitle:(NSString *)title logger:(id<WXALogProtocol>)logger {
+- (instancetype)initWithTitle:(NSString *)title
+                iconImageName:(NSString *)iconImageName
+                       logger:(id<WXALogProtocol>)logger {
     if (self = [super init]) {
         self.title = title;
+        if (iconImageName) {
+            self.iconImage = [UIImage imageNamed:iconImageName];
+        }
         self.logger = logger;
         __weak typeof(self) welf = self;
         self.handler = ^(BOOL selected) {
