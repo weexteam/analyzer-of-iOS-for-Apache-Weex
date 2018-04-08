@@ -18,6 +18,8 @@
 #import "WXAStorageMenuItem.h"
 #import "WXAMenuDefaultImpl.h"
 #import "WXAMonitorHandler.h"
+#import "WXAApiTracingViewController.h"
+#import "WXARenderTracingViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -38,7 +40,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
 @property (nonatomic, strong) WXSDKInstance *wxInstance;
-
 @end
 
 @implementation WeexAnalyzer
@@ -55,7 +56,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 - (instancetype)init {
     if (self = [super init]) {
 #ifdef WXADevMode
-        _items = [NSArray array];
         
         WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志"
                                                             iconImageName:@"wxt_icon_log"
@@ -63,7 +63,25 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         WXAPerformanceMenuItem *perfItem = [WXAPerformanceMenuItem new];
         WXAStorageMenuItem *storageItem = [WXAStorageMenuItem new];
         
-        _items = @[wxLogItem, perfItem, storageItem];
+        WXAMenuItem *apiItem = [WXAMenuItem new];
+        WXAMenuItem * __weak _apiItem = apiItem;
+        apiItem.title = @"api";
+        apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
+        apiItem.handler = ^(BOOL selected) {
+           WXABaseViewController *controller = [WXAApiTracingViewController new];
+            [_apiItem show:controller];
+        };
+        
+        WXAMenuItem *renderItem = [WXAMenuItem new];
+        WXAMenuItem * __weak _renderItem = renderItem;
+        renderItem.title = @"render";
+        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
+        renderItem.handler = ^(BOOL selected) {
+            WXARenderTracingViewController *controller = [WXARenderTracingViewController new];
+            [_renderItem show:controller];
+        };
+        
+        _items = @[wxLogItem, perfItem, storageItem, apiItem, renderItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{
@@ -84,7 +102,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 + (void)enableDebugMode {
 #ifdef WXADevMode
     [WeexAnalyzer sharedInstance];
-    [WXHandlerFactory addWxAnalyzer:[WXAMonitorHandler sharedInstance]];
+    [WXAnalyzerCenter addWxAnalyzer:[WXAMonitorHandler sharedInstance]];
 #endif
 }
 

@@ -32,19 +32,15 @@
     if (![value isKindOfClass:NSDictionary.class]) {
         return;
     }
+    NSString* instanceId = value[@"instanceId"];
     NSString *module = value[@"module"];
-    NSString *jsonData = value[@"data"];
-    NSDictionary *data =[WXUtility objectFromJSON:jsonData];
-    if(data && [data isKindOfClass:NSDictionary.class]){
-        NSString* instanceId = data[@"instanceId"];
-        if (instanceId && [instanceId isKindOfClass:NSString.class]) {
-            NSMutableDictionary *dictionary = _monitorDictionary[instanceId];
-            if (!dictionary) {
-                dictionary = [NSMutableDictionary new];
-                [_monitorDictionary setObject:dictionary forKey:instanceId];
-            }
-            [dictionary addEntriesFromDictionary:data];
+    if (instanceId && [instanceId isKindOfClass:NSString.class]) {
+        NSMutableDictionary *dictionary = _monitorDictionary[instanceId];
+        if (!dictionary) {
+            dictionary = [NSMutableDictionary new];
+            [_monitorDictionary setObject:dictionary forKey:instanceId];
         }
+        [dictionary addEntriesFromDictionary:value];
     }
     if (module) {
         if ([module isEqualToString:MODULE_PERFORMANCE]) {
