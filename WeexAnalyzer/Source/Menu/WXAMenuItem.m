@@ -8,19 +8,33 @@
 
 #import "WXAMenuItem.h"
 #import "WXAUtility.h"
+#import "WXAViewControllerUtil.h"
+#import "WXAUtility.h"
+#import "WXAWindow.h"
 
 @implementation WXAMenuItem
 
-- (void)show: (UIViewController *)controller {
-    if (!_window) {
-        _window = [UIWindow new];
+- (void)open:(BOOL)selected {
+    if (_handler) {
+        _handler(selected);
     }
-    _window.rootViewController = controller;
-    _window.windowLevel = UIWindowLevelAlert+1000;
-    _window.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-    _window.userInteractionEnabled = YES;
-    _window.hidden = NO;
-    [_window makeKeyAndVisible];
+    if(_controllerClass) {
+        UIViewController* controller =  [_controllerClass new];
+        [self show:controller];
+    }
+}
+
+- (void)show:(UIViewController *)controller {
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:controller];
+    naviController.navigationBar.backgroundColor = nil;
+    naviController.navigationBarHidden = YES;
+    [WXAWindow sharedInstance].rootViewController = naviController;
+    [[WXAWindow sharedInstance] makeKeyAndVisible];
+}
+
+- (void)closeItem:(id)sender {
+    [WXAWindow sharedInstance].hidden = YES;
+    [[WXAWindow sharedInstance] resignKeyWindow];
 }
 
 @end

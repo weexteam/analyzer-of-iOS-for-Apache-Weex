@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <WeexSDK/WXTracingManager.h>
-#import "WXARenderTracingViewController.h"
 
-@interface WXARenderTracingTableViewCell : UITableViewCell
+@interface WXSubRenderTracingTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *timeBackgroundLabel;
 @property (nonatomic, strong) UILabel *refLabel;
@@ -21,6 +20,6 @@
 @property (nonatomic, strong) UILabel *startTimeLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
 
-- (void)config:(WXAShowTracing *)tracing begin:(NSTimeInterval)begin end:(NSTimeInterval )end;
+- (void)config:(WXTracing *)tracing begin:(NSTimeInterval)begin end:(NSTimeInterval )end;
 
 @end

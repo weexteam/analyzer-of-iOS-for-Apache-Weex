@@ -9,6 +9,7 @@
 #import <WeexSDK/WXAnalyzerProtocol.h>
 #import <WeexSDK/WXThreadSafeMutableDictionary.h>
 
+#define kWXAMonitorHandlerNotification @"kWXAMonitorHandlerNotification"
 
 @interface WXAMonitorHandler : NSObject <WXAnalyzerProtocol>
 

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "WXDebugger.h"
 
 @interface WXATracingApiTableViewCell : UITableViewCell
 

@@ -10,10 +10,10 @@
 #import <UIKit/UIKit.h>
 #import "WXARenderTracingTableViewCell.h"
 #import "WXATracingApiTableViewCell.h"
+#import "WXTracingMethodViewController.h"
 
-@interface WXAApiTracingViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface WXAApiTracingViewController ()
 
-@property (strong,nonatomic) UITableView *table;
 @property (strong,nonatomic) NSArray     *content;
 @property (strong,nonatomic) NSMutableArray *apis;
 @property (nonatomic) NSTimeInterval begin;
@@ -24,12 +24,11 @@
 @implementation WXAApiTracingViewController
 
 - (void)viewDidLoad {
-    
+    self.title= @"API";
     [super viewDidLoad];
-    self.titleLabel.text = @"API";
     
     NSDictionary *dict = [WXTracingManager getTacingApi];
-    [self cofigureTableview];
+    
     self.apis = [NSMutableArray new];
     if([dict objectForKey:@"module"]){
         for (NSDictionary *d in [dict objectForKey:@"module"]) {
@@ -48,20 +47,6 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
-}
-
--(void)cofigureTableview
-{
-    self.table = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStylePlain];
-    self.table.delegate = self;
-    self.table.dataSource = self;
-    [self.contentView addSubview:self.table];
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -72,12 +57,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cellIdentifier";
-    
-    WXATracingApiTableViewCell *cell = [self.table dequeueReusableCellWithIdentifier:cellIdentifier];
-
+    WXATracingApiTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
     if(cell == nil) {
-        cell = [[WXATracingApiTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[WXATracingApiTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIdentifier"];
     }
     NSInteger row = [indexPath row];
     [cell config:self.apis[row]];
@@ -94,10 +76,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *dict = self.apis[indexPath.row];
     if([dict objectForKey:@"methods"]){
-//        WXTracingMethodViewController *methodViewController = [[WXTracingMethodViewController alloc] init];
-//        methodViewController.methods = [dict objectForKey:@"methods"];
-//        [self.navigationController setNavigationBarHidden:NO];
-//        [self.navigationController pushViewController:methodViewController animated:YES];
+        WXTracingMethodViewController *methodViewController = [[WXTracingMethodViewController alloc] init];
+        methodViewController.methods = [dict objectForKey:@"methods"];
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController pushViewController:methodViewController animated:YES];
     }
 }
 

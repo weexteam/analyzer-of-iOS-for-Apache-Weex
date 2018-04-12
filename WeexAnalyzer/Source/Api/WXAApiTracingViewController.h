@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WXABaseViewController.h"
+#import "WXABaseTableViewController.h"
 
-@interface WXAApiTracingViewController : WXABaseViewController
+@interface WXAApiTracingViewController : WXABaseTableViewController
 
 @end

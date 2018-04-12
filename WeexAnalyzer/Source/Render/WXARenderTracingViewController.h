@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <WeexSDK/WXTracingManager.h>
-#import "WXABaseViewController.h"
+#import "WXABaseTableViewController.h"
 
 @interface WXAShowTracingTask : WXTracingTask
 @property (nonatomic) NSTimeInterval begin;
 @property (nonatomic) NSTimeInterval end;
 @end
 
-@interface WXARenderTracingViewController : WXABaseViewController
+@interface WXAShowTracing : WXTracing
+@property (nonatomic,strong)NSMutableArray *subTracings;
+@end
+
+@interface WXARenderTracingViewController : WXABaseTableViewController
 
 - (instancetype)initWithFrame:(CGRect )frame;
 -(void)refreshData;

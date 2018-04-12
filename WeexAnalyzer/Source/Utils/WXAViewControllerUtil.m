@@ -30,15 +30,18 @@
         UIViewController *presentedViewController = rootVC.presentedViewController;
         return [self getRootViewControllerLoop:presentedViewController];
     } else {
-        typedef UIViewController* (*vcMethod)(id receiver, SEL selector);
         SEL selector = NSSelectorFromString(@"visibleViewController");
-        vcMethod mtd = (vcMethod)[[rootVC class] instanceMethodForSelector:selector];
-        if (mtd) {
-            UIViewController *vc = mtd(rootVC, selector);
-            return [self getRootViewControllerLoop:vc];
-        } else {
+        NSMethodSignature *methodSignature = [rootVC.class methodSignatureForSelector:selector];
+        if (methodSignature == nil) {
             return rootVC;
         }
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        [invocation setTarget:rootVC.class];
+        [invocation setSelector:selector];
+        UIViewController *vc;
+        [invocation setReturnValue:&vc];
+        [invocation invoke];
+        return vc;
     }
 }
 

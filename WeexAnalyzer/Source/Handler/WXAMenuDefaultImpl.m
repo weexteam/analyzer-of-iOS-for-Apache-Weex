@@ -42,8 +42,8 @@
 
 - (CGRect)frame
 {
-    CGRect frame = UIScreen.mainScreen.bounds;
-    return CGRectMake((frame.size.width-260)/2, (frame.size.height-300)/2, 260, 300);
+    CGSize size = UIScreen.mainScreen.bounds.size;
+    return CGRectMake(size.width*0.1, size.height*0.1, size.width*0.8, size.height*0.8);
 }
 
 @end

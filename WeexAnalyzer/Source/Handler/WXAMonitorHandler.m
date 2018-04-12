@@ -28,7 +28,7 @@
 }
 
 - (void)transfer:(NSDictionary *)value {
-
+    [NSNotificationCenter.defaultCenter postNotificationName:kWXAMonitorHandlerNotification object:nil];
     if (![value isKindOfClass:NSDictionary.class]) {
         return;
     }

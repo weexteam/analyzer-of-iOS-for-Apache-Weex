@@ -20,6 +20,8 @@
 #import "WXAMonitorHandler.h"
 #import "WXAApiTracingViewController.h"
 #import "WXARenderTracingViewController.h"
+#import "WXANetworkTracingViewController.h"
+#import "WXAPerformanceViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -60,28 +62,50 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志"
                                                             iconImageName:@"wxt_icon_log"
                                                                    logger:[WXAWXExternalLogger new]];
-        WXAPerformanceMenuItem *perfItem = [WXAPerformanceMenuItem new];
         WXAStorageMenuItem *storageItem = [WXAStorageMenuItem new];
         
+        [WXTracingManager switchTracing:YES];// TODO: 开关控制
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            Class WXDebuggerClass = NSClassFromString(@"WXDebugger");
+            if (WXDebuggerClass) {
+                SEL selector = NSSelectorFromString(@"setEnabled:");
+                NSMethodSignature *methodSignature = [WXDebuggerClass methodSignatureForSelector:selector];
+                if (methodSignature == nil) {
+                    NSString *info = [NSString stringWithFormat:@"%@ not found", NSStringFromSelector(selector)];
+                    [NSException raise:@"Method invocation appears abnormal" format:info, nil];
+                }
+                NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+                [invocation setTarget:WXDebuggerClass];
+                [invocation setSelector:selector];
+                BOOL enable = YES;
+                [invocation setArgument:&enable atIndex:2];
+                [invocation invoke];
+            }
+        });
+        
+        
+        WXAMenuItem *perfItem = [WXAMenuItem new];
+        perfItem.title = @"性能指标";
+        perfItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
+        perfItem.controllerClass = WXAPerformanceViewController.self;
+        
         WXAMenuItem *apiItem = [WXAMenuItem new];
-        WXAMenuItem * __weak _apiItem = apiItem;
         apiItem.title = @"api";
         apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
-        apiItem.handler = ^(BOOL selected) {
-           WXABaseViewController *controller = [WXAApiTracingViewController new];
-            [_apiItem show:controller];
-        };
+        apiItem.controllerClass = WXAApiTracingViewController.self;
         
         WXAMenuItem *renderItem = [WXAMenuItem new];
-        WXAMenuItem * __weak _renderItem = renderItem;
         renderItem.title = @"render";
         renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
-        renderItem.handler = ^(BOOL selected) {
-            WXARenderTracingViewController *controller = [WXARenderTracingViewController new];
-            [_renderItem show:controller];
-        };
+        renderItem.controllerClass = WXARenderTracingViewController.self;
         
-        _items = @[wxLogItem, perfItem, storageItem, apiItem, renderItem];
+        WXAMenuItem *netItem = [WXAMenuItem new];
+        netItem.controllerClass = WXANetworkTracingViewController.self;
+        netItem.title = @"网络";
+        netItem.iconImage = [UIImage imageNamed:@"wxt_icon_traffic"];
+        
+        _items = @[wxLogItem, perfItem, storageItem, apiItem, renderItem, netItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{

@@ -7,10 +7,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXABaseViewController : UIViewController
+@interface WXABaseViewController : UIViewController <UINavigationControllerDelegate>
 
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) UIView *mainView;
 @property(nonatomic, strong) UIView *contentView;
+@property(nonatomic, strong) UIView *topView;
+
+- (BOOL)pointInside:(CGPoint)point withEvent:event;
+
+- (void)windowResize:(CGSize)size;
 
 @end

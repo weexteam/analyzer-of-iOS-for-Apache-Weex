@@ -18,6 +18,8 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.backgroundColor = nil;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.performLabel];
     }
     return self;
@@ -26,10 +28,9 @@
 #pragma mark - Setters
 - (void)setModel:(WXAPerformanceModel *)model {
     _model = model;
-    
     NSString *msg = [NSString stringWithFormat:@"%@: %@", model.title, model.value];
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:msg];
-    NSDictionary *attributeDict = @{NSForegroundColorAttributeName: [UIColor colorWithRed:70/255.0 green:130/255.0 blue:180/255.0 alpha:1]};
+    NSDictionary *attributeDict = @{NSForegroundColorAttributeName: [UIColor colorWithRed:140/255.0 green:240/255.0 blue:180/255.0 alpha:1]};
     [content setAttributes:attributeDict range:NSMakeRange(model.title.length+1, msg.length - model.title.length-1)];
     
     self.performLabel.attributedText = content;
@@ -45,9 +46,9 @@
 #pragma mark - Getters
 - (UILabel *)performLabel {
     if (!_performLabel) {
-        _performLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 0)];
+        _performLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-10, 0)];
         _performLabel.font = [UIFont systemFontOfSize:12];
-        _performLabel.textColor = [UIColor darkGrayColor];
+        _performLabel.textColor = UIColor.whiteColor;
         _performLabel.numberOfLines = 0;
     }
     return _performLabel;

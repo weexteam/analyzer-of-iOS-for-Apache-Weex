@@ -72,11 +72,11 @@
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.layer.cornerRadius = 2;
-    _collectionView.backgroundColor = UIColor.lightGrayColor;
+    _collectionView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
     [_collectionView registerClass:WXAMenuCell.class forCellWithReuseIdentifier:WXAMenuCellID];
     [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:WXAMenuHeaderID];
     [_wrapView addSubview:_collectionView];
-    _showCount = 3 * 3 * ceil(collectionViewframe.size.height / collectionViewframe.size.width);
+    _showCount = 3 * ceil(collectionViewframe.size.height / collectionViewframe.size.width * 3);
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
     tap.delegate = self;
@@ -98,9 +98,10 @@
     __weak typeof(self) welf = self;
     [self WeexAnalyzer_popover:^{
         welf.maskView.alpha = 0;
+        CGFloat y = welf.wrapView.frame.origin.y;
         welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, WXA_SCREEN_HEIGHT, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.65 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, (WXA_SCREEN_HEIGHT - 300) / 2, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
+            welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, y, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
             welf.maskView.alpha = 0.5;
         }                completion:nil];
     }];
@@ -134,9 +135,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     WXAMenuItem *item = _items[indexPath.row];
-    if (item.handler) {
-        item.handler(YES);
-    }
+    [item open:YES];
     [self closeMenu:nil];
 }
 
