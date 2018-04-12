@@ -13,6 +13,9 @@
 #import "WXALogModel.h"
 #import "WXALogProtocol.h"
 #import "WXALogMenuItem.h"
+#import "WXALogFilterModel.h"
+#import "WXABaseViewController.h"
+#import "WXABaseTableViewController.h"
 
 @interface WeexAnalyzer : NSObject
 
