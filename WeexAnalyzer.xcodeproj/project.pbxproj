@@ -113,10 +113,10 @@
 		D92A6009207F816100E3330C /* WXTracingMethodViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFB207F816100E3330C /* WXTracingMethodViewController.h */; };
 		D92A600A207F816100E3330C /* WXTracingMethodTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFC207F816100E3330C /* WXTracingMethodTableViewCell.h */; };
 		D92A600B207F816100E3330C /* WXAApiTracingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFD207F816100E3330C /* WXAApiTracingViewController.h */; };
-		D92A6010207F817000E3330C /* WXABaseTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A600C207F817000E3330C /* WXABaseTableViewController.h */; };
+		D92A6010207F817000E3330C /* WXABaseTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A600C207F817000E3330C /* WXABaseTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D92A6011207F817000E3330C /* WXABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A600D207F817000E3330C /* WXABaseViewController.m */; };
 		D92A6012207F817000E3330C /* WXABaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A600E207F817000E3330C /* WXABaseTableViewController.m */; };
-		D92A6013207F817000E3330C /* WXABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A600F207F817000E3330C /* WXABaseViewController.h */; };
+		D92A6013207F817000E3330C /* WXABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A600F207F817000E3330C /* WXABaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D92A6016207F817C00E3330C /* WXAPerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A6014207F817C00E3330C /* WXAPerformanceViewController.m */; };
 		D92A6017207F817C00E3330C /* WXAPerformanceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A6015207F817C00E3330C /* WXAPerformanceViewController.h */; };
 		D92A6031207F82F200E3330C /* wxt_icon_storage.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6019207F82F200E3330C /* wxt_icon_storage.png */; };
