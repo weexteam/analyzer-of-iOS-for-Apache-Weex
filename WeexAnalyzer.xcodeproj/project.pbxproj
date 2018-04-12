@@ -35,7 +35,7 @@
 		417AB6611DC4768D002BA6E4 /* WeexAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6601DC4768D002BA6E4 /* WeexAnalyzerTests.m */; };
 		417AB66D1DC4784A002BA6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417AB66C1DC4784A002BA6E4 /* UIKit.framework */; };
 		417AB66F1DC47851002BA6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417AB66E1DC47851002BA6E4 /* Foundation.framework */; };
-		417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB67D1DC4C934002BA6E4 /* WXALogFilterModel.h */; };
+		417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB67D1DC4C934002BA6E4 /* WXALogFilterModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		417AB6B41DC4C934002BA6E4 /* WXALogFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB67E1DC4C934002BA6E4 /* WXALogFilterModel.m */; };
 		417AB6B51DC4C934002BA6E4 /* WXALogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB67F1DC4C934002BA6E4 /* WXALogModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 417AB6801DC4C934002BA6E4 /* WXALogModel.m */; };
