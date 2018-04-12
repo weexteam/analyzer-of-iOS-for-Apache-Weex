@@ -143,6 +143,8 @@
 		D92A6046207F82F200E3330C /* wxt_icon_mtop.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A602E207F82F200E3330C /* wxt_icon_mtop.png */; };
 		D92A6047207F82F200E3330C /* wxt_icon_log.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A602F207F82F200E3330C /* wxt_icon_log.png */; };
 		D92A6048207F82F200E3330C /* wxt_icon_view_inspector.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6030207F82F200E3330C /* wxt_icon_view_inspector.png */; };
+		D92A6091207FA34700E3330C /* WXAWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A608F207FA34700E3330C /* WXAWindow.h */; };
+		D92A6092207FA34700E3330C /* WXAWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A6090207FA34700E3330C /* WXAWindow.m */; };
 		D93980D3205A5A3A00236E73 /* WXACellView.h in Headers */ = {isa = PBXBuildFile; fileRef = D93980D1205A5A3A00236E73 /* WXACellView.h */; };
 		D93980D4205A5A3A00236E73 /* WXACellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D93980D2205A5A3A00236E73 /* WXACellView.m */; };
 		D93980D7205A5AFE00236E73 /* WXAMonitorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D93980D5205A5AFE00236E73 /* WXAMonitorHandler.h */; };
@@ -306,6 +308,8 @@
 		D92A602E207F82F200E3330C /* wxt_icon_mtop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_mtop.png; sourceTree = "<group>"; };
 		D92A602F207F82F200E3330C /* wxt_icon_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_log.png; sourceTree = "<group>"; };
 		D92A6030207F82F200E3330C /* wxt_icon_view_inspector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_view_inspector.png; sourceTree = "<group>"; };
+		D92A608F207FA34700E3330C /* WXAWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAWindow.h; sourceTree = "<group>"; };
+		D92A6090207FA34700E3330C /* WXAWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAWindow.m; sourceTree = "<group>"; };
 		D93980D1205A5A3A00236E73 /* WXACellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXACellView.h; sourceTree = "<group>"; };
 		D93980D2205A5A3A00236E73 /* WXACellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXACellView.m; sourceTree = "<group>"; };
 		D93980D5205A5AFE00236E73 /* WXAMonitorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMonitorHandler.h; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 		412DAEF61DCE0C3500D42DC3 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				D92A608F207FA34700E3330C /* WXAWindow.h */,
+				D92A6090207FA34700E3330C /* WXAWindow.m */,
 				412DAEF71DCE0C3500D42DC3 /* WXAMenuItem.h */,
 				412DAEF81DCE0C3500D42DC3 /* WXAMenuItem.m */,
 				412DAEF91DCE0C3500D42DC3 /* WXAMenuView.h */,
@@ -706,6 +712,7 @@
 				41FB15861DED312F004BC3DA /* WXAPerformanceManager.h in Headers */,
 				41B249591DCB744C001C415B /* WXAStorageTableHeader.h in Headers */,
 				41FB159D1DEDAAD7004BC3DA /* WXAPerformanceHelper.h in Headers */,
+				D92A6091207FA34700E3330C /* WXAWindow.h in Headers */,
 				41B249461DCA0E3C001C415B /* WXAStorageInfoCell.h in Headers */,
 				412CC6611DC979A900A71167 /* WXAStorageContainer.h in Headers */,
 				412DAF061DCE0C9100D42DC3 /* WXABaseOptionBar.h in Headers */,
@@ -946,6 +953,7 @@
 				417AB6CA1DC4C934002BA6E4 /* WXALogSelectItemView.m in Sources */,
 				41FB15991DED735D004BC3DA /* WXAPerformanceView.m in Sources */,
 				D94C9E301F9F25880011F662 /* WXAMenuDefaultImpl.m in Sources */,
+				D92A6092207FA34700E3330C /* WXAWindow.m in Sources */,
 				410A61461DD221E500EB22A7 /* WXAOptionBaseView.m in Sources */,
 				417AB6B81DC4C934002BA6E4 /* WXALogSettingsModel.m in Sources */,
 				417AB6C81DC4C934002BA6E4 /* WXALogResultView.m in Sources */,
