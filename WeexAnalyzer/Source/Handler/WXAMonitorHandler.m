@@ -22,7 +22,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _monitorDictionary = [WXThreadSafeMutableDictionary new];
+        _monitorDictionary = [NSMutableDictionary new];
     }
     return self;
 }

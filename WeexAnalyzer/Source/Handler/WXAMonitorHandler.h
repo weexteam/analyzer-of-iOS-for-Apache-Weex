@@ -7,13 +7,12 @@
 
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WXAnalyzerProtocol.h>
-#import <WeexSDK/WXThreadSafeMutableDictionary.h>
 
 #define kWXAMonitorHandlerNotification @"kWXAMonitorHandlerNotification"
 
 @interface WXAMonitorHandler : NSObject <WXAnalyzerProtocol>
 
-@property(nonatomic, strong) WXThreadSafeMutableDictionary<NSString *,NSMutableDictionary*> *monitorDictionary;
+@property(nonatomic, strong) NSMutableDictionary<NSString *,NSMutableDictionary*> *monitorDictionary;
 
 + (instancetype)sharedInstance;
 

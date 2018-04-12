@@ -7,7 +7,7 @@
 //
 
 #import "WXTracingMethodTableViewCell.h"
-#import "WXTracingUtility.h"
+//#import "WXTracingUtility.h"
 @interface WXTracingMethodTableViewCell()
 @property(nonatomic,strong)UIColor *bgColor;
 @end
