@@ -41,6 +41,12 @@
             [_monitorDictionary setObject:dictionary forKey:instanceId];
         }
         [dictionary addEntriesFromDictionary:value];
+        [dictionary removeObjectsForKeys:@[
+                                           @"group",
+                                           @"instanceId",
+                                           @"module",
+                                           @"type",
+                                           ]];
     }
     if (module) {
         if ([module isEqualToString:MODULE_PERFORMANCE]) {
