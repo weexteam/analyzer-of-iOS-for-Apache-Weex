@@ -45,7 +45,7 @@
     [_topView addSubview:closeButton];
     
     UIButton *resizeButton = [UIButton new];
-    resizeButton.frame = CGRectMake(_topView.bounds.size.width - 100, statusBarHeight + 13, 44, 24);
+    resizeButton.frame = CGRectMake(_topView.bounds.size.width - 80, statusBarHeight + 13, 44, 24);
     [resizeButton setTitle:@"全屏" forState:UIControlStateNormal];
     [resizeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [resizeButton addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchUpInside];
@@ -66,6 +66,16 @@
     
     self.navigationController.delegate = self;
     
+}
+
+- (void)addBarItemWith:(NSString *)title action:(SEL)action to:(id)target {
+    CGFloat statusBarHeight = WXA_SCREEN_HEIGHT == 812 ? 44 : 20;
+    UIButton *button = [UIButton new];
+    button.frame = CGRectMake(_topView.bounds.size.width - 80 - 44, statusBarHeight + 13, 44, 24);
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:button];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

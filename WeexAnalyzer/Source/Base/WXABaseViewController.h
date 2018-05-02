@@ -18,4 +18,6 @@
 
 - (void)windowResize:(CGSize)size;
 
+- (void)addBarItemWith:(NSString *)title action:(SEL)action to:(nullable id)target;
+
 @end

@@ -21,8 +21,15 @@
     self.data = [NSMutableArray new];
     [self.tableView registerClass:[WXAPerformanceCell class] forCellReuseIdentifier:@"cellIdentifier"];
     
+    [self addBarItemWith:@"清空" action:@selector(clear) to:self];
+    
     [self refreshData];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(refreshData) name:kWXAMonitorHandlerNotification object:nil];
+}
+
+- (void)clear {
+    [[WXAMonitorHandler sharedInstance].monitorDictionary removeAllObjects];
+    [self refreshData];
 }
 
 - (void)refreshData {
