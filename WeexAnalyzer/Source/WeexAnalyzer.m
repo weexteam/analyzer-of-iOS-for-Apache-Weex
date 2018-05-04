@@ -8,7 +8,7 @@
 
 #import "WeexAnalyzer.h"
 #import "WXAMenuView.h"
-#import <WeexSDK/WXSDKManager.h>
+#import <WeexSDK/WeexSDK.h>
 #import "WXAUtility.h"
 #import "WeexAnalyzerDefine.h"
 #import "WXAWXExternalLogger.h"
@@ -56,6 +56,8 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 - (instancetype)init {
     if (self = [super init]) {
 #ifdef WXADevMode
+        
+        [WXAnalyzerCenter setOpen:YES];
         
         WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志"
                                                             iconImageName:@"wxt_icon_log"
