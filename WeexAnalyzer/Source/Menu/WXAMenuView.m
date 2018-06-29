@@ -134,9 +134,11 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    WXAMenuItem *item = _items[indexPath.row];
-    [item open:YES];
-    [self closeMenu:nil];
+    if (indexPath.row < _items.count) {
+        WXAMenuItem *item = _items[indexPath.row];
+        [item open:YES];
+        [self closeMenu:nil];
+    }
 }
 
 #pragma mark - UIGestureRecognizerDelegate
