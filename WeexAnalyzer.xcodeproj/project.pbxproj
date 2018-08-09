@@ -1101,6 +1101,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */;
 			buildSettings = {
+				CLANG_MODULES_AUTOLINK = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = NO;
@@ -1127,6 +1128,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33C347F8DCE0F60F69318AF1 /* Pods-WeexAnalyzer.release.xcconfig */;
 			buildSettings = {
+				CLANG_MODULES_AUTOLINK = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = NO;
