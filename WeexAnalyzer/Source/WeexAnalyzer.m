@@ -13,13 +13,12 @@
 #import "WeexAnalyzerDefine.h"
 #import "WXAWXExternalLogger.h"
 #import "WXALogMenuItem.h"
-#import "WXAPerformanceMenuItem.h"
 #import "WXAStorageMenuItem.h"
 #import "WXAMenuDefaultImpl.h"
 #import "WXAMonitorHandler.h"
 #import "WXAApiTracingViewController.h"
 #import "WXARenderTracingViewController.h"
-#import "WXAPerformanceViewController.h"
+#import "WXAInteractionViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -66,11 +65,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         
         [WXTracingManager switchTracing:YES];
         
-        WXAMenuItem *perfItem = [WXAMenuItem new];
-        perfItem.title = @"性能指标";
-        perfItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
-        perfItem.controllerClass = WXAPerformanceViewController.self;
-        
         WXAMenuItem *apiItem = [WXAMenuItem new];
         apiItem.title = @"api";
         apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
@@ -81,7 +75,12 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
         renderItem.controllerClass = WXARenderTracingViewController.self;
         
-        _items = @[wxLogItem, perfItem, storageItem, apiItem, renderItem];
+        WXAMenuItem *interactionItem = [WXAMenuItem new];
+        interactionItem.title = @"可交互";
+        interactionItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
+        interactionItem.controllerClass = WXAInteractionViewController.self;
+        
+        _items = @[wxLogItem, interactionItem, storageItem, apiItem, renderItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{

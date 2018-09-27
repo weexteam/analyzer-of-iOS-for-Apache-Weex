@@ -13,6 +13,8 @@
 @property(nonatomic, strong) UIView *mainView;
 @property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) UIView *topView;
+@property(nonatomic, assign) BOOL isShowFullScreen;
+@property(nonatomic, assign) CGFloat minContentHeight;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:event;
 

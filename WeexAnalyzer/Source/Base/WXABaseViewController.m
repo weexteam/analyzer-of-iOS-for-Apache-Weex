@@ -11,17 +11,29 @@
 @interface WXABaseViewController ()
 
 @property(nonatomic, assign) CGFloat startY;
+@property(nonatomic, strong) UIButton *resizeButton;
 
 @end
 
 @implementation WXABaseViewController
+
+- (instancetype)init {
+    if(self = [super init]) {
+        self.title = @"";
+    }
+    return self;
+}
+
+- (void)dealloc {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = nil;
     
     CGFloat statusBarHeight = WXA_SCREEN_HEIGHT == 812 ? 44 : 20;
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, WXA_SCREEN_HEIGHT/2)];
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, [self mainHeight])];
     _mainView.layer.backgroundColor = nil;
     _mainView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     [self.view addSubview:_mainView];
@@ -44,12 +56,12 @@
 //    closeButton.backgroundColor = UIColor.grayColor;
     [_topView addSubview:closeButton];
     
-    UIButton *resizeButton = [UIButton new];
-    resizeButton.frame = CGRectMake(_topView.bounds.size.width - 80, statusBarHeight + 13, 44, 24);
-    [resizeButton setTitle:@"全屏" forState:UIControlStateNormal];
-    [resizeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [resizeButton addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchUpInside];
-    [_topView addSubview:resizeButton];
+    _resizeButton = [UIButton new];
+    _resizeButton.frame = CGRectMake(_topView.bounds.size.width - 80, statusBarHeight + 13, 44, 24);
+    [_resizeButton setTitle:@"全屏" forState:UIControlStateNormal];
+    [_resizeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_resizeButton addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:_resizeButton];
     
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(0, _topView.bounds.size.height-1, WXA_SCREEN_WIDTH, 1/UIScreen.mainScreen.scale)];
     borderView.backgroundColor = UIColor.whiteColor;
@@ -96,7 +108,12 @@
         _startY = self.view.frame.origin.y;
     }
     CGPoint translationInView = [recognizer translationInView:self.view];
-    frame.origin.y = MAX(0, _startY + translationInView.y);
+    CGFloat y = MAX(0, _startY + translationInView.y);
+    CGFloat navBarHeight = WXA_SCREEN_HEIGHT == 812 ? 88 : 64;
+    if (y +  navBarHeight > UIScreen.mainScreen.bounds.size.height) {
+        return;
+    }
+    frame.origin.y = y;
     
     self.view.frame = frame;
 }
@@ -113,7 +130,7 @@
         
     } else {
         [sendor setTitle:@"全屏" forState:UIControlStateNormal];
-        toFrame = CGRectMake(0, 0, self.view.bounds.size.width, WXA_SCREEN_HEIGHT/2);
+        toFrame = CGRectMake(0, 0, self.view.bounds.size.width, [self mainHeight]);
     }
     CGRect contentFrame = CGRectMake(0, _topView.frame.size.height, toFrame.size.width, toFrame.size.height - _topView.bounds.size.height);
     __weak typeof(self) welf = self;
@@ -125,6 +142,11 @@
     } completion:nil];
 }
 
+- (CGFloat)mainHeight {
+    CGFloat statusBarHeight = WXA_SCREEN_HEIGHT == 812 ? 44 : 20;
+    return _minContentHeight ? _minContentHeight + statusBarHeight + 44 : WXA_SCREEN_HEIGHT/2;
+}
+
 - (void)windowResize:(CGSize)size {
     
 }
@@ -132,6 +154,11 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:event {
     CGPoint pointInView = [self.mainView convertPoint:point fromView:self.view.window];
     return [self.mainView pointInside:pointInView withEvent:event];
+}
+
+- (void)setIsShowFullScreen:(BOOL)isShowFullScreen {
+    _isShowFullScreen = isShowFullScreen;
+    _resizeButton.hidden = !isShowFullScreen;
 }
 
 #pragma mark - UINavigationControllerDelegate
