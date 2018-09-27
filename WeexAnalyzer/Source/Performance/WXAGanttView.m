@@ -21,7 +21,7 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGRect axisRect = CGRectMake(rect.origin.x+10, rect.origin.y+10, rect.size.width-20, rect.size.height-40);
+    CGRect axisRect = CGRectMake(rect.origin.x+30, rect.origin.y+30, rect.size.width-60, rect.size.height-60);
     [self drawAxis:context rect:axisRect];
     [self drawData:context rect:axisRect];
     [self drawSecondOpen:context rect:axisRect];
@@ -56,9 +56,9 @@
     float interval = _axisMaxY/5.0;
     float intervalWidth = rect.size.width*0.9/5.0;
     for (int i=0; i<6; i++) {
-        CGPoint titlePoint = CGPointMake(10+intervalWidth*i, maxY);
+        CGPoint titlePoint = CGPointMake(minX+intervalWidth*i, maxY);
         NSString *axisYtitle = [NSString stringWithFormat:@"%.1f", interval*i];
-        [axisYtitle drawAtPoint:CGPointMake(10+intervalWidth*i, maxY) withAttributes:attributes];
+        [axisYtitle drawAtPoint:titlePoint withAttributes:attributes];
         
         if (i>0) {
             //纵向分割线
@@ -96,6 +96,10 @@
         CGContextFillRect(context, CGRectMake(x, y, width, 20));
         
         [data.name drawAtPoint:CGPointMake(x, y+22) withAttributes:attributes];
+        
+        CGFloat durationWidth = width < 100 ? 100 : width;
+        paragraphStyle.alignment = width < 100 ? NSTextAlignmentLeft : NSTextAlignmentCenter;
+        [data.duration drawInRect:CGRectMake(x, y+3, durationWidth, 20) withAttributes:attributes];
     }
     
 }
@@ -109,16 +113,14 @@
     CGFloat lengths[] = {10,2};
     CGContextSetLineDash(context, 5, lengths, 2);
     CGContextSetStrokeColorWithColor(context, UIColor.orangeColor.CGColor);
-    CGContextMoveToPoint(context, x, CGRectGetMinY(rect)-10);
+    CGContextMoveToPoint(context, x, CGRectGetMinY(rect));
     CGContextAddLineToPoint(context, x, CGRectGetMaxY(rect)+10);
     CGContextStrokePath(context);
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:12],
                                 NSFontAttributeName, UIColor.orangeColor, NSForegroundColorAttributeName, nil];
     NSString *text = [NSString stringWithFormat:@"%.1f (原秒开时间)", _secondOpenTime];
-    [text drawAtPoint:CGPointMake(x+5, 10) withAttributes:attributes];
-    
-    
+    [text drawAtPoint:CGPointMake(x+5, CGRectGetMinY(rect)) withAttributes:attributes];
 }
 
 @end

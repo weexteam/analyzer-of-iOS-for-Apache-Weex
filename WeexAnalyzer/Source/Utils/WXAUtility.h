@@ -20,4 +20,6 @@ void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement);
 
 + (WXSDKInstance *)findCurrentWeexInstance;
 
++ (NSString *)deviceModelName;
+
 @end

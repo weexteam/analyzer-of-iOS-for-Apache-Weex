@@ -7,6 +7,7 @@
 
 #import "WXAMonitorHandler.h"
 #import <WeexSDK/WXUtility.h>
+#import "NSDictionary+forPath.h"
 
 @implementation WXAMonitorHandler
 
@@ -91,6 +92,14 @@
             NSNumber *lastRenderOriginDiffTime = [lastData objectForKey:@"renderOriginDiffTime"];
             if ([renderOriginDiffTime isKindOfClass:NSNumber.class] && [lastRenderOriginDiffTime isKindOfClass:NSNumber.class]) {
                 [newData setObject:@(renderOriginDiffTime.doubleValue - lastRenderOriginDiffTime.doubleValue) forKey:@"renderDiffTime"];
+            }
+            NSDictionary *style = [data objectForKey:@"style"];
+            if ([style isKindOfClass:NSDictionary.class]) {
+                [newData setObject:[style toString] forKey:@"styleString"];
+            }
+            NSDictionary *attrs = [data objectForKey:@"attrs"];
+            if ([attrs isKindOfClass:NSDictionary.class]) {
+                [newData setObject:[attrs toString] forKey:@"attrsString"];
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  WXAInteractionViewController.h
+//  WXAPfmPageViewController.h
 //  WeexAnalyzer
 //
 //  Created by 对象 on 2018/9/13.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WXAInteractionViewController : WXABaseViewController
+@interface WXAPfmPageViewController : WXABaseViewController
 
 @end
 

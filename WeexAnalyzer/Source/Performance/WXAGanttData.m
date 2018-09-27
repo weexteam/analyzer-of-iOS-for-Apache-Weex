@@ -22,6 +22,10 @@
     return self;
 }
 
+- (NSString *)duration {
+    return [NSString stringWithFormat:@"%.1f", _end-_start];
+}
+
 @end
 
 

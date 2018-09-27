@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) double start;
 @property(nonatomic, assign) double end;
 
+- (NSString *)duration;
+
 @end
 
 

@@ -18,7 +18,7 @@
 #import "WXAMonitorHandler.h"
 #import "WXAApiTracingViewController.h"
 #import "WXARenderTracingViewController.h"
-#import "WXAInteractionViewController.h"
+#import "WXAPfmPageViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -78,7 +78,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         WXAMenuItem *interactionItem = [WXAMenuItem new];
         interactionItem.title = @"可交互";
         interactionItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
-        interactionItem.controllerClass = WXAInteractionViewController.self;
+        interactionItem.controllerClass = WXAPfmPageViewController.self;
         
         _items = @[wxLogItem, interactionItem, storageItem, apiItem, renderItem];
         
