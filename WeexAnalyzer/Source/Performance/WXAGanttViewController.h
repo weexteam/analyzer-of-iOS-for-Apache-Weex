@@ -5,11 +5,11 @@
 //  Created by 对象 on 2018/9/26.
 //
 
-#import <UIKit/UIKit.h>
+#import "WXAPfmIntBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WXAGanttViewController : UIViewController
+@interface WXAGanttViewController : WXAPfmIntBaseViewController
 
 @end
 

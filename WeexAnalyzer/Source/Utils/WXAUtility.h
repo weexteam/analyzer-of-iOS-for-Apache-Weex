@@ -13,6 +13,8 @@
 #define WXA_SCREEN_WIDTH  ([[UIScreen mainScreen] bounds].size.width)
 // 屏幕高度
 #define WXA_SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+// 1像素
+#define WXA_SCREEN_1PIXCEL  1/UIScreen.mainScreen.scale
 
 void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement);
 

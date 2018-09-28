@@ -6,7 +6,7 @@
 //
 
 #import "WXAIntStatsViewController.h"
-#import "WXAMonitorHandler.h"
+#import "WXAMonitorDataManager.h"
 #import "WXAIntTableViewCell.h"
 
 @interface WXAIntStatsViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -34,19 +34,16 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     [self.view addSubview:self.tableView];
-    
-    _monitor = [WXAMonitorHandler.sharedInstance.monitorDictionary[@"0"] objectForKey:@"stats"];
-    
-    [self fetchData];
+    self.contentView = self.tableView;
 
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    _tableView.frame = self.view.bounds;
+- (NSString *)type {
+    return @"stats";
 }
 
-- (void)fetchData {
+- (void)load {
+    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[@"0"] objectForKey:@"stats"];
     NSMutableArray *data = [NSMutableArray new];
 //    if (_monitor) {
         NSDictionary *map = @{
@@ -113,6 +110,11 @@
         }
 //    }
     _data = [data copy];
+}
+
+- (void)reload {
+    [self load];
+    [_tableView reloadData];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

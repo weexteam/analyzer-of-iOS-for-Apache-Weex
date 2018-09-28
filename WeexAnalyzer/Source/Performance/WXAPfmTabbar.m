@@ -31,7 +31,7 @@
             UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(index*width/array.count, 0, width/array.count, self.bounds.size.height)];
             button.titleLabel.font = [UIFont systemFontOfSize:13];
             [button setTitle:item forState:UIControlStateNormal];
-            [button setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
+            [button setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
             [button setTitleColor:UIColor.wxaHighlightColor forState:UIControlStateSelected];
             button.backgroundColor = UIColor.clearColor;
             [button addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -41,7 +41,7 @@
             index++;
         }
         
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, width, 1/UIScreen.mainScreen.scale)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 1/UIScreen.mainScreen.scale)];
         line.backgroundColor = UIColor.lightGrayColor;
         [self addSubview:line];
     }
@@ -61,10 +61,13 @@
 }
 
 - (void)pressButton:(UIButton *)button {
-    if (self.select) {
-        self.select(button.tag);
-        [self setCurrent:button.tag];
+    if (button.tag != _currentIndex) {
+        if (self.select) {
+            self.select(button.tag, _currentIndex);
+            [self setCurrent:button.tag];
+        }
     }
+    
 }
 
 @end

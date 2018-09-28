@@ -101,7 +101,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 + (void)enableDebugMode {
 #ifdef WXADevMode
     [WeexAnalyzer sharedInstance];
-    [WXAnalyzerCenter addWxAnalyzer:[WXAMonitorHandler sharedInstance]];
+    [WXAnalyzerCenter addWxAnalyzer:[WXAMonitorHandler new]];
 #endif
 }
 

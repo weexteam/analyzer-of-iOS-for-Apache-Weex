@@ -6,14 +6,14 @@
 //
 
 #import "WXAIntViewController.h"
-#import "WXAMonitorHandler.h"
+#import "WXAMonitorDataManager.h"
 #import "UIColor+WXAExtension.h"
+#import "WXAUtility.h"
 
 @interface WXAIntViewController () <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSArray *warningData;
-@property (nonatomic, strong) NSArray *monitor;
 
 @end
 
@@ -22,43 +22,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.backgroundColor = nil;
-    [self.tableView registerClass:WXAInteractionTableViewCell.class forCellReuseIdentifier:@"cellIdentifier"];
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.backgroundColor = nil;
+    [tableView registerClass:WXAInteractionTableViewCell.class forCellReuseIdentifier:@"cellIdentifier"];
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
     }
-    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view addSubview:self.tableView];
+    tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:tableView];
+    self.contentView = tableView;
     
-    _monitor = [WXAMonitorHandler.sharedInstance.monitorDictionary[@"0"] objectForKey:@"wxinteraction"];
-    
-    [self fetchData];
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    _tableView.frame = self.view.bounds;
+- (NSString *)type {
+    return @"wxinteraction";
 }
 
-- (void)fetchData {
+- (void)load {
+    _data = [WXAMonitorDataManager.sharedInstance.monitorDictionary[@"0"] objectForKey:@"wxinteraction"];
     NSMutableArray *data = [NSMutableArray new];
-    if (_monitor) {
-        for (NSDictionary *item in _monitor) {
+    if (_data) {
+        for (NSDictionary *item in _data) {
             NSNumber *renderDiffTime= [item objectForKey:@"renderDiffTime"];
             if([renderDiffTime isKindOfClass:NSNumber.class] && renderDiffTime.doubleValue > 200) {
                 [data addObject:item];
             }
         }
     } else {
-        _monitor = @[@{@"type":@"div",@"ref":@"21",@"renderDiffTime":@300}];
+        _data = @[@{@"type":@"div",@"ref":@"21",@"renderDiffTime":@300}];
     }
     _warningData = [data copy];
+}
+
+- (void)reload {
+    [self load];
+    [(UITableView *)self.contentView reloadData];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +78,58 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _monitor.count;
+    return _data.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 60;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 60)];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width/2, 40)];
+    button.titleLabel.font = [UIFont systemFontOfSize:13];
+    [button setTitle:@"全部节点" forState:UIControlStateNormal];
+    [button setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
+    [button setTitleColor:UIColor.wxaHighlightColor forState:UIControlStateSelected];
+    button.selected = YES;
+    [headerView addSubview:button];
+    
+    UIButton *warning = [[UIButton alloc] initWithFrame:CGRectMake(tableView.bounds.size.width/2, 0, tableView.bounds.size.width/2, 40)];
+    warning.titleLabel.font = [UIFont systemFontOfSize:13];
+    [warning setTitle:@"超时节点" forState:UIControlStateNormal];
+    [warning setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
+    [warning setTitleColor:UIColor.wxaHighlightColor forState:UIControlStateSelected];
+    [headerView addSubview:warning];
+    
+    UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 60, 20)];
+    time.text = @"耗时";
+    time.textColor = UIColor.whiteColor;
+    time.textAlignment = NSTextAlignmentCenter;
+    time.font = [UIFont systemFontOfSize:12];
+    [headerView addSubview:time];
+    
+    UILabel *info = [[UILabel alloc] initWithFrame:CGRectMake(60, 40, 60, 20)];
+    info.text = @"节点";
+    info.textColor = UIColor.whiteColor;
+    info.textAlignment = NSTextAlignmentCenter;
+    info.font = [UIFont systemFontOfSize:12];
+    [headerView addSubview:info];
+    
+    UILabel *attr = [[UILabel alloc] initWithFrame:CGRectMake(120, 40, UIScreen.mainScreen.bounds.size.width-120, 20)];
+    attr.text = @"属性/样式";
+    attr.textColor = UIColor.whiteColor;
+    attr.textAlignment = NSTextAlignmentCenter;
+    attr.font = [UIFont systemFontOfSize:12];
+    [headerView addSubview:attr];
+    
+    UIView *hline3 = [[UIView alloc] initWithFrame:CGRectMake(0, 40, WXA_SCREEN_WIDTH, WXA_SCREEN_1PIXCEL)];
+    hline3.backgroundColor = UIColor.whiteColor;
+    [headerView addSubview:hline3];
+    
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,9 +139,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WXAInteractionTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    if (_monitor.count > indexPath.row) {
-        NSDictionary *data = _monitor[indexPath.row];
+    WXAInteractionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    if (_data.count > indexPath.row) {
+        NSDictionary *data = _data[indexPath.row];
         cell.typeLabel.text = [data objectForKey:@"type"];
         cell.refLabel.text = [data objectForKey:@"ref"];
         cell.styleLabel.text = [data objectForKey:@"styleString"];
@@ -113,7 +167,7 @@
         _diffTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
         _diffTimeLabel.font = [UIFont systemFontOfSize:12];
         _diffTimeLabel.textColor = UIColor.whiteColor;
-        _diffTimeLabel.backgroundColor = UIColor.wxaHighlightColor;
+        _diffTimeLabel.backgroundColor = UIColor.wxaHighlightRectColor;
         _diffTimeLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_diffTimeLabel];
         

@@ -6,6 +6,7 @@
 //
 
 #import "WXAGanttView.h"
+#import "UIColor+WXAExtension.h"
 
 @implementation WXAGanttView
 
@@ -21,7 +22,7 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGRect axisRect = CGRectMake(rect.origin.x+30, rect.origin.y+30, rect.size.width-60, rect.size.height-60);
+    CGRect axisRect = CGRectMake(rect.origin.x+15, rect.origin.y+15, rect.size.width-30, rect.size.height-30);
     [self drawAxis:context rect:axisRect];
     [self drawData:context rect:axisRect];
     [self drawSecondOpen:context rect:axisRect];
@@ -92,7 +93,7 @@
         CGFloat width = (data.end-data.start)/_axisMaxY*mainWidth;
         CGFloat y = minY + i*itemHeight;
         
-        CGContextSetFillColorWithColor(context, [UIColor colorWithRed:12/255.0 green:133/255.0 blue:46/255.0 alpha:1].CGColor);
+        CGContextSetFillColorWithColor(context, UIColor.wxaHighlightRectColor.CGColor);
         CGContextFillRect(context, CGRectMake(x, y, width, 20));
         
         [data.name drawAtPoint:CGPointMake(x, y+22) withAttributes:attributes];

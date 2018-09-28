@@ -20,7 +20,7 @@
         
         _keyLabel = [[UILabel alloc] init];
         _keyLabel.font = [UIFont systemFontOfSize:14];
-        _keyLabel.textColor = UIColor.greenColor;
+        _keyLabel.textColor = UIColor.wxaHighlightColor;
         [self.contentView addSubview:_keyLabel];
         
         _valueLabel = [[UILabel alloc] init];

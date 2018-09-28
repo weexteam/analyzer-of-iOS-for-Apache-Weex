@@ -7,61 +7,58 @@
 
 #import "WXAGanttViewController.h"
 #import "WXAGanttView.h"
-#import "WXAMonitorHandler.h"
+#import "WXAMonitorDataManager.h"
 #import "WXAGanttData.h"
 
 @interface WXAGanttViewController ()
 
 @property(nonatomic, strong) WXAGanttView *ganttView;
+@property(nonatomic, strong) WXAGanttData *ganttData;
 
 @end
 
 @implementation WXAGanttViewController
-
-- (void)dealloc {
-    [NSNotificationCenter.defaultCenter removeObserver:self];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _ganttView = [[WXAGanttView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_ganttView];
-    [self loadData];
-    
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(monitor:)
-                                               name:kWXAMonitorHandlerNotification
-                                             object:nil];
-    
-}
-
-- (void)loadData {
-    WXAGanttData *ganttData = [WXAGanttData dataWithMonitor:WXAMonitorHandler.sharedInstance.monitorDictionary[@"0"]];
-    _ganttView.axisMaxY = ganttData.interaction.end;
-    _ganttView.secondOpenTime = ganttData.secondOpenTime;
-    _ganttView.datas = @[
-                         ganttData.downloadBundle,
-                         ganttData.handleBundle,
-                         ganttData.firstIneractionView,
-                         ganttData.async,
-                         ganttData.interaction,
-                         ];
+    self.contentView = _ganttView;
+    [self fresh];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    _ganttView.frame = self.view.bounds;
     [_ganttView setNeedsDisplay];
 }
 
-- (void)monitor:(NSNotification *)notifiction {
-    if ([notifiction.object isKindOfClass:NSString.class]) {
-        if ([notifiction.object isEqualToString:@"stage"]) {
-            [self loadData];
-            [_ganttView setNeedsDisplay];
-        }
-    }
+- (void)load {
+    _ganttData = [WXAGanttData dataWithMonitor:WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId]];
+}
+
+- (void)fresh {
+    _ganttView.axisMaxY = _ganttData.interaction.end;
+    _ganttView.secondOpenTime = _ganttData.secondOpenTime;
+    _ganttView.datas = @[
+                         _ganttData.downloadBundle,
+                         _ganttData.handleBundle,
+                         _ganttData.firstIneractionView,
+                         _ganttData.async,
+                         _ganttData.interaction,
+                         ];
+}
+
+- (void)reload {
+    [self load];
+    [self fresh];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_ganttView setNeedsDisplay];
+    });
+}
+
+- (NSString *)type {
+    return @"stage";
 }
 
 @end

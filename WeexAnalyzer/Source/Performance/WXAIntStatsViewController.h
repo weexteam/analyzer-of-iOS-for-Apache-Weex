@@ -5,11 +5,11 @@
 //  Created by 对象 on 2018/9/27.
 //
 
-#import <UIKit/UIKit.h>
+#import "WXAPfmIntBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WXAIntStatsViewController : UIViewController
+@interface WXAIntStatsViewController : WXAPfmIntBaseViewController
 
 @end
 

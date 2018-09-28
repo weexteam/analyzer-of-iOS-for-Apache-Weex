@@ -8,7 +8,7 @@
 #import "WXAIntBaseInfoViewController.h"
 #import "WXAIntTableViewCell.h"
 #import "WXAUtility.h"
-#import "WXAMonitorHandler.h"
+#import "WXAMonitorDataManager.h"
 #import "UIColor+WXAExtension.h"
 
 @interface WXAIntBaseInfoViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = nil;
@@ -35,19 +35,16 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
+    self.contentView = self.tableView;
     [self.view addSubview:self.tableView];
-    
-    _monitor = [WXAMonitorHandler.sharedInstance.monitorDictionary[@"0"] objectForKey:@"properties"];
-    
-    [self fetchData];
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    _tableView.frame = self.view.bounds;
+- (NSString *)type {
+    return @"properties";
 }
 
-- (void)fetchData {
+- (void)load {
+    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId] objectForKey:@"properties"];
     NSMutableArray *data = [NSMutableArray new];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
@@ -72,7 +69,10 @@
                               @"wxRequestType":@"请求类型",
                               @"wxBundleSize":@"加载bundle大小",
                               };
-        for (NSString *key in map.allKeys) {
+        NSArray *allkeys = [map.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString *  _Nonnull obj1, NSString *  _Nonnull obj2) {
+            return [obj1 compare:obj2];
+        }];
+        for (NSString *key in allkeys) {
             NSString *name = [map objectForKey:key];
             NSString *value = [_monitor objectForKey:key];
             if (name && value) {
@@ -84,6 +84,13 @@
         }
     }
     _data = [data copy];
+}
+
+- (void)reload {
+    [self load];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_tableView reloadData];
+    });
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,21 +108,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _data.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 100;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 100)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.bounds.size.width-20, 100)];
-    label.text = [_monitor objectForKey:@"wxBundleUrl"];
-    label.textColor = UIColor.greenColor;
-    label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:13];
-    [view addSubview:label];
-    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
