@@ -34,8 +34,12 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
     [self.view addSubview:self.tableView];
-    self.contentView = self.tableView;
 
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.tableView.frame = self.view.bounds;
 }
 
 - (NSString *)type {
@@ -43,7 +47,7 @@
 }
 
 - (void)load {
-    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[@"0"] objectForKey:@"stats"];
+    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId] objectForKey:@"stats"];
     NSMutableArray *data = [NSMutableArray new];
 //    if (_monitor) {
         NSDictionary *map = @{
@@ -114,7 +118,9 @@
 
 - (void)reload {
     [self load];
-    [_tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_tableView reloadData];
+    });
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

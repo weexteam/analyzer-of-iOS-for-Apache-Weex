@@ -120,6 +120,7 @@
 
 - (void)closeSelf:(id)sendor {
     [self.view.window setHidden:YES];
+    self.view.window.rootViewController = nil;
 }
 
 - (void)resize:(UIButton *)sendor {

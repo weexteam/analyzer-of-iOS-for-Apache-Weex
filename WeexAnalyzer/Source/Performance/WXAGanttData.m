@@ -45,6 +45,7 @@
         NSNumber *wxJSAsyncDataStart = [monitor objectForPath:@"stage.wxJSAsyncDataStart"] ?: @0;
         NSNumber *wxJSAsyncDataEnd = [monitor objectForPath:@"stage.wxJSAsyncDataEnd"] ?: @0;
         NSNumber *wxInteraction = [monitor objectForPath:@"stage.wxInteraction"] ?: @0;
+        NSNumber *wxFsRender = [monitor objectForPath:@"stage.wxFsRender"] ?: @0;
         _downloadBundle = [[WXAGanttShowData alloc] initWithName:@"请求资源耗时"
                                                            start:0
                                                              end:(wxEndDownLoadBundle.doubleValue - wxStartDownLoadBundle.doubleValue)];
@@ -60,7 +61,7 @@
         _interaction = [[WXAGanttShowData alloc] initWithName:@"可交互时间"
                                                                 start:0
                                                                   end:(wxInteraction.doubleValue - wxStartDownLoadBundle.doubleValue)];
-        _secondOpenTime = _interaction.end/2.0;
+        _secondOpenTime = wxFsRender.doubleValue;
         
     }
     return self;

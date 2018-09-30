@@ -24,12 +24,12 @@
     
     _ganttView = [[WXAGanttView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_ganttView];
-    self.contentView = _ganttView;
     [self fresh];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    _ganttView.frame = self.view.bounds;
     [_ganttView setNeedsDisplay];
 }
 

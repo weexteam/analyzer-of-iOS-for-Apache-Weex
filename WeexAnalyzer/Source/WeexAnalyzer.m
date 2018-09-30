@@ -10,7 +10,6 @@
 #import "WXAMenuView.h"
 #import <WeexSDK/WeexSDK.h>
 #import "WXAUtility.h"
-#import "WeexAnalyzerDefine.h"
 #import "WXAWXExternalLogger.h"
 #import "WXALogMenuItem.h"
 #import "WXAStorageMenuItem.h"
@@ -26,11 +25,9 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 
 - (void)WXA_motionEnded:(__unused UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-#ifdef WXADevMode
     if (event.subtype == UIEventSubtypeMotionShake) {
         [[NSNotificationCenter defaultCenter] postNotificationName:WXAShowDevMenuNotification object:nil];
     }
-#endif
 }
 
 @end
@@ -38,7 +35,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) WXSDKInstance *wxInstance;
+@property (nonatomic, weak) WXSDKInstance *wxInstance;
 @end
 
 @implementation WeexAnalyzer
@@ -54,8 +51,8 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 
 - (instancetype)init {
     if (self = [super init]) {
-#ifdef WXADevMode
         
+        [WXAnalyzerCenter addWxAnalyzer:[WXAMonitorHandler new]];
         [WXAnalyzerCenter setOpen:YES];
         
         WXALogMenuItem *wxLogItem = [[WXALogMenuItem alloc] initWithTitle:@"JS日志"
@@ -72,7 +69,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         
         WXAMenuItem *renderItem = [WXAMenuItem new];
         renderItem.title = @"render";
-        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
+        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
         renderItem.controllerClass = WXARenderTracingViewController.self;
         
         WXAMenuItem *interactionItem = [WXAMenuItem new];
@@ -80,7 +77,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         interactionItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
         interactionItem.controllerClass = WXAPfmPageViewController.self;
         
-        _items = @[wxLogItem, interactionItem, storageItem, apiItem, renderItem];
+        _items = @[interactionItem, wxLogItem, storageItem, apiItem, renderItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{
@@ -92,77 +89,56 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
                                                    object:nil];
         
         [WXSDKEngine registerHandler:[WXAMenuDefaultImpl new] withProtocol:@protocol(WXAMenuProtocol)];
-#endif
     }
     return self;
 }
 
 #pragma mark - public method
 + (void)enableDebugMode {
-#ifdef WXADevMode
     [WeexAnalyzer sharedInstance];
-    [WXAnalyzerCenter addWxAnalyzer:[WXAMonitorHandler new]];
-#endif
 }
 
 + (void)disableDebugMode {
-#ifdef WXADevMode
     [[WeexAnalyzer sharedInstance] free];
-#endif
 }
 
 + (void)bindWXInstance:(WXSDKInstance *)wxInstance {
-#ifdef WXADevMode
     [WeexAnalyzer sharedInstance].wxInstance = wxInstance;
-#endif
 }
 
 + (void)unbindWXInstance {
-#ifdef WXADevMode
     [WeexAnalyzer sharedInstance].wxInstance = nil;
-#endif
 }
 
 + (void)addMenuItem:(WXAMenuItem *)item {
-#ifdef WXADevMode
     [[WeexAnalyzer sharedInstance] addItem:item];
-#endif
 }
 
 #pragma mark - actions
 - (void)shakeAction:(id)sender {
-#ifdef WXADevMode
     [self show];
-#endif
 }
 
 - (void)show {
-#ifdef WXADevMode
     WXAMenuView *menu = [[WXAMenuView alloc] initWithItems:_items];
     [menu showMenu];
-#endif
 }
 
 - (void)addItem:(WXAMenuItem *)item {
-#ifdef WXADevMode
     NSMutableArray *array = [_items mutableCopy];
     [array addObject:item];
     _items = [array copy];
     
     item.wxInstance = self.wxInstance;
-#endif
 }
 
 - (void)free {
-#ifdef WXADevMode
     _items = nil;
     _wxInstance = nil;
-#endif
 }
 
 #pragma mark - Setters
 - (void)setWxInstance:(WXSDKInstance *)wxInstance {
-#ifdef WXADevMode
     _wxInstance = wxInstance;
     
     for (WXAMenuItem *item in self.items) {
@@ -172,7 +148,6 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
     if ([menu respondsToSelector:@selector(setWxInstance:)]) {
         [menu setWxInstance:wxInstance];
     }
-#endif
 }
 
 @end

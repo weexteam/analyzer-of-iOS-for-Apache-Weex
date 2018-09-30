@@ -10,12 +10,10 @@
 #import <objc/runtime.h>
 #import "WXAViewControllerUtil.h"
 #import <WeexSDK/WXSDKManager.h>
-#import "WeexAnalyzerDefine.h"
 #import <sys/utsname.h>
 
 void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement)
 {
-#ifdef WXADevMode
     Method originalMethod = class_getInstanceMethod(cls, original);
     IMP originalImplementation = method_getImplementation(originalMethod);
     const char *originalArgTypes = method_getTypeEncoding(originalMethod);
@@ -29,7 +27,6 @@ void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement)
     } else {
         method_exchangeImplementations(originalMethod, replacementMethod);
     }
-#endif
 }
 
 @implementation WXAUtility

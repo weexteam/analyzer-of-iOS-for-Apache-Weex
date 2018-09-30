@@ -32,9 +32,4 @@
     [[WXAWindow sharedInstance] makeKeyAndVisible];
 }
 
-- (void)closeItem:(id)sender {
-    [WXAWindow sharedInstance].hidden = YES;
-    [[WXAWindow sharedInstance] resignKeyWindow];
-}
-
 @end

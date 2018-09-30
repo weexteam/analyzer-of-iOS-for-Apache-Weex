@@ -32,11 +32,6 @@
     [self load];
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    _contentView.frame = self.view.bounds;
-}
-
 - (void)instanceChanged:(NSNotification *)notification {
     NSString *instanceId = [notification.object objectForKey:@"instanceId"];
     if (_instanceId == instanceId) {
