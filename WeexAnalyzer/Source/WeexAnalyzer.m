@@ -64,12 +64,12 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         
         WXAMenuItem *apiItem = [WXAMenuItem new];
         apiItem.title = @"api";
-        apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_log"];
+        apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_api"];
         apiItem.controllerClass = WXAApiTracingViewController.self;
         
         WXAMenuItem *renderItem = [WXAMenuItem new];
         renderItem.title = @"render";
-        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
+        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_render_analysis"];
         renderItem.controllerClass = WXARenderTracingViewController.self;
         
         WXAMenuItem *interactionItem = [WXAMenuItem new];

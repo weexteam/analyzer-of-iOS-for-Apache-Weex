@@ -15,7 +15,7 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         instance = [self new];
-        instance.windowLevel = UIWindowLevelAlert-1;
+        instance.windowLevel = UIWindowLevelAlert-2;
         instance.backgroundColor = nil;
     });
     return instance;

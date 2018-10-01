@@ -29,7 +29,7 @@
     naviController.navigationBar.backgroundColor = nil;
     naviController.navigationBarHidden = YES;
     [WXAWindow sharedInstance].rootViewController = naviController;
-    [[WXAWindow sharedInstance] makeKeyAndVisible];
+    [WXAWindow sharedInstance].hidden = NO;
 }
 
 @end
