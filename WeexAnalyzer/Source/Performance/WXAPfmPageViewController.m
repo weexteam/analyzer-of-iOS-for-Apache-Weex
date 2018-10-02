@@ -10,7 +10,7 @@
 #import "WXAIntBaseInfoViewController.h"
 #import "WXAIntStatsViewController.h"
 #import "WXAIntViewController.h"
-#import "WXAPfmTabbar.h"
+#import "WXAPageTabbar.h"
 #import "WXAUtility.h"
 #import "WXAInstanceSwitchViewController.h"
 #import "WXAMonitorDataManager.h"
@@ -18,7 +18,7 @@
 @interface WXAPfmPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) NSArray *clazzes;
-@property (nonatomic, strong) WXAPfmTabbar *tabbar;
+@property (nonatomic, strong) WXAPageTabbar *tabbar;
 @property (nonatomic, assign) NSInteger peddingIndex;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) WXAInstanceSwitchViewController *switchController;
@@ -63,7 +63,7 @@
     
     
     //tabbar
-    _tabbar = [[WXAPfmTabbar alloc] initWithFrame:CGRectMake(0, self.contentView.bounds.size.height-50, self.contentView.bounds.size.width, 50)];
+    _tabbar = [[WXAPageTabbar alloc] initWithFrame:CGRectMake(0, self.contentView.bounds.size.height-50, self.contentView.bounds.size.width, 50) tabs:@[@"概览", @"核心指标", @"计数埋点", @"渲染耗时"]];
     [self.contentView addSubview:_tabbar];
     [_tabbar setCurrent:1];__weak typeof(self) weakSelf = self;
     _tabbar.select = ^(NSInteger current, NSInteger last) {

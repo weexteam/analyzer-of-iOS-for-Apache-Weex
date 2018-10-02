@@ -11,7 +11,6 @@
 @interface WXABaseViewController ()
 
 @property(nonatomic, assign) CGFloat startY;
-@property(nonatomic, strong) UIButton *resizeButton;
 
 @end
 
@@ -47,14 +46,14 @@
     _titleLabel.text = [@"≡ " stringByAppendingString:self.title];
     [_topView addSubview:_titleLabel];
     
-    UIButton *closeButton = [UIButton new];
-    closeButton.frame = CGRectMake(_topView.bounds.size.width - 36, statusBarHeight + 13, 24, 24);
-    [closeButton setTitle:@"×" forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [closeButton addTarget:self action:@selector(closeSelf:) forControlEvents:UIControlEventTouchUpInside];
+    _closeButton = [UIButton new];
+    _closeButton.frame = CGRectMake(_topView.bounds.size.width - 36, statusBarHeight + 13, 24, 24);
+    [_closeButton setTitle:@"×" forState:UIControlStateNormal];
+    [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_closeButton addTarget:self action:@selector(closeSelf:) forControlEvents:UIControlEventTouchUpInside];
 //    closeButton.layer.cornerRadius = 12;
 //    closeButton.backgroundColor = UIColor.grayColor;
-    [_topView addSubview:closeButton];
+    [_topView addSubview:_closeButton];
     
     _resizeButton = [UIButton new];
     _resizeButton.frame = CGRectMake(_topView.bounds.size.width - 80, statusBarHeight + 13, 44, 24);
