@@ -18,6 +18,7 @@
 #import "WXAApiTracingViewController.h"
 #import "WXARenderTracingViewController.h"
 #import "WXAPfmPageViewController.h"
+#import "WXASettingViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -35,7 +36,8 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, weak) WXSDKInstance *wxInstance;
+@property (nonatomic, strong) WXSDKInstance *wxInstance;
+
 @end
 
 @implementation WeexAnalyzer
@@ -59,8 +61,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
                                                             iconImageName:@"wxt_icon_log"
                                                                    logger:[WXAWXExternalLogger new]];
         WXAStorageMenuItem *storageItem = [WXAStorageMenuItem new];
-        
-        [WXTracingManager switchTracing:YES];
+        [WXTracingManager switchTracing:[NSUserDefaults.standardUserDefaults boolForKey:@"WXA_OPEN_Tracing"]];
         
         WXAMenuItem *apiItem = [WXAMenuItem new];
         apiItem.title = @"api";
@@ -77,7 +78,12 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
         interactionItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
         interactionItem.controllerClass = WXAPfmPageViewController.self;
         
-        _items = @[interactionItem, wxLogItem, storageItem, apiItem, renderItem];
+        WXAMenuItem *settingItem = [WXAMenuItem new];
+        settingItem.title = @"设置";
+        settingItem.iconImage = [UIImage imageNamed:@"wxt_icon_setting"];
+        settingItem.controllerClass = WXASettingViewController.self;
+        
+        _items = @[interactionItem, wxLogItem, storageItem, apiItem, renderItem, settingItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{

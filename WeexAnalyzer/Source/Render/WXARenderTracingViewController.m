@@ -360,10 +360,11 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
     /* Create custom view to display section header... */
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    label.textColor = UIColor.whiteColor;
     [label setFont:[UIFont boldSystemFontOfSize:14]];
     NSString *string = [NSString stringWithFormat:@"instanceId:%@",task.iid];
     if(!task.iid){
-        string = @"暂时没有weex页面渲染";
+        string = @"没有打开Tracking或暂时没有weex页面渲染";
     }
     /* Section header is in 0th index... */
     [label setText:string];
