@@ -13,6 +13,8 @@
 @property(nonatomic, strong) UIView *mainView;
 @property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) UIView *topView;
+@property(nonatomic, strong) UIButton *closeButton;
+@property(nonatomic, strong) UIButton *resizeButton;
 @property(nonatomic, assign) BOOL isShowFullScreen;
 @property(nonatomic, assign) CGFloat minContentHeight;
 

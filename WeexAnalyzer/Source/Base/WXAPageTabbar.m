@@ -1,30 +1,31 @@
 //
-//  WXAPfmTabbar.m
+//  WXAPageTabbar.m
 //  WeexAnalyzer
 //
 //  Created by 对象 on 2018/9/27.
 //
 
-#import "WXAPfmTabbar.h"
+#import "WXAPageTabbar.h"
 #import "WXAUtility.h"
 #import "UIColor+WXAExtension.h"
 
-@interface WXAPfmTabbar ()
+@interface WXAPageTabbar ()
 
 @property (nonatomic, strong) NSMutableArray<UIButton *> *buttons;
 @property (nonatomic, assign) NSUInteger currentIndex;
+@property (nonatomic, strong) UIView* topLine;
 
 @end
 
-@implementation WXAPfmTabbar
+@implementation WXAPageTabbar
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame tabs:(NSArray<NSString*>*)tabs
 {
     self = [super initWithFrame:frame];
     if (self) {
         _currentIndex = INT_MAX;
         _buttons = [NSMutableArray new];
-        NSArray *array = @[@"概览", @"核心指标", @"计数埋点", @"渲染耗时"];
+        NSArray *array = [tabs copy];;
         int index = 0;
         CGFloat width = self.bounds.size.width;
         for (NSString *item in array) {
@@ -41,9 +42,9 @@
             index++;
         }
         
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 1/UIScreen.mainScreen.scale)];
-        line.backgroundColor = UIColor.lightGrayColor;
-        [self addSubview:line];
+        _topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 1/UIScreen.mainScreen.scale)];
+        _topLine.backgroundColor = UIColor.lightGrayColor;
+        [self addSubview:_topLine];
     }
     return self;
 }
@@ -60,6 +61,11 @@
     }
 }
 
+- (NSUInteger)getCurrent
+{
+    return _currentIndex;
+}
+
 - (void)pressButton:(UIButton *)button {
     if (button.tag != _currentIndex) {
         if (self.select) {
@@ -68,6 +74,11 @@
         }
     }
     
+}
+
+- (void)hideTopLine
+{
+    _topLine.hidden = YES;
 }
 
 @end

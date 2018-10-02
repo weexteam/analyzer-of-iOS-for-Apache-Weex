@@ -73,6 +73,7 @@
     _collectionView.delegate = self;
     _collectionView.layer.cornerRadius = 2;
     _collectionView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+    _collectionView.showsVerticalScrollIndicator = NO;
     [_collectionView registerClass:WXAMenuCell.class forCellWithReuseIdentifier:WXAMenuCellID];
     [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:WXAMenuHeaderID];
     [_wrapView addSubview:_collectionView];
