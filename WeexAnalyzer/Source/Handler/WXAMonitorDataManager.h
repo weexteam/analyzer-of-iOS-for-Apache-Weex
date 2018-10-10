@@ -10,6 +10,7 @@
 #define kWXAMonitorNewInstanceNotification @"kWXAMonitorNewInstanceNotification"
 #define kWXAMonitorSelectNotification @"kWXAMonitorSelectNotification"
 #define kWXAMonitorHandlerNotification @"kWXAMonitorHandlerNotification"
+#define kWXAMonitorWXBundleUrlNotification @"kWXAMonitorWXBundleUrlNotification"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -87,6 +87,10 @@
                                            selector:@selector(newInstanceCome:)
                                                name:kWXAMonitorNewInstanceNotification
                                              object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(wxBundleUrlCome:)
+                                               name:kWXAMonitorWXBundleUrlNotification
+                                             object:nil];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -156,6 +160,15 @@
                                                       object:@{
                                                                @"instanceId" : notification.object
                                                                }];
+}
+
+- (void)wxBundleUrlCome:(NSNotification *)notification {
+    NSDictionary *data = notification.object;
+    NSString *instanceId = [data objectForKey:@"instanceId"];
+    NSString *wxBundleUrl = [notification.object objectForKey:@"wxBundleUrl"];
+    if (instanceId && [instanceId isEqualToString:_selectedInstanceId]) {
+        _selectedUrlLabel.text = [NSString stringWithFormat:@"%@:%@", instanceId, wxBundleUrl];
+    }
 }
 
 #pragma mark - UIPageViewControllerDataSource And UIPageViewControllerDelegate

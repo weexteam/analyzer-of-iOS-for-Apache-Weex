@@ -24,4 +24,6 @@ void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement);
 
 + (NSString *)deviceModelName;
 
++ (BOOL)isIphoneXSeries;
+
 @end

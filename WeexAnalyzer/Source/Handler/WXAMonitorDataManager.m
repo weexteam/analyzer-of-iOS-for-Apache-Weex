@@ -66,6 +66,14 @@
                                                                @"instanceId" : instanceId,
                                                                @"type" : type,
                                                                }];
+    NSString *wxBundleUrl = [data objectForKey:@"wxBundleUrl"];
+    if (wxBundleUrl) {
+        [NSNotificationCenter.defaultCenter postNotificationName:kWXAMonitorWXBundleUrlNotification
+                                                          object:@{
+                                                                   @"instanceId" : instanceId,
+                                                                   @"wxBundleUrl" : wxBundleUrl,
+                                                                   }];
+    }
     
     NSMutableDictionary *dataForInstance = _monitorDictionary[instanceId];
     if (!dataForInstance) {

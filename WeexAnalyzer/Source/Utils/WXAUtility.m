@@ -149,4 +149,8 @@ void WXASwapInstanceMethods(Class cls, SEL original, SEL replacement)
     return deviceModel;
 }
 
++ (BOOL)isIphoneXSeries {
+    return WXA_SCREEN_HEIGHT >= 812;
+}
+
 @end

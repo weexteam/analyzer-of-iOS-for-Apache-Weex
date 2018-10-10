@@ -91,15 +91,15 @@
                               @"wxJSDataPrefetchSuccess":@"前端prefetch是否成功",
                               @"wxViewDeepForRoot":@"相对于屏幕上根结点的最大view深度",
                               
-                              //apm提供点
-                              @"fps":@"进出平均fps",
-                              @"memDiff":@"进入退出内存变化",
-                              @"imgLoadCount":@"图片加载个数",
-                              @"imgLoadSuccessCount":@"图片加载成功个数",
-                              @"imgLoadFailCount":@"图片加载失败个数",
-                              @"networkRequestCount":@"网络请求次数",
-                              @"networkRequestSuccessCount":@"网络请求成功次数",
-                              @"networkRequestFailCount":@"网络请求失败次数",
+//                              //apm提供点
+//                              @"fps":@"进出平均fps",
+//                              @"memDiff":@"进入退出内存变化",
+//                              @"imgLoadCount":@"图片加载个数",
+//                              @"imgLoadSuccessCount":@"图片加载成功个数",
+//                              @"imgLoadFailCount":@"图片加载失败个数",
+//                              @"networkRequestCount":@"网络请求次数",
+//                              @"networkRequestSuccessCount":@"网络请求成功次数",
+//                              @"networkRequestFailCount":@"网络请求失败次数",
                               };
         
         for (NSString *key in map.allKeys) {
