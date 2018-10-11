@@ -122,7 +122,6 @@
 		D92A603E207F82F200E3330C /* wxt_icon_performance.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6026207F82F200E3330C /* wxt_icon_performance.png */; };
 		D92A603F207F82F200E3330C /* wxt_icon_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6027207F82F200E3330C /* wxt_icon_clear.png */; };
 		D92A6040207F82F200E3330C /* wxt_icon_debug.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6028207F82F200E3330C /* wxt_icon_debug.png */; };
-		D92A6041207F82F200E3330C /* wxt_icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A6029207F82F200E3330C /* wxt_icon_settings.png */; };
 		D92A6042207F82F200E3330C /* wxt_icon_render_analysis.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A602A207F82F200E3330C /* wxt_icon_render_analysis.png */; };
 		D92A6043207F82F200E3330C /* wxt_icon_back_white.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A602B207F82F200E3330C /* wxt_icon_back_white.png */; };
 		D92A6044207F82F200E3330C /* wxt_icon_done_white.png in Resources */ = {isa = PBXBuildFile; fileRef = D92A602C207F82F200E3330C /* wxt_icon_done_white.png */; };
@@ -168,6 +167,7 @@
 		D94F6D0F2160C34B00B0E420 /* NSDictionary+forPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F6D0B2160C34B00B0E420 /* NSDictionary+forPath.m */; };
 		D94F6D122160C39100B0E420 /* WXAMonitorDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D94F6D102160C39100B0E420 /* WXAMonitorDataManager.h */; };
 		D94F6D132160C39100B0E420 /* WXAMonitorDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F6D112160C39100B0E420 /* WXAMonitorDataManager.m */; };
+		D96F445B216F4DAD002D464F /* wxt_icon_settinginfo.png in Resources */ = {isa = PBXBuildFile; fileRef = D96F445A216F4DAC002D464F /* wxt_icon_settinginfo.png */; };
 		D97BC526216EF346002BB540 /* wxt_icon_windvane.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC522216EF346002BB540 /* wxt_icon_windvane.png */; };
 		D97BC527216EF346002BB540 /* wxt_icon_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC523216EF346002BB540 /* wxt_icon_upload.png */; };
 		D97BC528216EF346002BB540 /* wxt_icon_api.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC524216EF346002BB540 /* wxt_icon_api.png */; };
@@ -307,7 +307,6 @@
 		D92A6026207F82F200E3330C /* wxt_icon_performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_performance.png; sourceTree = "<group>"; };
 		D92A6027207F82F200E3330C /* wxt_icon_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_clear.png; sourceTree = "<group>"; };
 		D92A6028207F82F200E3330C /* wxt_icon_debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_debug.png; sourceTree = "<group>"; };
-		D92A6029207F82F200E3330C /* wxt_icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_settings.png; sourceTree = "<group>"; };
 		D92A602A207F82F200E3330C /* wxt_icon_render_analysis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_render_analysis.png; sourceTree = "<group>"; };
 		D92A602B207F82F200E3330C /* wxt_icon_back_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_back_white.png; sourceTree = "<group>"; };
 		D92A602C207F82F200E3330C /* wxt_icon_done_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_done_white.png; sourceTree = "<group>"; };
@@ -353,6 +352,7 @@
 		D94F6D0B2160C34B00B0E420 /* NSDictionary+forPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+forPath.m"; sourceTree = "<group>"; };
 		D94F6D102160C39100B0E420 /* WXAMonitorDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMonitorDataManager.h; sourceTree = "<group>"; };
 		D94F6D112160C39100B0E420 /* WXAMonitorDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMonitorDataManager.m; sourceTree = "<group>"; };
+		D96F445A216F4DAC002D464F /* wxt_icon_settinginfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_settinginfo.png; sourceTree = "<group>"; };
 		D97BC522216EF346002BB540 /* wxt_icon_windvane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_windvane.png; sourceTree = "<group>"; };
 		D97BC523216EF346002BB540 /* wxt_icon_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_upload.png; sourceTree = "<group>"; };
 		D97BC524216EF346002BB540 /* wxt_icon_api.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_api.png; sourceTree = "<group>"; };
@@ -646,6 +646,7 @@
 		D92A6018207F82F200E3330C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D96F445A216F4DAC002D464F /* wxt_icon_settinginfo.png */,
 				D97BC524216EF346002BB540 /* wxt_icon_api.png */,
 				D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */,
 				D97BC523216EF346002BB540 /* wxt_icon_upload.png */,
@@ -667,7 +668,6 @@
 				D92A6027207F82F200E3330C /* wxt_icon_clear.png */,
 				D9435AA0216395A900956B65 /* wxt_icon_setting.png */,
 				D92A6028207F82F200E3330C /* wxt_icon_debug.png */,
-				D92A6029207F82F200E3330C /* wxt_icon_settings.png */,
 				D92A602A207F82F200E3330C /* wxt_icon_render_analysis.png */,
 				D92A602B207F82F200E3330C /* wxt_icon_back_white.png */,
 				D92A602C207F82F200E3330C /* wxt_icon_done_white.png */,
@@ -900,7 +900,6 @@
 				D92A6045207F82F200E3330C /* wxt_icon_checked.png in Resources */,
 				D92A6037207F82F200E3330C /* wxt_icon_3d_rotation.png in Resources */,
 				D97BC526216EF346002BB540 /* wxt_icon_windvane.png in Resources */,
-				D92A6041207F82F200E3330C /* wxt_icon_settings.png in Resources */,
 				D92A6044207F82F200E3330C /* wxt_icon_done_white.png in Resources */,
 				D92A6046207F82F200E3330C /* wxt_icon_mtop.png in Resources */,
 				D97BC529216EF346002BB540 /* wxt_icon_basepfm.png in Resources */,
@@ -912,6 +911,7 @@
 				D92A603B207F82F200E3330C /* wxt_icon_error.png in Resources */,
 				D92A6040207F82F200E3330C /* wxt_icon_debug.png in Resources */,
 				D92A603E207F82F200E3330C /* wxt_icon_performance.png in Resources */,
+				D96F445B216F4DAD002D464F /* wxt_icon_settinginfo.png in Resources */,
 				D92A6032207F82F200E3330C /* wxt_icon_traffic.png in Resources */,
 				D92A6031207F82F200E3330C /* wxt_icon_storage.png in Resources */,
 				D92A6033207F82F200E3330C /* wxt_icon_memory.png in Resources */,

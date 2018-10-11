@@ -36,7 +36,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 @interface WeexAnalyzer ()
 
 @property (nonatomic, strong) NSArray<WXAMenuItem *> *items;
-@property (nonatomic, strong) WXSDKInstance *wxInstance;
+@property (nonatomic, weak) WXSDKInstance *wxInstance;
 
 @end
 
@@ -126,13 +126,12 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 }
 
 - (void)show {
-    WXAMenuView *menu = [[WXAMenuView alloc] initWithItems:_items];
-    [menu showMenu];
+    [WXAMenuView showMenuWithItems:_items];
 }
 
 - (void)addItem:(WXAMenuItem *)item {
     NSMutableArray *array = [_items mutableCopy];
-    [array addObject:item];
+    [array insertObject:item atIndex:array.count-1];
     _items = [array copy];
     
     item.wxInstance = self.wxInstance;

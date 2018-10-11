@@ -11,6 +11,7 @@
 #import "WXAUtility.h"
 #import "WXAMenuProtocol.h"
 #import "WXAMenuCell.h"
+#import "WXAWindow.h"
 
 #define WXAMenuCellID @"WXACell"
 #define WXAMenuHeaderID @"WXAHeader"
@@ -27,6 +28,18 @@
 @end
 
 @implementation WXAMenuView
+
+- (void)dealloc {
+    
+}
+
++ (void)showMenuWithItems:(NSArray<WXAMenuItem *> *)items {
+    if ([[WXAWindow.sharedInstance viewWithTag:WXAMenuItemTag] isKindOfClass:WXAMenuView.class]) {
+        return;
+    }
+    WXAMenuView *menu = [[WXAMenuView alloc] initWithItems:items];
+    [menu showMenu];
+}
 
 - (instancetype)initWithItems:(NSArray<WXAMenuItem *> *)items {
     if (self = [super init]) {
@@ -96,16 +109,19 @@
 }
 
 - (void)showMenu {
+    self.tag = WXAMenuItemTag;
+    [WXAWindow.sharedInstance addSubview:self];
+    WXAWindow.sharedInstance.hidden = NO;
+    
+    self.maskView.alpha = 0;
+    CGFloat y = self.wrapView.frame.origin.y;
+    self.wrapView.frame = CGRectMake(self.wrapView.frame.origin.x, WXA_SCREEN_HEIGHT, self.wrapView.frame.size.width, self.wrapView.frame.size.height);
     __weak typeof(self) welf = self;
-    [self WeexAnalyzer_popover:^{
-        welf.maskView.alpha = 0;
-        CGFloat y = welf.wrapView.frame.origin.y;
-        welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, WXA_SCREEN_HEIGHT, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
-        [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.65 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, y, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
-            welf.maskView.alpha = 0.5;
-        }                completion:nil];
-    }];
+    [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.65 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        welf.wrapView.frame = CGRectMake(welf.wrapView.frame.origin.x, y, welf.wrapView.frame.size.width, welf.wrapView.frame.size.height);
+        welf.maskView.alpha = 0.5;
+    }                completion:nil];
+    
 }
 
 - (void)closeMenu:(UITapGestureRecognizer *)tap {

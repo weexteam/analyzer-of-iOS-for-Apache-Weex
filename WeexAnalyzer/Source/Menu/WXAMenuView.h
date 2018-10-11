@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "WXAMenuItem.h"
 
+#define WXAMenuItemTag 777
+
 @interface WXAMenuView : UIView
 
-- (instancetype)initWithItems:(NSArray<WXAMenuItem *> *)items;
-- (void)showMenu;
++ (void)showMenuWithItems:(NSArray<WXAMenuItem *> *)items;
 
 @end

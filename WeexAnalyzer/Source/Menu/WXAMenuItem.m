@@ -30,6 +30,14 @@
     naviController.navigationBarHidden = YES;
     [WXAWindow sharedInstance].rootViewController = naviController;
     [WXAWindow sharedInstance].hidden = NO;
+    
+    
+    naviController.view.frame = CGRectMake(0, 88, naviController.view.frame.size.width, naviController.view.frame.size.height);
+    __weak UINavigationController *weakNaviController = naviController;
+    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        weakNaviController.view.frame = CGRectMake(0, 0, weakNaviController.view.frame.size.width, weakNaviController.view.frame.size.height);
+    } completion:nil];
+    
 }
 
 @end

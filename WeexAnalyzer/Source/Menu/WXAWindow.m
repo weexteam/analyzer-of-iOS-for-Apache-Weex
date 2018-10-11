@@ -7,6 +7,7 @@
 
 #import "WXAWindow.h"
 #import "WXABaseViewController.h"
+#import "WXAMenuView.h"
 
 @implementation WXAWindow
 
@@ -31,6 +32,9 @@
         } else {
             return [super hitTest:point withEvent:event];
         }
+    }
+    if ([[self viewWithTag:WXAMenuItemTag] isKindOfClass:WXAMenuView.class]) {
+        return [[self viewWithTag:WXAMenuItemTag] hitTest:point withEvent:event];
     }
     return nil;
 }
