@@ -90,6 +90,8 @@
                               @"wxJSDataPrefetchTime":@"前端prefetch请求时间",
                               @"wxJSDataPrefetchSuccess":@"前端prefetch是否成功",
                               @"wxViewDeepForRoot":@"相对于屏幕上根结点的最大view深度",
+                              @"wxBodyRatio":@"wx页面的屏占比",
+                              
                               
 //                              //apm提供点
 //                              @"fps":@"进出平均fps",

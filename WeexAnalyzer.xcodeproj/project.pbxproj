@@ -168,6 +168,10 @@
 		D94F6D0F2160C34B00B0E420 /* NSDictionary+forPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F6D0B2160C34B00B0E420 /* NSDictionary+forPath.m */; };
 		D94F6D122160C39100B0E420 /* WXAMonitorDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D94F6D102160C39100B0E420 /* WXAMonitorDataManager.h */; };
 		D94F6D132160C39100B0E420 /* WXAMonitorDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F6D112160C39100B0E420 /* WXAMonitorDataManager.m */; };
+		D97BC526216EF346002BB540 /* wxt_icon_windvane.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC522216EF346002BB540 /* wxt_icon_windvane.png */; };
+		D97BC527216EF346002BB540 /* wxt_icon_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC523216EF346002BB540 /* wxt_icon_upload.png */; };
+		D97BC528216EF346002BB540 /* wxt_icon_api.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC524216EF346002BB540 /* wxt_icon_api.png */; };
+		D97BC529216EF346002BB540 /* wxt_icon_basepfm.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */; };
 		D99435752050CA8D00CEEFE6 /* WXAMenuCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D99435732050CA8D00CEEFE6 /* WXAMenuCell.h */; };
 		D99435762050CA8D00CEEFE6 /* WXAMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D99435742050CA8D00CEEFE6 /* WXAMenuCell.m */; };
 /* End PBXBuildFile section */
@@ -349,6 +353,10 @@
 		D94F6D0B2160C34B00B0E420 /* NSDictionary+forPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+forPath.m"; sourceTree = "<group>"; };
 		D94F6D102160C39100B0E420 /* WXAMonitorDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMonitorDataManager.h; sourceTree = "<group>"; };
 		D94F6D112160C39100B0E420 /* WXAMonitorDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMonitorDataManager.m; sourceTree = "<group>"; };
+		D97BC522216EF346002BB540 /* wxt_icon_windvane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_windvane.png; sourceTree = "<group>"; };
+		D97BC523216EF346002BB540 /* wxt_icon_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_upload.png; sourceTree = "<group>"; };
+		D97BC524216EF346002BB540 /* wxt_icon_api.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_api.png; sourceTree = "<group>"; };
+		D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_basepfm.png; sourceTree = "<group>"; };
 		D99435732050CA8D00CEEFE6 /* WXAMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXAMenuCell.h; sourceTree = "<group>"; };
 		D99435742050CA8D00CEEFE6 /* WXAMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXAMenuCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -638,6 +646,10 @@
 		D92A6018207F82F200E3330C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D97BC524216EF346002BB540 /* wxt_icon_api.png */,
+				D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */,
+				D97BC523216EF346002BB540 /* wxt_icon_upload.png */,
+				D97BC522216EF346002BB540 /* wxt_icon_windvane.png */,
 				D92A6019207F82F200E3330C /* wxt_icon_storage.png */,
 				D92A601A207F82F200E3330C /* wxt_icon_traffic.png */,
 				D92A601B207F82F200E3330C /* wxt_icon_memory.png */,
@@ -887,9 +899,11 @@
 			files = (
 				D92A6045207F82F200E3330C /* wxt_icon_checked.png in Resources */,
 				D92A6037207F82F200E3330C /* wxt_icon_3d_rotation.png in Resources */,
+				D97BC526216EF346002BB540 /* wxt_icon_windvane.png in Resources */,
 				D92A6041207F82F200E3330C /* wxt_icon_settings.png in Resources */,
 				D92A6044207F82F200E3330C /* wxt_icon_done_white.png in Resources */,
 				D92A6046207F82F200E3330C /* wxt_icon_mtop.png in Resources */,
+				D97BC529216EF346002BB540 /* wxt_icon_basepfm.png in Resources */,
 				D92A603F207F82F200E3330C /* wxt_icon_clear.png in Resources */,
 				D92A6038207F82F200E3330C /* wxt_icon_bug_white.png in Resources */,
 				D92A603D207F82F200E3330C /* wxt_icon_fps.png in Resources */,
@@ -903,9 +917,11 @@
 				D92A6033207F82F200E3330C /* wxt_icon_memory.png in Resources */,
 				D92A6042207F82F200E3330C /* wxt_icon_render_analysis.png in Resources */,
 				D92A6035207F82F200E3330C /* wxt_icon_done.png in Resources */,
+				D97BC527216EF346002BB540 /* wxt_icon_upload.png in Resources */,
 				D92A603A207F82F200E3330C /* wxt_icon_multi_performance.png in Resources */,
 				D92A6036207F82F200E3330C /* wxt_icon_unchecked.png in Resources */,
 				D92A6047207F82F200E3330C /* wxt_icon_log.png in Resources */,
+				D97BC528216EF346002BB540 /* wxt_icon_api.png in Resources */,
 				D92A6039207F82F200E3330C /* wxt_icon_cpu.png in Resources */,
 				D92A6043207F82F200E3330C /* wxt_icon_back_white.png in Resources */,
 				D92A603C207F82F200E3330C /* wxt_icon_back.png in Resources */,
