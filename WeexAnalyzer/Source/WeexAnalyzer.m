@@ -15,10 +15,7 @@
 #import "WXAStorageMenuItem.h"
 #import "WXAMenuDefaultImpl.h"
 #import "WXAMonitorHandler.h"
-#import "WXAApiTracingViewController.h"
-#import "WXARenderTracingViewController.h"
 #import "WXAPfmPageViewController.h"
-#import "WXASettingViewController.h"
 
 static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification";
 
@@ -61,29 +58,13 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
                                                             iconImageName:@"wxt_icon_log"
                                                                    logger:[WXAWXExternalLogger new]];
         WXAStorageMenuItem *storageItem = [WXAStorageMenuItem new];
-        [WXTracingManager switchTracing:[NSUserDefaults.standardUserDefaults boolForKey:@"WXA_OPEN_Tracing"]];
-        
-        WXAMenuItem *apiItem = [WXAMenuItem new];
-        apiItem.title = @"api";
-        apiItem.iconImage = [UIImage imageNamed:@"wxt_icon_api"];
-        apiItem.controllerClass = WXAApiTracingViewController.self;
-        
-        WXAMenuItem *renderItem = [WXAMenuItem new];
-        renderItem.title = @"render";
-        renderItem.iconImage = [UIImage imageNamed:@"wxt_icon_render_analysis"];
-        renderItem.controllerClass = WXARenderTracingViewController.self;
         
         WXAMenuItem *interactionItem = [WXAMenuItem new];
         interactionItem.title = @"可交互";
         interactionItem.iconImage = [UIImage imageNamed:@"wxt_icon_multi_performance"];
         interactionItem.controllerClass = WXAPfmPageViewController.self;
         
-        WXAMenuItem *settingItem = [WXAMenuItem new];
-        settingItem.title = @"设置";
-        settingItem.iconImage = [UIImage imageNamed:@"wxt_icon_setting"];
-        settingItem.controllerClass = WXASettingViewController.self;
-        
-        _items = @[interactionItem, wxLogItem, storageItem, apiItem, renderItem, settingItem];
+        _items = @[interactionItem, wxLogItem, storageItem];
         
         WXASwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(WXA_motionEnded:withEvent:));
         WXPerformBlockOnMainThread(^{
@@ -131,7 +112,7 @@ static NSString *const WXAShowDevMenuNotification = @"WXAShowDevMenuNotification
 
 - (void)addItem:(WXAMenuItem *)item {
     NSMutableArray *array = [_items mutableCopy];
-    [array insertObject:item atIndex:array.count-1];
+    [array addObject:item];
     _items = [array copy];
     
     item.wxInstance = self.wxInstance;

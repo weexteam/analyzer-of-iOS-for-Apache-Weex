@@ -5,5 +5,5 @@ platform :ios, '7.0'
 inhibit_all_warnings!
 
 target 'WeexAnalyzer' do
-  pod 'WeexSDK', '0.18.4.2-analyzer-SNAPSHOT'
+  pod 'WeexSDK', '0.20.1'
 end

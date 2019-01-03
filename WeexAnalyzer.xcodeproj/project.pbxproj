@@ -88,20 +88,6 @@
 		41FB158B1DED3360004BC3DA /* WXAStorageMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FB15891DED3360004BC3DA /* WXAStorageMenuItem.m */; };
 		B86C263121636F73005F6971 /* WXAPageTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B86C262F21636F73005F6971 /* WXAPageTabbar.m */; };
 		B86C263221636F73005F6971 /* WXAPageTabbar.h in Headers */ = {isa = PBXBuildFile; fileRef = B86C263021636F73005F6971 /* WXAPageTabbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D92A5FFE207F816100E3330C /* WXARenderTracingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FEF207F816000E3330C /* WXARenderTracingTableViewCell.m */; };
-		D92A5FFF207F816100E3330C /* WXSubRenderTracingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FF0207F816000E3330C /* WXSubRenderTracingTableViewCell.m */; };
-		D92A6000207F816100E3330C /* WXARenderTracingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FF1207F816000E3330C /* WXARenderTracingViewController.m */; };
-		D92A6001207F816100E3330C /* WXARenderTracingTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FF2207F816000E3330C /* WXARenderTracingTableViewCell.h */; };
-		D92A6002207F816100E3330C /* WXARenderTracingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FF3207F816000E3330C /* WXARenderTracingViewController.h */; };
-		D92A6003207F816100E3330C /* WXSubRenderTracingTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FF4207F816000E3330C /* WXSubRenderTracingTableViewCell.h */; };
-		D92A6004207F816100E3330C /* WXTracingMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FF6207F816100E3330C /* WXTracingMethodViewController.m */; };
-		D92A6005207F816100E3330C /* WXATracingApiTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FF7207F816100E3330C /* WXATracingApiTableViewCell.h */; };
-		D92A6006207F816100E3330C /* WXAApiTracingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FF8207F816100E3330C /* WXAApiTracingViewController.m */; };
-		D92A6007207F816100E3330C /* WXTracingMethodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FF9207F816100E3330C /* WXTracingMethodTableViewCell.m */; };
-		D92A6008207F816100E3330C /* WXATracingApiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A5FFA207F816100E3330C /* WXATracingApiTableViewCell.m */; };
-		D92A6009207F816100E3330C /* WXTracingMethodViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFB207F816100E3330C /* WXTracingMethodViewController.h */; };
-		D92A600A207F816100E3330C /* WXTracingMethodTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFC207F816100E3330C /* WXTracingMethodTableViewCell.h */; };
-		D92A600B207F816100E3330C /* WXAApiTracingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A5FFD207F816100E3330C /* WXAApiTracingViewController.h */; };
 		D92A6010207F817000E3330C /* WXABaseTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D92A600C207F817000E3330C /* WXABaseTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D92A6011207F817000E3330C /* WXABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A600D207F817000E3330C /* WXABaseViewController.m */; };
 		D92A6012207F817000E3330C /* WXABaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A600E207F817000E3330C /* WXABaseTableViewController.m */; };
@@ -135,8 +121,6 @@
 		D93980D4205A5A3A00236E73 /* WXACellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D93980D2205A5A3A00236E73 /* WXACellView.m */; };
 		D93980D7205A5AFE00236E73 /* WXAMonitorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D93980D5205A5AFE00236E73 /* WXAMonitorHandler.h */; };
 		D93980D8205A5AFE00236E73 /* WXAMonitorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D93980D6205A5AFE00236E73 /* WXAMonitorHandler.m */; };
-		D9435A9E2163953500956B65 /* WXASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9435A9C2163953500956B65 /* WXASettingViewController.m */; };
-		D9435A9F2163953500956B65 /* WXASettingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D9435A9D2163953500956B65 /* WXASettingViewController.h */; };
 		D9435AA1216395A900956B65 /* wxt_icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = D9435AA0216395A900956B65 /* wxt_icon_setting.png */; };
 		D94C9E2F1F9F25880011F662 /* WXAMenuDefaultImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */; };
 		D94C9E301F9F25880011F662 /* WXAMenuDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */; };
@@ -273,20 +257,6 @@
 		A38939C853CD52388639E6F2 /* Pods-WeexAnalyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexAnalyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexAnalyzer/Pods-WeexAnalyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B86C262F21636F73005F6971 /* WXAPageTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAPageTabbar.m; sourceTree = "<group>"; };
 		B86C263021636F73005F6971 /* WXAPageTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAPageTabbar.h; sourceTree = "<group>"; };
-		D92A5FEF207F816000E3330C /* WXARenderTracingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXARenderTracingTableViewCell.m; sourceTree = "<group>"; };
-		D92A5FF0207F816000E3330C /* WXSubRenderTracingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSubRenderTracingTableViewCell.m; sourceTree = "<group>"; };
-		D92A5FF1207F816000E3330C /* WXARenderTracingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXARenderTracingViewController.m; sourceTree = "<group>"; };
-		D92A5FF2207F816000E3330C /* WXARenderTracingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXARenderTracingTableViewCell.h; sourceTree = "<group>"; };
-		D92A5FF3207F816000E3330C /* WXARenderTracingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXARenderTracingViewController.h; sourceTree = "<group>"; };
-		D92A5FF4207F816000E3330C /* WXSubRenderTracingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSubRenderTracingTableViewCell.h; sourceTree = "<group>"; };
-		D92A5FF6207F816100E3330C /* WXTracingMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTracingMethodViewController.m; sourceTree = "<group>"; };
-		D92A5FF7207F816100E3330C /* WXATracingApiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXATracingApiTableViewCell.h; sourceTree = "<group>"; };
-		D92A5FF8207F816100E3330C /* WXAApiTracingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAApiTracingViewController.m; sourceTree = "<group>"; };
-		D92A5FF9207F816100E3330C /* WXTracingMethodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTracingMethodTableViewCell.m; sourceTree = "<group>"; };
-		D92A5FFA207F816100E3330C /* WXATracingApiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXATracingApiTableViewCell.m; sourceTree = "<group>"; };
-		D92A5FFB207F816100E3330C /* WXTracingMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTracingMethodViewController.h; sourceTree = "<group>"; };
-		D92A5FFC207F816100E3330C /* WXTracingMethodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTracingMethodTableViewCell.h; sourceTree = "<group>"; };
-		D92A5FFD207F816100E3330C /* WXAApiTracingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAApiTracingViewController.h; sourceTree = "<group>"; };
 		D92A600C207F817000E3330C /* WXABaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXABaseTableViewController.h; sourceTree = "<group>"; };
 		D92A600D207F817000E3330C /* WXABaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseViewController.m; sourceTree = "<group>"; };
 		D92A600E207F817000E3330C /* WXABaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXABaseTableViewController.m; sourceTree = "<group>"; };
@@ -320,8 +290,6 @@
 		D93980D2205A5A3A00236E73 /* WXACellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXACellView.m; sourceTree = "<group>"; };
 		D93980D5205A5AFE00236E73 /* WXAMonitorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMonitorHandler.h; sourceTree = "<group>"; };
 		D93980D6205A5AFE00236E73 /* WXAMonitorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMonitorHandler.m; sourceTree = "<group>"; };
-		D9435A9C2163953500956B65 /* WXASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXASettingViewController.m; sourceTree = "<group>"; };
-		D9435A9D2163953500956B65 /* WXASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXASettingViewController.h; sourceTree = "<group>"; };
 		D9435AA0216395A900956B65 /* wxt_icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_setting.png; sourceTree = "<group>"; };
 		D94C9E2B1F9F25880011F662 /* WXAMenuDefaultImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXAMenuDefaultImpl.h; sourceTree = "<group>"; };
 		D94C9E2C1F9F25880011F662 /* WXAMenuDefaultImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXAMenuDefaultImpl.m; sourceTree = "<group>"; };
@@ -507,8 +475,6 @@
 		417AB67A1DC4C934002BA6E4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D92A5FF5207F816100E3330C /* Api */,
-				D92A5FEE207F816000E3330C /* Render */,
 				412DAEFF1DCE0C6300D42DC3 /* Base */,
 				D94C9E2A1F9F25880011F662 /* Handler */,
 				412DAEF61DCE0C3500D42DC3 /* Menu */,
@@ -517,7 +483,6 @@
 				417AB67B1DC4C934002BA6E4 /* Log */,
 				D94C9E2D1F9F25880011F662 /* Protocol */,
 				417AB6A71DC4C934002BA6E4 /* Utils */,
-				D9435A9B2163953500956B65 /* Setting */,
 				417AB6B01DC4C934002BA6E4 /* WeexAnalyzer.h */,
 				417AB6B11DC4C934002BA6E4 /* WeexAnalyzer.m */,
 			);
@@ -615,34 +580,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D92A5FEE207F816000E3330C /* Render */ = {
-			isa = PBXGroup;
-			children = (
-				D92A5FEF207F816000E3330C /* WXARenderTracingTableViewCell.m */,
-				D92A5FF0207F816000E3330C /* WXSubRenderTracingTableViewCell.m */,
-				D92A5FF1207F816000E3330C /* WXARenderTracingViewController.m */,
-				D92A5FF2207F816000E3330C /* WXARenderTracingTableViewCell.h */,
-				D92A5FF3207F816000E3330C /* WXARenderTracingViewController.h */,
-				D92A5FF4207F816000E3330C /* WXSubRenderTracingTableViewCell.h */,
-			);
-			path = Render;
-			sourceTree = "<group>";
-		};
-		D92A5FF5207F816100E3330C /* Api */ = {
-			isa = PBXGroup;
-			children = (
-				D92A5FF6207F816100E3330C /* WXTracingMethodViewController.m */,
-				D92A5FF7207F816100E3330C /* WXATracingApiTableViewCell.h */,
-				D92A5FF8207F816100E3330C /* WXAApiTracingViewController.m */,
-				D92A5FF9207F816100E3330C /* WXTracingMethodTableViewCell.m */,
-				D92A5FFA207F816100E3330C /* WXATracingApiTableViewCell.m */,
-				D92A5FFB207F816100E3330C /* WXTracingMethodViewController.h */,
-				D92A5FFC207F816100E3330C /* WXTracingMethodTableViewCell.h */,
-				D92A5FFD207F816100E3330C /* WXAApiTracingViewController.h */,
-			);
-			path = Api;
-			sourceTree = "<group>";
-		};
 		D92A6018207F82F200E3330C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,15 +614,6 @@
 				D92A6030207F82F200E3330C /* wxt_icon_view_inspector.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		D9435A9B2163953500956B65 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				D9435A9D2163953500956B65 /* WXASettingViewController.h */,
-				D9435A9C2163953500956B65 /* WXASettingViewController.m */,
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		D94C9E2A1F9F25880011F662 /* Handler */ = {
@@ -751,8 +679,6 @@
 				41BBFBAD1DE584CC00F34DE1 /* WXALogProtocol.h in Headers */,
 				412DAEFB1DCE0C3500D42DC3 /* WXAMenuItem.h in Headers */,
 				D94F6CFC2160C33000B0E420 /* WXAIntBaseInfoViewController.h in Headers */,
-				D92A6002207F816100E3330C /* WXARenderTracingViewController.h in Headers */,
-				D9435A9F2163953500956B65 /* WXASettingViewController.h in Headers */,
 				417AB6E11DC4C934002BA6E4 /* WeexAnalyzer.h in Headers */,
 				417AB6C31DC4C934002BA6E4 /* WXALogLevelView.h in Headers */,
 				D94F6D122160C39100B0E420 /* WXAMonitorDataManager.h in Headers */,
@@ -769,15 +695,12 @@
 				D92A6013207F817000E3330C /* WXABaseViewController.h in Headers */,
 				412CC65C1DC9784F00A71167 /* WXAStorageManager.h in Headers */,
 				417AB6D11DC4C934002BA6E4 /* WXALogManager.h in Headers */,
-				D92A600A207F816100E3330C /* WXTracingMethodTableViewCell.h in Headers */,
 				410A61491DD22A2800EB22A7 /* WXABaseContentView.h in Headers */,
 				412DAEFD1DCE0C3500D42DC3 /* WXAMenuView.h in Headers */,
 				D94F6CF42160C33000B0E420 /* WXAGanttViewController.h in Headers */,
-				D92A6005207F816100E3330C /* WXATracingApiTableViewCell.h in Headers */,
 				417AB6B71DC4C934002BA6E4 /* WXALogSettingsModel.h in Headers */,
 				D94C9E311F9F25880011F662 /* WXAMenuProtocol.h in Headers */,
 				D94F6D022160C33000B0E420 /* WXAIntStatsViewController.h in Headers */,
-				D92A6009207F816100E3330C /* WXTracingMethodViewController.h in Headers */,
 				4189EEB81DCF809600C3DA01 /* WXASwitchSizeOptionView.h in Headers */,
 				417AB6C91DC4C934002BA6E4 /* WXALogSelectItemView.h in Headers */,
 				D94F6D0C2160C34B00B0E420 /* NSDictionary+forPath.h in Headers */,
@@ -790,7 +713,6 @@
 				412DAF121DCE2C6C00D42DC3 /* WXAStorageTableView.h in Headers */,
 				D94F6CFB2160C33000B0E420 /* WXAGanttData.h in Headers */,
 				417AB6DD1DC4C934002BA6E4 /* WXAUtility.h in Headers */,
-				D92A600B207F816100E3330C /* WXAApiTracingViewController.h in Headers */,
 				412DAF021DCE0C7C00D42DC3 /* WXABaseContainer.h in Headers */,
 				412DAEF01DCDB69900D42DC3 /* WXAStorageInsertView.h in Headers */,
 				412DAF0E1DCE0FAA00D42DC3 /* WXAOptionButton.h in Headers */,
@@ -804,12 +726,10 @@
 				D94F6CF92160C33000B0E420 /* WXAPfmIntBaseViewController.h in Headers */,
 				417AB6C71DC4C934002BA6E4 /* WXALogResultView.h in Headers */,
 				D94C9E2F1F9F25880011F662 /* WXAMenuDefaultImpl.h in Headers */,
-				D92A6003207F816100E3330C /* WXSubRenderTracingTableViewCell.h in Headers */,
 				41B249421DCA0796001C415B /* WXAStorageInfoModel.h in Headers */,
 				417AB6BD1DC4C934002BA6E4 /* WXALogContainer.h in Headers */,
 				417AB6B31DC4C934002BA6E4 /* WXALogFilterModel.h in Headers */,
 				D94F6CF52160C33000B0E420 /* WXAIntViewController.h in Headers */,
-				D92A6001207F816100E3330C /* WXARenderTracingTableViewCell.h in Headers */,
 				D94F6D072160C33000B0E420 /* WXAPfmPageViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -977,7 +897,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D92A6007207F816100E3330C /* WXTracingMethodTableViewCell.m in Sources */,
 				D92A6012207F817000E3330C /* WXABaseTableViewController.m in Sources */,
 				41BBFBB51DE5AF6500F34DE1 /* WXALogMenuItem.m in Sources */,
 				417AB6E21DC4C934002BA6E4 /* WeexAnalyzer.m in Sources */,
@@ -985,7 +904,6 @@
 				41B2495E1DCB811F001C415B /* WXAStorageDetailView.m in Sources */,
 				D94F6D042160C33000B0E420 /* WXAGanttView.m in Sources */,
 				D94F6CFD2160C33000B0E420 /* WXAIntTableViewCell.m in Sources */,
-				D92A5FFE207F816100E3330C /* WXARenderTracingTableViewCell.m in Sources */,
 				D93980D4205A5A3A00236E73 /* WXACellView.m in Sources */,
 				417AB6BE1DC4C934002BA6E4 /* WXALogContainer.m in Sources */,
 				D94F6D002160C33000B0E420 /* WXAIntViewController.m in Sources */,
@@ -995,13 +913,11 @@
 				41FB158B1DED3360004BC3DA /* WXAStorageMenuItem.m in Sources */,
 				417AB6C61DC4C934002BA6E4 /* WXALogResultCell.m in Sources */,
 				412DAF131DCE2C6C00D42DC3 /* WXAStorageTableView.m in Sources */,
-				D92A6006207F816100E3330C /* WXAApiTracingViewController.m in Sources */,
 				D94F6CFA2160C33000B0E420 /* WXAPfmPageViewController.m in Sources */,
 				417AB6C21DC4C934002BA6E4 /* WXALogFlagView.m in Sources */,
 				D93980D8205A5AFE00236E73 /* WXAMonitorHandler.m in Sources */,
 				417AB6DC1DC4C934002BA6E4 /* WXAUIBuilder.m in Sources */,
 				417AB6E01DC4C934002BA6E4 /* WXAViewControllerUtil.m in Sources */,
-				D92A6008207F816100E3330C /* WXATracingApiTableViewCell.m in Sources */,
 				412DAF031DCE0C7C00D42DC3 /* WXABaseContainer.m in Sources */,
 				412DAEFE1DCE0C3500D42DC3 /* WXAMenuView.m in Sources */,
 				417AB6C41DC4C934002BA6E4 /* WXALogLevelView.m in Sources */,
@@ -1023,15 +939,11 @@
 				D94F6CF32160C33000B0E420 /* WXAIntStatsViewController.m in Sources */,
 				D94F6CFF2160C33000B0E420 /* WXAInstanceSwitchViewController.m in Sources */,
 				417AB6B41DC4C934002BA6E4 /* WXALogFilterModel.m in Sources */,
-				D92A6000207F816100E3330C /* WXARenderTracingViewController.m in Sources */,
 				D94F6D062160C33000B0E420 /* WXAGanttData.m in Sources */,
-				D9435A9E2163953500956B65 /* WXASettingViewController.m in Sources */,
 				417AB6B61DC4C934002BA6E4 /* WXALogModel.m in Sources */,
 				412DAEF51DCDFA2B00D42DC3 /* WXAStorageItemModel.m in Sources */,
-				D92A6004207F816100E3330C /* WXTracingMethodViewController.m in Sources */,
 				417AB6DA1DC4C934002BA6E4 /* UIView+WXAPopover.m in Sources */,
 				41B2495A1DCB744C001C415B /* WXAStorageTableHeader.m in Sources */,
-				D92A5FFF207F816100E3330C /* WXSubRenderTracingTableViewCell.m in Sources */,
 				412DAF0F1DCE0FAA00D42DC3 /* WXAOptionButton.m in Sources */,
 				D94F6D012160C33000B0E420 /* WXAGanttViewController.m in Sources */,
 				41B249431DCA0796001C415B /* WXAStorageInfoModel.m in Sources */,
