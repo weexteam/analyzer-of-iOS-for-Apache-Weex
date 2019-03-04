@@ -33,11 +33,17 @@
 }
 
 - (NSString *)toString {
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:0
-                                                         error:nil];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *jsonString = @"";
+    @try {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                           options:0
+                                                             error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+    } @catch (NSException *exception) {
+        NSLog(@"serialize error: %@", exception.reason);
+    }
     return jsonString;
 }
 
