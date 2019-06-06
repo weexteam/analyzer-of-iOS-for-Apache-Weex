@@ -20,6 +20,11 @@
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        self.estimatedRowHeight = 0;
+        self.estimatedSectionFooterHeight = 0;
+        self.estimatedSectionHeaderHeight = 0;
+        
         _autoScroll = YES;
         [self registerClass:[WXALogResultCell class] forCellReuseIdentifier:@"logcell"];
     }
