@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WeexSDK.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSUInteger, WXLogType){
     /**
      *  native log
@@ -36,3 +38,5 @@ typedef NS_ENUM(NSUInteger, WXLogType){
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
 @end
+
+NS_ASSUME_NONNULL_END

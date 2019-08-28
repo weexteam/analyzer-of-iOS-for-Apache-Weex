@@ -158,6 +158,7 @@
 		D97BC529216EF346002BB540 /* wxt_icon_basepfm.png in Resources */ = {isa = PBXBuildFile; fileRef = D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */; };
 		D99435752050CA8D00CEEFE6 /* WXAMenuCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D99435732050CA8D00CEEFE6 /* WXAMenuCell.h */; };
 		D99435762050CA8D00CEEFE6 /* WXAMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D99435742050CA8D00CEEFE6 /* WXAMenuCell.m */; };
+		F704B5092316A11A00F079A6 /* WeexAnalyzerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = F704B5082316A11900F079A6 /* WeexAnalyzerHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,8 @@
 		D97BC525216EF346002BB540 /* wxt_icon_basepfm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wxt_icon_basepfm.png; sourceTree = "<group>"; };
 		D99435732050CA8D00CEEFE6 /* WXAMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXAMenuCell.h; sourceTree = "<group>"; };
 		D99435742050CA8D00CEEFE6 /* WXAMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXAMenuCell.m; sourceTree = "<group>"; };
+		F704B5072316A08600F079A6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		F704B5082316A11900F079A6 /* WeexAnalyzerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexAnalyzerHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +462,8 @@
 				417AB67A1DC4C934002BA6E4 /* Source */,
 				D92A6018207F82F200E3330C /* Resources */,
 				417AB6561DC4768D002BA6E4 /* Info.plist */,
+				F704B5072316A08600F079A6 /* module.modulemap */,
+				F704B5082316A11900F079A6 /* WeexAnalyzerHeader.h */,
 			);
 			path = WeexAnalyzer;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 			files = (
 				B86C263221636F73005F6971 /* WXAPageTabbar.h in Headers */,
 				410A61451DD221E500EB22A7 /* WXAOptionBaseView.h in Headers */,
+				F704B5092316A11A00F079A6 /* WeexAnalyzerHeader.h in Headers */,
 				41BBFBB01DE58A7700F34DE1 /* WXAWXExternalLogger.h in Headers */,
 				417AB6B51DC4C934002BA6E4 /* WXALogModel.h in Headers */,
 				41BBFBB41DE5AF6500F34DE1 /* WXALogMenuItem.h in Headers */,
@@ -799,6 +805,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 417AB6481DC4768D002BA6E4;
@@ -1091,6 +1098,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "$(SRCROOT)/WeexAnalyzer/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1117,6 +1125,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "$(SRCROOT)/WeexAnalyzer/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.WeexAnalyzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

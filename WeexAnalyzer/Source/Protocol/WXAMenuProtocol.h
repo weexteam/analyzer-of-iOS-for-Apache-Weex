@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WeexSDK.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol WXAMenuProtocol<NSObject>
 
 @property(nonatomic,strong,readonly) UIView *headerView;
@@ -19,3 +21,5 @@
 - (void)setWxInstance:(WXSDKInstance *)wxInstance;
 
 @end
+
+NS_ASSUME_NONNULL_END
