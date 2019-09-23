@@ -61,7 +61,7 @@ static const double WXAWarningRenderDiffTime = 100.0;
 }
 
 - (void)load {
-    _allData = [WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId] objectForKey:@"wxinteraction"];
+    _allData = [[WXAMonitorDataManager.sharedInstance instanceDictForId:self.instanceId] objectForKey:@"wxinteraction"];
     NSMutableArray *data = [NSMutableArray new];
     if (_allData) {
         for (NSDictionary *item in _allData) {

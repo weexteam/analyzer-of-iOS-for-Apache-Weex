@@ -47,7 +47,7 @@
 }
 
 - (void)load {
-    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId] objectForKey:@"stats"];
+    _monitor = [[WXAMonitorDataManager.sharedInstance instanceDictForId:self.instanceId] objectForKey:@"stats"];
     NSMutableArray *data = [NSMutableArray new];
 //    if (_monitor) {
         NSDictionary *map = @{

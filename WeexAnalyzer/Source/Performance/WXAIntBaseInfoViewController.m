@@ -48,7 +48,7 @@
 }
 
 - (void)load {
-    _monitor = [WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId] objectForKey:@"properties"];
+    _monitor = [[WXAMonitorDataManager.sharedInstance instanceDictForId:self.instanceId] objectForKey:@"properties"];
     NSMutableArray *data = [NSMutableArray new];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appName = [infoDictionary objectForKey:@"CFBundleDisplayName"];

@@ -34,7 +34,7 @@
 }
 
 - (void)load {
-    _ganttData = [WXAGanttData dataWithMonitor:WXAMonitorDataManager.sharedInstance.monitorDictionary[self.instanceId]];
+    _ganttData = [WXAGanttData dataWithMonitor:[WXAMonitorDataManager.sharedInstance instanceDictForId:self.instanceId]];
 }
 
 - (void)fresh {

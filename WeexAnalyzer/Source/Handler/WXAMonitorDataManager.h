@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WXAMonitorDataManager : NSObject
 
-@property(nonatomic, strong) NSMutableDictionary<NSString *,NSMutableDictionary *> *monitorDictionary;
-@property(nonatomic, strong) NSMutableArray<NSMutableDictionary *> *instanceArray;
 @property(nonatomic, copy) NSString *latestInstanceId;
 
 + (instancetype)sharedInstance;
@@ -28,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDictionary *)latestInstance;
 
-- (NSDictionary *)latestMonitorData;
+- (NSDictionary *)instanceDictForId:(NSString *)instaneId;
 
 @end
 

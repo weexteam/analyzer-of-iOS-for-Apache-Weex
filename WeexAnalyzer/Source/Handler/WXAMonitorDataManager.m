@@ -8,13 +8,18 @@
 #import "WXAMonitorDataManager.h"
 #import <WeexSDK/WXUtility.h>
 #import "NSDictionary+forPath.h"
+#import <pthread/pthread.h>
 
 @interface WXAMonitorDataManager ()
 
+@property(nonatomic, strong) NSMutableDictionary<NSString *,NSMutableDictionary *> *monitorDictionary;
 
 @end
 
-@implementation WXAMonitorDataManager
+@implementation WXAMonitorDataManager {
+    pthread_mutex_t mutex;
+    pthread_mutexattr_t mutexAttr;
+}
 
 + (instancetype)sharedInstance {
     static id _sharedInstance;
@@ -28,10 +33,17 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        pthread_mutexattr_init(&mutexAttr);
+        pthread_mutexattr_settype(&mutexAttr, PTHREAD_MUTEX_RECURSIVE);
+        pthread_mutex_init(&mutex, &mutexAttr);
         _monitorDictionary = [NSMutableDictionary new];
-        _instanceArray = [NSMutableArray new];
     }
     return self;
+}
+
+- (void)dealloc {
+    pthread_mutex_destroy(&mutex);
+    pthread_mutexattr_destroy(&mutexAttr);
 }
 
 - (void)transfer:(NSDictionary *)value {
@@ -75,6 +87,7 @@
                                                                    }];
     }
     
+    pthread_mutex_lock(&mutex);
     NSMutableDictionary *dataForInstance = _monitorDictionary[instanceId];
     if (!dataForInstance) {
         dataForInstance = [NSMutableDictionary new];
@@ -109,6 +122,7 @@
         }
         [dataForType addEntriesFromDictionary:data];
     }
+    pthread_mutex_unlock(&mutex);
 }
 
 - (NSDictionary *)handleRenderDiffTime:(NSDictionary *)data lastData:(NSDictionary *)lastData {
@@ -134,6 +148,7 @@
 }
 
 - (NSArray<NSDictionary *> *)allInstance {
+    pthread_mutex_lock(&mutex);
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:_monitorDictionary.count];
     for (NSString *item in _monitorDictionary.allKeys) {
         NSString *wxBundleUrl = [_monitorDictionary[item] objectForPath:@"properties.wxBundleUrl"];
@@ -147,6 +162,7 @@
     [array sortUsingComparator:^NSComparisonResult(NSDictionary *  _Nonnull obj1, NSDictionary *  _Nonnull obj2) {
         return [[obj2 objectForKey:@"instanceId"] compare:[obj1 objectForKey:@"instanceId"]];
     }];
+    pthread_mutex_unlock(&mutex);
     return [array copy];
 }
 
@@ -154,8 +170,12 @@
     return self.allInstance.lastObject;
 }
 
-- (NSDictionary *)latestMonitorData {
-    return _monitorDictionary[_latestInstanceId];
+- (NSDictionary *)instanceDictForId:(NSString *)instaneId {
+    NSDictionary *instance = nil;
+    pthread_mutex_lock(&mutex);
+    instance = [_monitorDictionary objectForKey:instaneId];
+    pthread_mutex_unlock(&mutex);
+    return instance;
 }
 
 @end
