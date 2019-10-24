@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK/WeexSDK.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface WXAMenuItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
@@ -24,3 +26,5 @@
 - (void)open:(BOOL)selected;
 
 @end
+
+NS_ASSUME_NONNULL_END

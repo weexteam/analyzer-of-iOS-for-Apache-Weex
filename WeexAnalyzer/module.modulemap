@@ -1,0 +1,6 @@
+framework module WeexAnalyzer {
+    umbrella header "WeexAnalyzerHeader.h"
+    
+    export *
+    module * { export * }
+}

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WXALogModel.h"
+#import <WeexAnalyzer/WXALogModel.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol WXALoggerDelegate <NSObject>
 
@@ -28,3 +30,5 @@
                  logType:(NSInteger)type;
 
 @end
+
+NS_ASSUME_NONNULL_END

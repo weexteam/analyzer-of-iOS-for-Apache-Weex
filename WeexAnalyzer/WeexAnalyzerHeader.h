@@ -1,12 +1,13 @@
 //
-//  WeexAnalyzer.h
+//  WeexAnalyzerHeader.h
 //  WeexAnalyzer
 //
-//  Created by xiayun on 16/10/18.
-//  Copyright © 2016年 alibaba. All rights reserved.
+//  Created by txink on 2019/8/28.
+//  Copyright © 2019 Taobao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifdef __OBJC__
+
 #import <WeexSDK/WeexSDK.h>
 #import <WeexAnalyzer/WXAMenuItem.h>
 #import <WeexAnalyzer/WXAMenuProtocol.h>
@@ -18,14 +19,4 @@
 #import <WeexAnalyzer/WXABaseTableViewController.h>
 #import <WeexAnalyzer/WXAPageTabbar.h>
 
-@interface WeexAnalyzer : NSObject
-
-+ (void)enableDebugMode;
-+ (void)disableDebugMode;
-
-+ (void)bindWXInstance:(WXSDKInstance *)wxInstance;
-+ (void)unbindWXInstance;
-
-+ (void)addMenuItem:(WXAMenuItem *)item;
-
-@end
+#endif /* __OBJC__ */

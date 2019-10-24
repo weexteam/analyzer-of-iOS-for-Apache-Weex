@@ -7,7 +7,9 @@
 //
 
 #import <WeexAnalyzer/WeexAnalyzer.h>
-#import "WXALogProtocol.h"
+#import <WeexAnalyzer/WXALogProtocol.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface WXALogMenuItem : WXAMenuItem
 
@@ -16,3 +18,5 @@
                        logger:(id<WXALogProtocol>)logger;
 
 @end
+
+NS_ASSUME_NONNULL_END
